@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private int health;
+    public int health = 100;
     
 
     // 0 U, 1 R, 2 D, 3 L
@@ -16,15 +16,21 @@ public class PlayerController : MonoBehaviour {
     private bool invincible;
 
     private Animator anim;
+
+    private bool dying;
     // Use this for initialization
     void Start () {
         playerSpeed = baseSpeed;
         anim = this.gameObject.GetComponent<Animator>();
-	}
+        Init_Vals();
+
+        InvokeRepeating("IncrementCounters", 0f, .25f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        SetDirection();
+        Set_Direction();
+        Check_Health();
 	}
 
     private void FixedUpdate()
@@ -32,6 +38,11 @@ public class PlayerController : MonoBehaviour {
         Move();   
     }
 
+
+    private void Init_Vals()
+    {
+        health = 100;
+    }
 
 
     ////////Get Methods///////////////////////
@@ -53,6 +64,11 @@ public class PlayerController : MonoBehaviour {
     public bool Get_Invincible()
     {
         return invincible;
+    }
+
+    public bool Get_Dying()
+    {
+        return dying;
     }
     ///////////////////////////////////////////
 
@@ -82,13 +98,14 @@ public class PlayerController : MonoBehaviour {
         return angle;
     }
 
-    private void SetDirection()
+    private void Set_Direction()
     {
         float angle = Get_Mouse_Angle();
 
         if (angle >= -45 && angle < 45)
         {
             direction = 1;
+            anim.SetInteger("Direction", direction);
         }
         if (angle >= 45 && angle < 135)
         {
@@ -106,4 +123,19 @@ public class PlayerController : MonoBehaviour {
         anim.SetInteger("Direction", direction);
     }
 
+
+    private void IncrementCounters()
+    {
+        
+    }
+
+    private void Check_Health()
+    {
+        if(health <= 0)
+        {
+            health = 0;
+            dying = true;
+            anim.SetBool("Dying", true);
+        }
+    }
 }
