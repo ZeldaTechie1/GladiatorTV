@@ -5,15 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private int health;
+    
 
-
-    // 0 N, 1 E, 2 S, 3 W
+    // 0 U, 1 R, 2 D, 3 L
     public int direction;
 
-    public float playerSpeed;
-	// Use this for initialization
-	void Start () {
-		
+    public float baseSpeed;
+    private float playerSpeed;
+
+    private bool invincible;
+
+    private Animator anim;
+    // Use this for initialization
+    void Start () {
+        playerSpeed = baseSpeed;
+        anim = this.gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -26,20 +32,38 @@ public class PlayerController : MonoBehaviour {
         Move();   
     }
 
+
+
+    ////////Get Methods///////////////////////
     public int Get_Health()
     {
         return health;
     }
 
-    public void Deal_Damage(int val)
+    public float Get_Speed()
     {
-        health -= val;
+        return playerSpeed;
     }
 
     public int Get_Direction()
     {
         return direction;
     }
+
+    public bool Get_Invincible()
+    {
+        return invincible;
+    }
+    ///////////////////////////////////////////
+
+
+
+    public void Deal_Damage(int val)
+    {
+        health -= val;
+    }
+
+ 
 
     private void Move()
     {
@@ -72,11 +96,14 @@ public class PlayerController : MonoBehaviour {
         }
         if (angle >= 135 || angle < -135)
         {
-            direction = 2;
+            direction = 3;
         }
         if (angle >= -135 && angle < -45)
         {
-            direction = 3;
+            direction = 2;
         }
+
+        anim.SetInteger("Direction", direction);
     }
+
 }
