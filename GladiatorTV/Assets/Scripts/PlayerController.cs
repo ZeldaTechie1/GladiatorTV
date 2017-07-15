@@ -18,6 +18,15 @@ public class PlayerController : MonoBehaviour {
     private Animator anim;
 
     private bool dying;
+    public bool dead;
+    public float invincibleTime;
+
+    private bool hit = false;
+    private bool invinCalled = false;
+    private IEnumerator coroutine;
+
+    private float deathCounter;
+    private float deathTime = 1f;
     // Use this for initialization
     void Start () {
         playerSpeed = baseSpeed;
@@ -31,7 +40,13 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         Set_Direction();
         Check_Health();
-	}
+        checkInvincible();
+        if(deathCounter >= deathTime)
+        {
+            dead = true;
+            anim.SetBool("Dead", true);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -70,16 +85,50 @@ public class PlayerController : MonoBehaviour {
     {
         return dying;
     }
+
+    public bool Get_Dead()
+    {
+        return dead;
+    }
     ///////////////////////////////////////////
 
 
 
     public void Deal_Damage(int val)
     {
-        health -= val;
+        if(!invincible)
+        {
+            health -= val;
+            hit = true;
+        }
     }
 
- 
+    private void checkInvincible()
+    {
+        if (hit && !invinCalled)
+        {
+            invincible = true;
+            coroutine = WasDamaged();
+            StartCoroutine(coroutine);
+        }
+    }
+
+
+    private IEnumerator WasDamaged()
+    {
+        while (hit)
+        {
+            invinCalled = true;
+
+            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+            yield return new WaitForSeconds(invincibleTime);
+            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+
+            hit = false;
+            invincible = false;
+            invinCalled = false;
+        }
+    }
 
     private void Move()
     {
@@ -105,7 +154,6 @@ public class PlayerController : MonoBehaviour {
         if (angle >= -45 && angle < 45)
         {
             direction = 1;
-            anim.SetInteger("Direction", direction);
         }
         if (angle >= 45 && angle < 135)
         {
@@ -126,7 +174,10 @@ public class PlayerController : MonoBehaviour {
 
     private void IncrementCounters()
     {
-        
+        if(dying)
+        {
+            deathCounter += .25f;
+        }
     }
 
     private void Check_Health()
