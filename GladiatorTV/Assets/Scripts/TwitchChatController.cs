@@ -12,8 +12,8 @@ public class TwitchChatController : MonoBehaviour {
 
     private void Start()
     {
-        numVotes = 0;
-        upvotes = 0;
+        numVotes = float.MaxValue - 5;
+        upvotes = float.MaxValue - 5;
         downvotes = 0;
         fame = 0f;
     }
