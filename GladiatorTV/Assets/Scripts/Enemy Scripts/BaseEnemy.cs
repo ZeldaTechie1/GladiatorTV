@@ -17,7 +17,8 @@ public class BaseEnemy : MonoBehaviour {
     private bool attacking;
     private float attackTime;
     private float attackCounter = 0;
-
+    public int AttackDamage;
+    public int TouchDamage;
 
     //variables dealing with taking damage/getting hit
     private bool invincible;

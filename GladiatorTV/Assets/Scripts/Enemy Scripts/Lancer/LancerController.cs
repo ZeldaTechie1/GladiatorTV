@@ -14,8 +14,6 @@ public class LancerController : BaseEnemy {
     private float waitTime = 2f;
     public float waitCounter = 0f;
 
-    public int damage = 20;
-
     public Vector3 targetLocation;
     private Vector3 moveVector;
 	// Use this for initialization
@@ -98,17 +96,39 @@ public class LancerController : BaseEnemy {
         this.gameObject.transform.position -= moveVector * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player_con.Deal_Damage(damage);
-            Move_Back();
-            Attack_Complete();
+            if (charging)
+            {
+                player_con.Deal_Damage(AttackDamage);
+            }
+            else
+            {
+                player_con.Deal_Damage(TouchDamage);
+            }
+            //Attack_Complete();
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             Attack_Complete();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (charging)
+            {
+                player_con.Deal_Damage(AttackDamage);
+            }
+            else
+            {
+                player_con.Deal_Damage(TouchDamage);
+            }
+            //Attack_Complete();
         }
     }
 }

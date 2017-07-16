@@ -236,16 +236,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114346570769802142, guid: c58294d69c45b6744ae1c0b72f81b618,
-        type: 2}
-      propertyPath: baseSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346570769802142, guid: c58294d69c45b6744ae1c0b72f81b618,
-        type: 2}
-      propertyPath: chargeSpeed
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
   m_IsPrefabParent: 0
@@ -287,11 +277,6 @@ Prefab:
     - target: {fileID: 4293259244697530, guid: ddf69d288cffd804f9a893ca87473e82, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114842590165207960, guid: ddf69d288cffd804f9a893ca87473e82,
-        type: 2}
-      propertyPath: invincibleTime
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddf69d288cffd804f9a893ca87473e82, type: 2}

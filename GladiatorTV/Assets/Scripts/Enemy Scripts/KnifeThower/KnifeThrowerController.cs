@@ -43,4 +43,21 @@ public class KnifeThrowerController : BaseEnemy {
             Increase_Death_Counter(.25f);
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+           player_con.Deal_Damage(TouchDamage);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player_con.Deal_Damage(TouchDamage);
+        }
+    }
 }

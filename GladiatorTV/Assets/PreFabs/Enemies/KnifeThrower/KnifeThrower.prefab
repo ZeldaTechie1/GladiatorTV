@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -99,12 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c987872d697ac4f8fe368afb609d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Knife: {fileID: 1877809625447306, guid: f135499c6c335f34eb793a7d18bc6b95, type: 2}
   health: 100
   direction: 0
   baseSpeed: 0
-  attacking: 1
-  attackTime: 2
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  player_con: {fileID: 0}
+  AttackDamage: 0
+  TouchDamage: 5
+  Knife: {fileID: 1877809625447306, guid: f135499c6c335f34eb793a7d18bc6b95, type: 2}
 --- !u!212 &212585506450310188
 SpriteRenderer:
   m_ObjectHideFlags: 1
