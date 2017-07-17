@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class ScytheController : BaseEnemy {
 
+    public GameObject Weapon;
+    public ScytheWeapon WeaponController;
+    public bool startedSwing = false;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attacking(false);
+        WeaponController = Weapon.GetComponent<ScytheWeapon>();
+        Weapon.SetActive(false);
         //Set_Attack_Time(1.5f);
     }
 	
@@ -20,6 +25,26 @@ public class ScytheController : BaseEnemy {
         {
             Set_Direction();
             Move_To_Location(player.transform.position);
+            Weapon.SetActive(false);
+        }
+
+        if(Get_Attacking() && !startedSwing)
+        {
+            startedSwing = true;
+            Weapon.SetActive(true);
+            WeaponController.SetRotation(direction);
+            WeaponController.Set_currentDir(direction);
+            WeaponController.Set_Swinging(true);
+        }
+        else if(Get_Attacking() && startedSwing)
+        {
+            if(WeaponController.Get_Swinging() == false)
+            {
+                startedSwing = false;
+                Weapon.SetActive(false);
+                Set_Attacking(false);
+                Set_Direction();
+            }
         }
 	}
 
