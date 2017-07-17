@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 8}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -39,7 +39,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 699
-    height: 631
+    height: 633
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
@@ -67,7 +67,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1421
-    height: 631
+    height: 633
   m_MinSize: {x: 408, y: 221}
   m_MaxSize: {x: 8008, y: 4021}
   vertical: 0
@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 631
+    y: 633
     width: 1421
-    height: 316
+    height: 314
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 18}
@@ -140,9 +140,9 @@ MonoBehaviour:
     x: 699
     y: 0
     width: 722
-    height: 631
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 633
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -166,8 +166,8 @@ MonoBehaviour:
     y: 0
     width: 222
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -390,7 +390,7 @@ MonoBehaviour:
     x: 923
     y: 92
     width: 718
-    height: 610
+    height: 612
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -420,9 +420,9 @@ MonoBehaviour:
       x: 0
       y: 17
       width: 718
-      height: 593
+      height: 595
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 359, y: 296.5}
+    m_Translation: {x: 359, y: 297.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -430,14 +430,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -359
-      y: -296.5
+      y: -297.5
       width: 718
-      height: 593
+      height: 595
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 718, y: 610}
+  m_LastWindowPixelSize: {x: 718, y: 612}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -466,16 +466,16 @@ MonoBehaviour:
     x: 224
     y: 92
     width: 695
-    height: 610
+    height: 612
   m_SceneLighting: 1
-  lastFramingTime: 14295.807918130697
+  lastFramingTime: 580.9499516840269
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 18.314823, y: 13.182626, z: 0}
+    m_Target: {x: 8.1, y: -0.07, z: 0}
     speed: 2
-    m_Value: {x: 18.314823, y: 13.182626, z: 0}
+    m_Value: {x: 8.1, y: -0.07, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -502,9 +502,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 31.839397
+    m_Target: 26.54829
     speed: 2
-    m_Value: 31.839397
+    m_Value: 26.54829
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -591,9 +591,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 224
-    y: 723
+    y: 725
     width: 1417
-    height: 295
+    height: 293
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -605,19 +605,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Enemy Scripts/Lancer
+    - Assets/Sprites/Player Sprites
   m_ViewMode: 1
   m_StartGridSize: 70
   m_LastFolders:
-  - Assets/Scripts/Enemy Scripts/Lancer
+  - Assets/Sprites/Player Sprites
   m_LastFoldersGridSize: 70
   m_LastProjectPath: C:\Users\user\Desktop\GladiatorTV\GladiatorTV
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 14}
-    m_SelectedIDs: c6250000
-    m_LastClickedID: 9670
-    m_ExpandedIDs: 0000000008250000682500008625000090250000a2250000b2250000b825000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 28}
+    m_SelectedIDs: 92250000
+    m_LastClickedID: 9618
+    m_ExpandedIDs: 0000000000250000602500007e250000882500009a250000aa250000b025000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -645,7 +645,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000008250000682500008625000090250000a2250000b2250000b8250000
+    m_ExpandedIDs: 0000000000250000602500007e250000882500009a250000aa250000b0250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
