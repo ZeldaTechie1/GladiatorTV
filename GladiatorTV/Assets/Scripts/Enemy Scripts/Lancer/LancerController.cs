@@ -26,7 +26,15 @@ public class LancerController : BaseEnemy {
 	// Update is called once per frame
 	void Update () {
 
-		if(Get_Attacking())
+        if(!charging && !waiting)
+        {
+            Set_Direction();
+        }
+        checkInvincible();
+        Check_If_Dead();
+
+
+        if (Get_Attacking())
         {
             Prepare_Attack();
             if(chargeTime <= chargeCounter)
