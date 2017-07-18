@@ -50,6 +50,26 @@ public class LancerController : BaseEnemy {
         }
 	}
 
+    public void SetValues(int val)
+    {
+        Set_Difficulty(val);
+        switch (val)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
+    }
+
     private void Increment_Counters()
     {
         if(charging)

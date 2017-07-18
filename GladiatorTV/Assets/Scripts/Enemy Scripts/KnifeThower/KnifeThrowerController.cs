@@ -45,6 +45,26 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
+    public void SetValues(int val)
+    {
+        Set_Difficulty(val);
+        switch(val)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
+    }
+
     private void SpawnProjectile(GameObject Projectile)
     {
         GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
