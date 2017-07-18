@@ -36,7 +36,7 @@ public class LancerController : BaseEnemy {
 
         if (Get_Attacking())
         {
-            Prepare_Attack();
+            Prepare_Attack2();
             if(chargeTime <= chargeCounter)
             {
                 Attack_Player();
@@ -75,6 +75,40 @@ public class LancerController : BaseEnemy {
             targetLocation = player.transform.position;
             moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
 
+            charging = true;
+        }
+    }
+
+    private void Prepare_Attack2()
+    {
+        if (!waiting && !Get_Dying() && !charging)
+        {
+            switch(direction)
+            {
+                case 0:
+                    targetLocation = player.transform.position;
+                    moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
+                    moveVector.x = 0;
+                    break;
+
+                case 1:
+                    targetLocation = player.transform.position;
+                    moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
+                    moveVector.y = 0;
+                    break;
+
+                case 2:
+                    targetLocation = player.transform.position;
+                    moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
+                    moveVector.x = 0;
+                    break;
+
+                case 3:
+                    targetLocation = player.transform.position;
+                    moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
+                    moveVector.y = 0;
+                    break;
+            }
             charging = true;
         }
     }

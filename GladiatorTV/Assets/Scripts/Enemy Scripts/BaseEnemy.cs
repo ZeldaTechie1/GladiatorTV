@@ -28,7 +28,7 @@ public class BaseEnemy : MonoBehaviour {
     private float invincibleTime = 1f;
 
     //Difficulty
-    enum Difficulty { Easy, Medium, Hard, Lunatic}
+    public enum Difficulty { Easy, Medium, Hard, Lunatic}
     private int thisDifficutly;
 
     //Death
