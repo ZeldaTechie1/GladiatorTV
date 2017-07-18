@@ -6,11 +6,16 @@ public class KnifeThrowerController : BaseEnemy {
 
     public GameObject Knife;
 
+    public float cooldownTime;
+    private float cooldownCounter;
+    private bool coolDown;
     // Use this for initialization
     void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attack_Time(1.5f);
         Set_Attacking(true);
+        anim = this.gameObject.GetComponent<Animator>();
+        anim.SetBool("Attacking", true);
     }
 
     // Update is called once per frame
@@ -19,12 +24,23 @@ public class KnifeThrowerController : BaseEnemy {
         checkInvincible();
         Check_If_Dead();
 
+
         if (Get_Attack_Counter() >= Get_Attack_Time())
         {
             SpawnProjectile(Knife);
             Reset_Attack_Counter();
+            anim.SetBool("Attacking", false);
+            coolDown = true;
+            Set_Attacking(false);
         }
-	}
+        if(cooldownCounter == cooldownTime)
+        {
+            cooldownCounter = 0f;
+            coolDown = false;
+            anim.SetBool("Attacking", true);
+            Set_Attacking(true);
+        }
+    }
 
     private void SpawnProjectile(GameObject Projectile)
     {
@@ -41,6 +57,10 @@ public class KnifeThrowerController : BaseEnemy {
         if(Get_Dying())
         {
             Increase_Death_Counter(.25f);
+        }
+        if (coolDown)
+        {
+            cooldownCounter += .25f;
         }
     }
 
