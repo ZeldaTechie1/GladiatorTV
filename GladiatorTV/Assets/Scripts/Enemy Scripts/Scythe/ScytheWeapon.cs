@@ -15,26 +15,45 @@ public class ScytheWeapon : MonoBehaviour {
 
     private bool swinging;
     private int currentDirection;
+
+    private bool pull = false;
+
+    private ScytheController ScytheEnemy;
+    private ScytheBlade Blade;
+    public Vector3 targetLocation;
+    public Vector3 moveVector;
+    public float pullSpeed = 5;
     // Use this for initialization
     void Start () {
-		
+        ScytheEnemy = GetComponentInParent<ScytheController>();
+        Blade = GetComponentInChildren<ScytheBlade>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(swinging)
         {
-            Debug.Log(this.gameObject.transform.eulerAngles.z);
-            Swing(currentDirection);
-            if(Check_Swinging(currentDirection))
+            //Debug.Log(this.gameObject.transform.eulerAngles.z);
+            
+            if(!pull)
             {
-                swinging = false;
+                Swing(currentDirection);
+                if (Check_Swinging(currentDirection))
+                {
+                    swinging = false;
+                }
+            }
+            else
+            {
+                Pull_Scythe();
+                Move_With_Vector();
             }
         }
 	}
     
     public void SetRotation(int Dir)
     {
+        this.gameObject.transform.localPosition = new Vector3(0, 0, 0);
         switch (Dir)
         {
             case 0:
@@ -148,4 +167,24 @@ public class ScytheWeapon : MonoBehaviour {
         return false;
     }
 
+    public void Pull_Scythe()
+    {
+        targetLocation = ScytheEnemy.gameObject.transform.position;
+        moveVector = (targetLocation - Blade.gameObject.transform.position).normalized * pullSpeed;
+    }
+
+    public void Set_Pull(bool val)
+    {
+        pull = val;
+    }
+
+    public bool Get_Pull()
+    {
+        return pull;
+    }
+
+    private void Move_With_Vector()
+    {
+        this.gameObject.transform.position += moveVector * Time.deltaTime;
+    }
 }

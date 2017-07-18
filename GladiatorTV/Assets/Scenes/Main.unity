@@ -235,6 +235,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &95627673 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1605391304911050, guid: 91e69a7c198262d43814761f639457e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1601930922}
+--- !u!114 &95627677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95627673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d95695fe3efd243b53c29c82b4b45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bladeDamage: 15
 --- !u!1 &410213423
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +347,22 @@ Transform:
   m_Father: {fileID: 95138923}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &878755239 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1574502350971300, guid: 91e69a7c198262d43814761f639457e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1601930922}
+--- !u!114 &878755243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878755239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8785beb0980aa4b9b497eaf95c310b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &897857042
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +843,25 @@ Prefab:
     - target: {fileID: 1437835265668132, guid: 91e69a7c198262d43814761f639457e0, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114877800008990260, guid: 91e69a7c198262d43814761f639457e0,
+        type: 2}
+      propertyPath: rotationSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286948330003250, guid: 91e69a7c198262d43814761f639457e0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 61494453376066178, guid: 91e69a7c198262d43814761f639457e0,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 5.6861906
+      objectReference: {fileID: 0}
+    - target: {fileID: 61494453376066178, guid: 91e69a7c198262d43814761f639457e0,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 12.768393
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91e69a7c198262d43814761f639457e0, type: 2}
