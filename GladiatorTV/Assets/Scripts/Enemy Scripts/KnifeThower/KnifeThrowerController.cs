@@ -9,6 +9,7 @@ public class KnifeThrowerController : BaseEnemy {
     public float cooldownTime;
     private float cooldownCounter;
     private bool coolDown;
+    private SpriteRenderer Sprite;
     // Use this for initialization
     void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
@@ -16,11 +17,13 @@ public class KnifeThrowerController : BaseEnemy {
         Set_Attacking(true);
         anim = this.gameObject.GetComponent<Animator>();
         anim.SetBool("Attacking", true);
+        Sprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update () {
         Set_Direction();
+        Flip();
         checkInvincible();
         Check_If_Dead();
 
@@ -78,6 +81,32 @@ public class KnifeThrowerController : BaseEnemy {
         if (collision.gameObject.CompareTag("Player"))
         {
             player_con.Deal_Damage(TouchDamage);
+        }
+    }
+
+    private void Flip()
+    {
+        if(direction == 3)
+        {
+            if(Sprite.flipX)
+            {
+              
+            }
+            else
+            {
+                Sprite.flipX = true;
+            }
+        }
+        if (direction == 1)
+        {
+            if (Sprite.flipX)
+            {
+                Sprite.flipX = false;
+            }
+            else
+            {
+                
+            }
         }
     }
 }
