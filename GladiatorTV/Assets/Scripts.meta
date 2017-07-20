@@ -2,6 +2,7 @@ fileFormatVersion: 2
 <<<<<<< HEAD
 guid: 2bce836deed6c3846a9fd6d6f40878eb
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1500087529
 =======
 guid: 3870ba520f89fd7468452dc07fa91669
@@ -9,6 +10,8 @@ folderAsset: yes
 timeCreated: 1500085763
 >>>>>>> ZeldatechieBranch
 licenseType: Free
+=======
+>>>>>>> afd6f15bffd54cb0128f232fd6a2b2136f0b1029
 DefaultImporter:
   userData: 
   assetBundleName: 
