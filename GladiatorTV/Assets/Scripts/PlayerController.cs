@@ -1,11 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public int health = 100;
-    
+
 
     // 0 U, 1 R, 2 D, 3 L
     public int direction;
@@ -28,20 +29,22 @@ public class PlayerController : MonoBehaviour {
     private float deathCounter;
     private float deathTime = 1f;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         playerSpeed = baseSpeed;
         anim = this.gameObject.GetComponent<Animator>();
         Init_Vals();
 
         InvokeRepeating("IncrementCounters", 0f, .25f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         Set_Direction();
         Check_Health();
         checkInvincible();
-        if(deathCounter >= deathTime)
+        if (deathCounter >= deathTime)
         {
             dead = true;
             anim.SetBool("Dead", true);
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Move();   
+        Move();
     }
 
 
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Deal_Damage(int val)
     {
-        if(!invincible)
+        if (!invincible)
         {
             health -= val;
             hit = true;
@@ -174,7 +177,7 @@ public class PlayerController : MonoBehaviour {
 
     private void IncrementCounters()
     {
-        if(dying)
+        if (dying)
         {
             deathCounter += .25f;
         }
@@ -182,7 +185,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Check_Health()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             health = 0;
             dying = true;
