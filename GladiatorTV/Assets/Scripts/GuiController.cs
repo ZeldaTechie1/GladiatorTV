@@ -9,7 +9,7 @@ public class GuiController : MonoBehaviour {
     public Text downvoteDisplay;
     public Text fameDisplay;
     float fame = 0f;
-    Vector2 pos = new Vector2(70, 540);
+    Vector2 pos = new Vector2(80, 540);
     Vector2 size = new Vector2(100,20);
     Texture2D emptyBarTexture;
     Texture2D fullBarTexture;
