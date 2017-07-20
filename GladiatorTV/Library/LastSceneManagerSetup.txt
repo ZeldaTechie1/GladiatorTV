@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: C:/Users/user/Desktop/Backup/GladiatorTV/Assets/Scenes/Main.unity
-=======
 - path: Assets/Scenes/EnemyTestScene.unity
->>>>>>> afd6f15bffd54cb0128f232fd6a2b2136f0b1029
   isLoaded: 1
   isActive: 1
