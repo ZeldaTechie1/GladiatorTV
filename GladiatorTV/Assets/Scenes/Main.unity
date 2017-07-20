@@ -727,6 +727,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114842590165207960, guid: ddf69d288cffd804f9a893ca87473e82,
+        type: 2}
+      propertyPath: minTeleportTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114842590165207960, guid: ddf69d288cffd804f9a893ca87473e82,
+        type: 2}
+      propertyPath: maxTeleportTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddf69d288cffd804f9a893ca87473e82, type: 2}
   m_IsPrefabParent: 0
