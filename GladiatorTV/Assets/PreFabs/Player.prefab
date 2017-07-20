@@ -120,6 +120,8 @@ MonoBehaviour:
   health: 0
   direction: 0
   baseSpeed: 3
+  dead: 0
+  invincibleTime: 0
 --- !u!212 &212748473717144192
 SpriteRenderer:
   m_ObjectHideFlags: 1

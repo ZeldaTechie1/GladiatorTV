@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Main.unity
+- path: C:/Users/user/Desktop/Backup/GladiatorTV/Assets/Scenes/Main.unity
   isLoaded: 1
   isActive: 1
