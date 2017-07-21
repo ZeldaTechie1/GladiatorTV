@@ -35,12 +35,14 @@ public class BaseEnemy : MonoBehaviour {
     private bool dying = false;
     private float deathCounter = 0;
     private float deathTime = 1;
+    private SpriteRenderer SpriteRend;
 
     private void Awake()
     {
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         speed = baseSpeed;
+        SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
 
@@ -215,5 +217,31 @@ public class BaseEnemy : MonoBehaviour {
     public void Set_Speed(float val)
     {
         speed = val;
+    }
+
+    public void Flip()
+    {
+        if (direction == 3)
+        {
+            if (SpriteRend.flipX)
+            {
+
+            }
+            else
+            {
+                SpriteRend.flipX = true;
+            }
+        }
+        if (direction == 1)
+        {
+            if (SpriteRend.flipX)
+            {
+                SpriteRend.flipX = false;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

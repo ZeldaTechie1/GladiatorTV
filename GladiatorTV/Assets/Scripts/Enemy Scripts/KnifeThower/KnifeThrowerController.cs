@@ -9,7 +9,7 @@ public class KnifeThrowerController : BaseEnemy {
     public float cooldownTime;
     private float cooldownCounter;
     private bool coolDown;
-    private SpriteRenderer Sprite;
+    //private SpriteRenderer Sprite;
 
     public float minTeleportTime;
     public float maxTeleportTime;
@@ -26,7 +26,7 @@ public class KnifeThrowerController : BaseEnemy {
         Set_Attacking(true);
         anim = this.gameObject.GetComponent<Animator>();
         anim.SetBool("Attacking", true);
-        Sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        //Sprite = this.gameObject.GetComponent<SpriteRenderer>();
         New_Teleport_Time();
     }
 
@@ -136,31 +136,31 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
-    private void Flip()
-    {
-        if(direction == 3)
-        {
-            if(Sprite.flipX)
-            {
+    //private void Flip()
+    //{
+    //    if(direction == 3)
+    //    {
+    //        if(Sprite.flipX)
+    //        {
               
-            }
-            else
-            {
-                Sprite.flipX = true;
-            }
-        }
-        if (direction == 1)
-        {
-            if (Sprite.flipX)
-            {
-                Sprite.flipX = false;
-            }
-            else
-            {
+    //        }
+    //        else
+    //        {
+    //            Sprite.flipX = true;
+    //        }
+    //    }
+    //    if (direction == 1)
+    //    {
+    //        if (Sprite.flipX)
+    //        {
+    //            Sprite.flipX = false;
+    //        }
+    //        else
+    //        {
                 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
     private void New_Teleport_Time()
     {

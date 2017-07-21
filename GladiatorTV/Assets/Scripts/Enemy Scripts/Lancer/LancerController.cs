@@ -21,6 +21,7 @@ public class LancerController : BaseEnemy {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attack_Time(1.5f);
         Set_Attacking(true);
+        anim = this.gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -29,6 +30,7 @@ public class LancerController : BaseEnemy {
         if(!charging && !waiting)
         {
             Set_Direction();
+            Flip();
         }
         checkInvincible();
         Check_If_Dead();
@@ -39,12 +41,19 @@ public class LancerController : BaseEnemy {
             Prepare_Attack2();
             if(chargeTime <= chargeCounter)
             {
+                anim.SetBool("Attacking", true);
+                anim.SetBool("Charging", false);
                 Attack_Player();
+            }
+            else if(!waiting)
+            {
+                anim.SetBool("Charging", true);
             }
         }
 
         if(waitTime <= waitCounter)
         {
+            anim.SetBool("Stunned", false);
             waitCounter = 0;
             waiting = false;
         }
@@ -175,6 +184,8 @@ public class LancerController : BaseEnemy {
         if (collision.gameObject.CompareTag("Wall"))
         {
             Attack_Complete();
+            anim.SetBool("Stunned", true);
+            anim.SetBool("Attacking", false);
         }
     }
 
