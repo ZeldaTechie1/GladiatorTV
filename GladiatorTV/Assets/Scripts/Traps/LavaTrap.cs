@@ -21,6 +21,12 @@ public class LavaTrap : MonoBehaviour {
             PlayerController player_con = collision.GetComponent<PlayerController>();
             player_con.Deal_Damage(trapDamage);
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            BaseEnemy enemyController = collision.GetComponent<BaseEnemy>();
+            enemyController.Deal_Damage(trapDamage);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -29,6 +35,12 @@ public class LavaTrap : MonoBehaviour {
         {
             PlayerController player_con = collision.GetComponent<PlayerController>();
             player_con.Deal_Damage(trapDamage);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            BaseEnemy enemyController = collision.GetComponent<BaseEnemy>();
+            enemyController.Deal_Damage(trapDamage);
         }
     }
 }

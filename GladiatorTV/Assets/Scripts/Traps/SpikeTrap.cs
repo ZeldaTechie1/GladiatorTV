@@ -65,7 +65,11 @@ public class SpikeTrap : MonoBehaviour {
             triggered = true;
         }
 
-
+        if (collision.gameObject.CompareTag("Enemy") && activated)
+        {
+            BaseEnemy enemyController = collision.GetComponent<BaseEnemy>();
+            enemyController.Deal_Damage(trapDamage);
+        }
 
         if (collision.gameObject.CompareTag("Enemy") && !activated)
         {
@@ -84,6 +88,13 @@ public class SpikeTrap : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player") && !activated)
         {
             triggered = true;
+        }
+
+
+        if (collision.gameObject.CompareTag("Enemy") && activated)
+        {
+            BaseEnemy enemyController = collision.GetComponent<BaseEnemy>();
+            enemyController.Deal_Damage(trapDamage);
         }
 
 

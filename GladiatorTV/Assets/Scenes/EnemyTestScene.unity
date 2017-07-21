@@ -999,7 +999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1437835265668132, guid: 91e69a7c198262d43814761f639457e0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114877800008990260, guid: 91e69a7c198262d43814761f639457e0,
         type: 2}
@@ -1024,6 +1024,10 @@ Prefab:
         type: 2}
       propertyPath: pullSpeed
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437835265668132, guid: 91e69a7c198262d43814761f639457e0, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91e69a7c198262d43814761f639457e0, type: 2}
