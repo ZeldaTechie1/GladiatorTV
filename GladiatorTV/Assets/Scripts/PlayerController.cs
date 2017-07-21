@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private float deathCounter;
     private float deathTime = 1f;
+
+    private bool stunned;
     // Use this for initialization
     void Start()
     {
@@ -53,7 +55,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(!stunned)
+        {
+            Move();
+        }
     }
 
 
@@ -191,5 +196,15 @@ public class PlayerController : MonoBehaviour
             dying = true;
             anim.SetBool("Dying", true);
         }
+    }
+
+    public void Set_Stunned(bool val)
+    {
+        stunned = val;
+    }
+
+    public bool Get_Stunned()
+    {
+        return stunned;
     }
 }
