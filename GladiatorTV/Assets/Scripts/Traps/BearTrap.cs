@@ -60,6 +60,10 @@ public class BearTrap : MonoBehaviour {
         {
             target.GetComponent<PlayerController>().Set_Stunned(false);
         }
+        else if(targetType == 1)
+        {
+            target.GetComponent<BaseEnemy>().Set_Stunned(false);
+        }
         released = true;
         counter = 0;
     }
@@ -76,6 +80,17 @@ public class BearTrap : MonoBehaviour {
             targetType = 0;
             player_con.Set_Stunned(true);
         }
+
+
+        if (collision.gameObject.CompareTag("Enemy") && !active && !released)
+        {
+            target = collision.gameObject;
+            BaseEnemy enemy_con = collision.GetComponent<BaseEnemy>();
+            enemy_con.Deal_Damage(trapDamage);
+            active = true;
+            targetType = 1;
+            enemy_con.Set_Stunned(true);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -88,6 +103,15 @@ public class BearTrap : MonoBehaviour {
             active = true;
             targetType = 0;
             player_con.Set_Stunned(true);
+        }
+        if (collision.gameObject.CompareTag("Enemy") && !active && !released)
+        {
+            target = collision.gameObject;
+            BaseEnemy enemy_con = collision.GetComponent<BaseEnemy>();
+            enemy_con.Deal_Damage(trapDamage);
+            active = true;
+            targetType = 1;
+            enemy_con.Set_Stunned(true);
         }
     }
 }

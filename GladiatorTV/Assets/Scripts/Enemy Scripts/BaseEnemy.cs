@@ -37,6 +37,7 @@ public class BaseEnemy : MonoBehaviour {
     private float deathTime = 1;
     private SpriteRenderer SpriteRend;
 
+    private bool stunned = false;
     private void Awake()
     {
         player = GameObject.Find("Player");
@@ -243,5 +244,15 @@ public class BaseEnemy : MonoBehaviour {
 
             }
         }
+    }
+
+    public void Set_Stunned(bool val)
+    {
+        stunned = val;
+    }
+
+    public bool Get_Stunned()
+    {
+        return stunned;
     }
 }

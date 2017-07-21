@@ -26,8 +26,13 @@ public class LancerController : BaseEnemy {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Get_Stunned())
+        {
+            anim.SetBool("Stunned", true);
+            Attack_Complete();
+        }
 
-        if(!charging && !waiting)
+        if(!charging && !waiting && !Get_Stunned())
         {
             Set_Direction();
             Flip();
@@ -36,7 +41,7 @@ public class LancerController : BaseEnemy {
         Check_If_Dead();
 
 
-        if (Get_Attacking())
+        if (Get_Attacking() && !Get_Stunned())
         {
             Prepare_Attack2();
             if(chargeTime <= chargeCounter)
@@ -53,9 +58,12 @@ public class LancerController : BaseEnemy {
 
         if(waitTime <= waitCounter)
         {
-            anim.SetBool("Stunned", false);
-            waitCounter = 0;
-            waiting = false;
+            if(!Get_Stunned())
+            {
+                anim.SetBool("Stunned", false);
+                waitCounter = 0;
+                waiting = false;
+            }
         }
 	}
 

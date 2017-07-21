@@ -40,17 +40,20 @@ public class KnifeThrowerController : BaseEnemy {
 
         if (teleportCounter >= currentTeleportTime && !Get_Attacking())
         {
-            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if(!Get_Stunned())
             {
-                Reset_Attack_Counter();
-                cooldownCounter = 0f;
-                Set_Attacking(false);
-                if (!routineCalled)
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 {
-                    StartCoroutine(Start_Teleport());
-                    routineCalled = true;
-                }
+                    Reset_Attack_Counter();
+                    cooldownCounter = 0f;
+                    Set_Attacking(false);
+                    if (!routineCalled)
+                    {
+                        StartCoroutine(Start_Teleport());
+                        routineCalled = true;
+                    }
 
+                }
             }
         }
         else if(!teleporting)

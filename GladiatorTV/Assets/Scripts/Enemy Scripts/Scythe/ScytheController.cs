@@ -24,7 +24,10 @@ public class ScytheController : BaseEnemy {
         if (!Get_Attacking())
         {
             Set_Direction();
-            Move_To_Location(player.transform.position);
+            if(!Get_Stunned())
+            {
+                Move_To_Location(player.transform.position);
+            }
             Weapon.SetActive(false);
         }
 
