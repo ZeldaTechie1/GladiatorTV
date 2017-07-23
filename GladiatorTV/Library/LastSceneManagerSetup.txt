@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/FameSystem.unity
+=======
+- path: Assets/Scenes/EnemyTestScene.unity
+>>>>>>> Spector-Stuff
   isLoaded: 1
   isActive: 1

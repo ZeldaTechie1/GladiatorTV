@@ -17845,6 +17845,7 @@
             
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="T:System.Web.UI.ICallbackEventHandler">
             <summary>
             A shim of the .NET interface for platforms that do not support it.
@@ -17863,6 +17864,8 @@
             </summary>
             <returns></returns>
         </member>
+=======
+>>>>>>> Spector-Stuff
         <member name="T:System.Lazy`1">
             <summary>
             

@@ -797,7 +797,10 @@ RectTransform:
   - {fileID: 2021602883}
   - {fileID: 1520441263}
   - {fileID: 234436254}
+<<<<<<< HEAD
   - {fileID: 2069766576}
+=======
+>>>>>>> Spector-Stuff
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1116,7 +1119,10 @@ MonoBehaviour:
   upvoteDisplay: {fileID: 2021602884}
   downvoteDisplay: {fileID: 1520441264}
   fameDisplay: {fileID: 1524041278}
+<<<<<<< HEAD
   timer: {fileID: 2069766577}
+=======
+>>>>>>> Spector-Stuff
 --- !u!1 &1981716328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1418,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027194699}
+<<<<<<< HEAD
 --- !u!1 &2069766575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1493,8 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069766575}
+=======
+>>>>>>> Spector-Stuff
 --- !u!1 &2130386159
 GameObject:
   m_ObjectHideFlags: 0

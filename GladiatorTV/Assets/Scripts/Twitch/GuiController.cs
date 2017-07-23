@@ -5,15 +5,23 @@ using UnityEngine.UI;
 
 public class GuiController : MonoBehaviour {
 
+<<<<<<< HEAD
     //Gui info
+=======
+>>>>>>> Spector-Stuff
     public Text upvoteDisplay;
     public Text downvoteDisplay;
     public Text fameDisplay;
     float fame = 0f;
+<<<<<<< HEAD
 
     //Gui stuff
     Vector2 fameBarPosition = new Vector2(80, 540);
     Vector2 fameBarSize = new Vector2(100, 20);
+=======
+    Vector2 pos = new Vector2(80, 540);
+    Vector2 size = new Vector2(100,20);
+>>>>>>> Spector-Stuff
     Texture2D emptyBarTexture;
     Texture2D fullBarTexture;
     GUIStyle fullBarStyle = new GUIStyle();
@@ -21,6 +29,7 @@ public class GuiController : MonoBehaviour {
     Color barrFillColor = Color.green;
     Color emptyBarrFillColor = Color.red;
 
+<<<<<<< HEAD
     //Timer stuff
     [SerializeField]
     Text timer;
@@ -28,10 +37,13 @@ public class GuiController : MonoBehaviour {
     public class TimerEvent : UnityEngine.Events.UnityEvent{};
     TimerEvent TimerEnded = new TimerEvent();
 
+=======
+>>>>>>> Spector-Stuff
     private void Awake()
     {
         fullBarTexture = new Texture2D(1, 1);
         emptyBarTexture = new Texture2D(1, 1);
+<<<<<<< HEAD
         time = 0f;
         timer.enabled = false;
     }
@@ -59,6 +71,8 @@ public class GuiController : MonoBehaviour {
                 TimerEnded.Invoke();//hey this event happened, tell the whole world!!!!
             }
         }
+=======
+>>>>>>> Spector-Stuff
     }
 
     private void OnGUI()
@@ -67,15 +81,25 @@ public class GuiController : MonoBehaviour {
         emptyBarTexture.SetPixel(0, 0, emptyBarrFillColor);
         emptyBarTexture.Apply();
         emptyBarStyle.normal.background = emptyBarTexture;
+<<<<<<< HEAD
         GUI.BeginGroup(new Rect(fameBarPosition.x, fameBarPosition.y, fameBarSize.x, fameBarSize.y));
         GUI.Box(new Rect(0, 0, fameBarSize.x, fameBarSize.y), new GUIContent(""), emptyBarStyle);
+=======
+        GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
+        GUI.Box(new Rect(0, 0, size.x, size.y), new GUIContent(""), emptyBarStyle);
+>>>>>>> Spector-Stuff
 
         // draw the filled-in part:
         fullBarTexture.SetPixel(0, 0, barrFillColor);
         fullBarTexture.Apply();
         fullBarStyle.normal.background = fullBarTexture;
+<<<<<<< HEAD
         GUI.BeginGroup(new Rect(0, 0, fameBarSize.x * (fame/100f), fameBarSize.y));
         GUI.Box(new Rect(0, 0, fameBarSize.x, fameBarSize.y), new GUIContent(""),fullBarStyle);
+=======
+        GUI.BeginGroup(new Rect(0, 0, size.x * (fame/100f), size.y));
+        GUI.Box(new Rect(0, 0, size.x, size.y), new GUIContent(""),fullBarStyle);
+>>>>>>> Spector-Stuff
         GUI.EndGroup();
 
         GUI.EndGroup();
@@ -87,6 +111,7 @@ public class GuiController : MonoBehaviour {
         downvoteDisplay.text = "Downvotes: " + downvotes;
         this.fame = fame;
     }
+<<<<<<< HEAD
 
     public void CreateTimer(float timeToSet)//creates a timer(to be used for the objective system)
     {
@@ -102,4 +127,6 @@ public class GuiController : MonoBehaviour {
             Debug.LogError("Mah nigs, you got a timer already foo!");
         }
     }
+=======
+>>>>>>> Spector-Stuff
 }

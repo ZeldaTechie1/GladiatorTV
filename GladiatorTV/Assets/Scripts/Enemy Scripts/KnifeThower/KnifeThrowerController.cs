@@ -9,7 +9,11 @@ public class KnifeThrowerController : BaseEnemy {
     public float cooldownTime;
     private float cooldownCounter;
     private bool coolDown;
+<<<<<<< HEAD
     private SpriteRenderer Sprite;
+=======
+    //private SpriteRenderer Sprite;
+>>>>>>> Spector-Stuff
 
     public float minTeleportTime;
     public float maxTeleportTime;
@@ -19,6 +23,14 @@ public class KnifeThrowerController : BaseEnemy {
 
     public Vector3 teleportLocation;
     public bool routineCalled = false;
+<<<<<<< HEAD
+=======
+
+    public float knifeSpeed;
+    public float MediumknifeSpeed;
+    public float HardknifeSpeed;
+
+>>>>>>> Spector-Stuff
     // Use this for initialization
     void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
@@ -26,12 +38,24 @@ public class KnifeThrowerController : BaseEnemy {
         Set_Attacking(true);
         anim = this.gameObject.GetComponent<Animator>();
         anim.SetBool("Attacking", true);
+<<<<<<< HEAD
         Sprite = this.gameObject.GetComponent<SpriteRenderer>();
+=======
+        //Sprite = this.gameObject.GetComponent<SpriteRenderer>();
+>>>>>>> Spector-Stuff
         New_Teleport_Time();
     }
 
     // Update is called once per frame
     void Update () {
+<<<<<<< HEAD
+=======
+        if(!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+>>>>>>> Spector-Stuff
         Set_Direction();
         Flip();
         checkInvincible();
@@ -40,6 +64,7 @@ public class KnifeThrowerController : BaseEnemy {
 
         if (teleportCounter >= currentTeleportTime && !Get_Attacking())
         {
+<<<<<<< HEAD
             if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 Reset_Attack_Counter();
@@ -51,6 +76,22 @@ public class KnifeThrowerController : BaseEnemy {
                     routineCalled = true;
                 }
 
+=======
+            if(!Get_Stunned())
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                {
+                    Reset_Attack_Counter();
+                    cooldownCounter = 0f;
+                    Set_Attacking(false);
+                    if (!routineCalled)
+                    {
+                        StartCoroutine(Start_Teleport());
+                        routineCalled = true;
+                    }
+
+                }
+>>>>>>> Spector-Stuff
             }
         }
         else if(!teleporting)
@@ -73,6 +114,7 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
+<<<<<<< HEAD
     public void SetValues(int val)
     {
         Set_Difficulty(val);
@@ -96,6 +138,14 @@ public class KnifeThrowerController : BaseEnemy {
     private void SpawnProjectile(GameObject Projectile)
     {
         GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+=======
+    private void SpawnProjectile(GameObject Projectile)
+    {
+        GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        Object.GetComponent<Knife>().Set_Damage(AttackDamage);
+        Object.GetComponent<Knife>().Set_Speed(knifeSpeed);
+
+>>>>>>> Spector-Stuff
     }
 
 
@@ -136,6 +186,7 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
+<<<<<<< HEAD
     private void Flip()
     {
         if(direction == 3)
@@ -161,6 +212,33 @@ public class KnifeThrowerController : BaseEnemy {
             }
         }
     }
+=======
+    //private void Flip()
+    //{
+    //    if(direction == 3)
+    //    {
+    //        if(Sprite.flipX)
+    //        {
+              
+    //        }
+    //        else
+    //        {
+    //            Sprite.flipX = true;
+    //        }
+    //    }
+    //    if (direction == 1)
+    //    {
+    //        if (Sprite.flipX)
+    //        {
+    //            Sprite.flipX = false;
+    //        }
+    //        else
+    //        {
+                
+    //        }
+    //    }
+    //}
+>>>>>>> Spector-Stuff
 
     private void New_Teleport_Time()
     {
@@ -186,4 +264,26 @@ public class KnifeThrowerController : BaseEnemy {
     {
         this.gameObject.transform.position = point + new Vector3(1,0,0);
     }
+<<<<<<< HEAD
+=======
+
+    private void Set_Values(int val)
+    {
+        switch(val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                knifeSpeed = MediumknifeSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                knifeSpeed = HardknifeSpeed;
+                break;
+        }
+    }
+>>>>>>> Spector-Stuff
 }

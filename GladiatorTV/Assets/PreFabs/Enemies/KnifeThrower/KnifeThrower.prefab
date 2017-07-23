@@ -26,7 +26,11 @@ GameObject:
   - component: {fileID: 95355840662522894}
   m_Layer: 0
   m_Name: KnifeThrower
+<<<<<<< HEAD
   m_TagString: Untagged
+=======
+  m_TagString: Enemy
+>>>>>>> Spector-Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,15 +122,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+<<<<<<< HEAD
+=======
+  MediumHealth: 120
+  HardHealth: 150
+>>>>>>> Spector-Stuff
   direction: 0
   baseSpeed: 0
   anim: {fileID: 0}
   player: {fileID: 0}
   player_con: {fileID: 0}
+<<<<<<< HEAD
   AttackDamage: 0
   TouchDamage: 5
   Knife: {fileID: 1877809625447306, guid: f135499c6c335f34eb793a7d18bc6b95, type: 2}
   cooldownTime: 1
+=======
+  AttackDamage: 10
+  MediumAttackDamage: 15
+  HardAttackDamage: 20
+  TouchDamage: 5
+  MediumTouchDamage: 8
+  HardTouchDamage: 10
+  thisDifficutly: 0
+  currentDifficulty: -1
+  Knife: {fileID: 1877809625447306, guid: f135499c6c335f34eb793a7d18bc6b95, type: 2}
+  cooldownTime: 1
+  minTeleportTime: 3
+  maxTeleportTime: 5
+  currentTeleportTime: 0
+  teleporting: 0
+  teleportCounter: 0
+  teleportLocation: {x: 0, y: 0, z: 0}
+  routineCalled: 0
+  knifeSpeed: 3
+  MediumknifeSpeed: 4
+  HardknifeSpeed: 5
+>>>>>>> Spector-Stuff
 --- !u!212 &212585506450310188
 SpriteRenderer:
   m_ObjectHideFlags: 1

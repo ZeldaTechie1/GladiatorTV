@@ -23,9 +23,16 @@ GameObject:
   - component: {fileID: 212547825275623398}
   - component: {fileID: 61383528799433504}
   - component: {fileID: 114346570769802142}
+<<<<<<< HEAD
   m_Layer: 0
   m_Name: Lancer
   m_TagString: Untagged
+=======
+  - component: {fileID: 95709568351630342}
+  m_Layer: 0
+  m_Name: Lancer
+  m_TagString: Enemy
+>>>>>>> Spector-Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +45,11 @@ Transform:
   m_GameObject: {fileID: 1030494127180876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.46, y: -3.93, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+=======
+  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
+>>>>>>> Spector-Stuff
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,15 +90,42 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
     oldSize: {x: 6.77, y: 6.92}
     newSize: {x: 6.92, y: 6.77}
+=======
+    oldSize: {x: 73, y: 43}
+    newSize: {x: 6.77, y: 6.92}
+>>>>>>> Spector-Stuff
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 6.92, y: 6.77}
   m_EdgeRadius: 0
+=======
+  m_Size: {x: 73, y: 43}
+  m_EdgeRadius: 0
+--- !u!95 &95709568351630342
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030494127180876}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbaf3273ce7abe041ac7d4156ea1295b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+>>>>>>> Spector-Stuff
 --- !u!114 &114346570769802142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,15 +138,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+<<<<<<< HEAD
+=======
+  MediumHealth: 150
+  HardHealth: 200
+>>>>>>> Spector-Stuff
   direction: 0
   baseSpeed: 2
   anim: {fileID: 0}
   player: {fileID: 0}
   player_con: {fileID: 0}
+<<<<<<< HEAD
   AttackDamage: 20
   TouchDamage: 5
   chargeSpeed: 6
   chargeCounter: 0
+=======
+  AttackDamage: 15
+  MediumAttackDamage: 20
+  HardAttackDamage: 30
+  TouchDamage: 5
+  MediumTouchDamage: 8
+  HardTouchDamage: 10
+  thisDifficutly: 0
+  currentDifficulty: -1
+  chargeSpeed: 6
+  MediumchargeSpeed: 10
+  HardchargeSpeed: 15
+  chargeCounter: 0
+  waitTime: 2
+  MediumWaitTime: 1.5
+  HardWaitTime: 1
+>>>>>>> Spector-Stuff
   waitCounter: 0
   targetLocation: {x: 0, y: 0, z: 0}
 --- !u!212 &212547825275623398
@@ -143,11 +204,19 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 132d6e429c894e74baa552fd0595f464, type: 3}
+=======
+  m_Sprite: {fileID: 21300004, guid: bb986e8cd8939794781618b753e39e22, type: 3}
+>>>>>>> Spector-Stuff
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
+<<<<<<< HEAD
   m_Size: {x: 6.92, y: 6.77}
+=======
+  m_Size: {x: 6.77, y: 6.92}
+>>>>>>> Spector-Stuff
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

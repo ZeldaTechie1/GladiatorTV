@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 2f5e60cfa938feb42a9208ba1427eafb
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1500182232
+=======
+timeCreated: 1500525284
+>>>>>>> Spector-Stuff
 licenseType: Free
 DefaultImporter:
   userData: 

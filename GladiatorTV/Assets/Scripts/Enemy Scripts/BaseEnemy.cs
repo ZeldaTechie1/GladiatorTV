@@ -5,7 +5,15 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour {
     
     //basic variables
+<<<<<<< HEAD
     public int health = 100;
+=======
+
+    public int health = 100;
+    public int MediumHealth;
+    public int HardHealth;
+
+>>>>>>> Spector-Stuff
     public int direction;
     public float baseSpeed;
     private float speed;
@@ -17,8 +25,19 @@ public class BaseEnemy : MonoBehaviour {
     private bool attacking;
     private float attackTime;
     private float attackCounter = 0;
+<<<<<<< HEAD
     public int AttackDamage;
     public int TouchDamage;
+=======
+
+    public int AttackDamage;
+    public int MediumAttackDamage;
+    public int HardAttackDamage;
+
+    public int TouchDamage;
+    public int MediumTouchDamage;
+    public int HardTouchDamage;
+>>>>>>> Spector-Stuff
 
     //variables dealing with taking damage/getting hit
     private bool invincible;
@@ -29,18 +48,33 @@ public class BaseEnemy : MonoBehaviour {
 
     //Difficulty
     public enum Difficulty { Easy, Medium, Hard, Lunatic}
+<<<<<<< HEAD
     private int thisDifficutly;
+=======
+    public int thisDifficutly = 0;
+    public int currentDifficulty = -1;
+>>>>>>> Spector-Stuff
 
     //Death
     private bool dying = false;
     private float deathCounter = 0;
     private float deathTime = 1;
+<<<<<<< HEAD
 
+=======
+    private SpriteRenderer SpriteRend;
+
+    private bool stunned = false;
+>>>>>>> Spector-Stuff
     private void Awake()
     {
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         speed = baseSpeed;
+<<<<<<< HEAD
+=======
+        SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
+>>>>>>> Spector-Stuff
     }
     // Update is called once per frame
 
@@ -216,4 +250,60 @@ public class BaseEnemy : MonoBehaviour {
     {
         speed = val;
     }
+<<<<<<< HEAD
+=======
+
+    public void Flip()
+    {
+        if (direction == 3)
+        {
+            if (SpriteRend.flipX)
+            {
+
+            }
+            else
+            {
+                SpriteRend.flipX = true;
+            }
+        }
+        if (direction == 1)
+        {
+            if (SpriteRend.flipX)
+            {
+                SpriteRend.flipX = false;
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public void Set_Stunned(bool val)
+    {
+        stunned = val;
+    }
+
+    public bool Get_Stunned()
+    {
+        return stunned;
+    }
+
+    public bool CheckDifficulty()
+    {
+        if(thisDifficutly == currentDifficulty)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Set_Current_Difficulty(int val)
+    {
+        currentDifficulty = val;
+    }
+>>>>>>> Spector-Stuff
 }

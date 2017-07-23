@@ -18,7 +18,14 @@ public class ScytheBlade : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 		
+=======
+		if(bladeDamage != Scythe.AttackDamage)
+        {
+            Set_Blade_Damage(Scythe.AttackDamage);
+        }
+>>>>>>> Spector-Stuff
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)

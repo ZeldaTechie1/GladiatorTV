@@ -5,13 +5,24 @@ using UnityEngine;
 public class LancerController : BaseEnemy {
 
     public float chargeSpeed;
+<<<<<<< HEAD
+=======
+    public float MediumchargeSpeed;
+    public float HardchargeSpeed;
+>>>>>>> Spector-Stuff
 
     private bool charging = false;
     private float chargeTime = 1f;
     public float chargeCounter = 0f;
 
     private bool waiting = false;
+<<<<<<< HEAD
     private float waitTime = 2f;
+=======
+    public float waitTime = 2f;
+    public float MediumWaitTime;
+    public float HardWaitTime;
+>>>>>>> Spector-Stuff
     public float waitCounter = 0f;
 
     public Vector3 targetLocation;
@@ -21,30 +32,69 @@ public class LancerController : BaseEnemy {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attack_Time(1.5f);
         Set_Attacking(true);
+<<<<<<< HEAD
+=======
+        anim = this.gameObject.GetComponent<Animator>();
+>>>>>>> Spector-Stuff
     }
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 
         if(!charging && !waiting)
         {
             Set_Direction();
+=======
+        if (!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+
+        if (Get_Stunned())
+        {
+            anim.SetBool("Stunned", true);
+            Attack_Complete();
+        }
+
+        if(!charging && !waiting && !Get_Stunned())
+        {
+            Set_Direction();
+            Flip();
+>>>>>>> Spector-Stuff
         }
         checkInvincible();
         Check_If_Dead();
 
 
+<<<<<<< HEAD
         if (Get_Attacking())
+=======
+        if (Get_Attacking() && !Get_Stunned())
+>>>>>>> Spector-Stuff
         {
             Prepare_Attack2();
             if(chargeTime <= chargeCounter)
             {
+<<<<<<< HEAD
                 Attack_Player();
             }
+=======
+                anim.SetBool("Attacking", true);
+                anim.SetBool("Charging", false);
+                Attack_Player();
+            }
+            else if(!waiting)
+            {
+                anim.SetBool("Charging", true);
+            }
+>>>>>>> Spector-Stuff
         }
 
         if(waitTime <= waitCounter)
         {
+<<<<<<< HEAD
             waitCounter = 0;
             waiting = false;
         }
@@ -70,6 +120,17 @@ public class LancerController : BaseEnemy {
         }
     }
 
+=======
+            if(!Get_Stunned())
+            {
+                anim.SetBool("Stunned", false);
+                waitCounter = 0;
+                waiting = false;
+            }
+        }
+	}
+
+>>>>>>> Spector-Stuff
     private void Increment_Counters()
     {
         if(charging)
@@ -175,6 +236,11 @@ public class LancerController : BaseEnemy {
         if (collision.gameObject.CompareTag("Wall"))
         {
             Attack_Complete();
+<<<<<<< HEAD
+=======
+            anim.SetBool("Stunned", true);
+            anim.SetBool("Attacking", false);
+>>>>>>> Spector-Stuff
         }
     }
 
@@ -193,4 +259,28 @@ public class LancerController : BaseEnemy {
             //Attack_Complete();
         }
     }
+<<<<<<< HEAD
+=======
+
+    private void Set_Values(int val)
+    {
+        switch (val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                waitTime = MediumWaitTime;
+                chargeSpeed = MediumchargeSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                waitTime = HardWaitTime;
+                chargeSpeed = HardchargeSpeed;
+                break;
+        }
+    }
+>>>>>>> Spector-Stuff
 }

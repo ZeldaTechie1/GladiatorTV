@@ -7,6 +7,20 @@ public class ScytheController : BaseEnemy {
     public GameObject Weapon;
     public ScytheWeapon WeaponController;
     public bool startedSwing = false;
+<<<<<<< HEAD
+=======
+
+    public float MediumSpeed;
+    public float HardSpeed;
+
+    public float rotationSpeed;
+    public float MediumRotationSpeed;
+    public float HardRotationSpeed;
+
+    public float pullSpeed;
+    public float MediumPullSpeed;
+    public float HardPullSpeed;
+>>>>>>> Spector-Stuff
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
@@ -17,14 +31,31 @@ public class ScytheController : BaseEnemy {
     }
 	
 	// Update is called once per frame
+<<<<<<< HEAD
 	void Update () {    
+=======
+	void Update () {
+        if (!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+
+>>>>>>> Spector-Stuff
         checkInvincible();
         Check_If_Dead();
 
         if (!Get_Attacking())
         {
             Set_Direction();
+<<<<<<< HEAD
             Move_To_Location(player.transform.position);
+=======
+            if(!Get_Stunned())
+            {
+                Move_To_Location(player.transform.position);
+            }
+>>>>>>> Spector-Stuff
             Weapon.SetActive(false);
         }
 
@@ -48,6 +79,7 @@ public class ScytheController : BaseEnemy {
         }
 	}
 
+<<<<<<< HEAD
     public void SetValues(int val)
     {
         Set_Difficulty(val);
@@ -68,6 +100,8 @@ public class ScytheController : BaseEnemy {
         }
     }
 
+=======
+>>>>>>> Spector-Stuff
     private void Increment_Counters()
     {
         if (Get_Dying())
@@ -91,4 +125,30 @@ public class ScytheController : BaseEnemy {
             player_con.Deal_Damage(TouchDamage);
         }
     }
+<<<<<<< HEAD
+=======
+
+    private void Set_Values(int val)
+    {
+        switch (val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                Set_Speed(MediumSpeed);
+                rotationSpeed = MediumRotationSpeed;
+                pullSpeed = MediumPullSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                Set_Speed(HardSpeed);
+                rotationSpeed = HardRotationSpeed;
+                pullSpeed = HardPullSpeed;
+                break;
+        }
+    }
+>>>>>>> Spector-Stuff
 }
