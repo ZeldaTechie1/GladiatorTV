@@ -20,10 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4752705139789322}
   - component: {fileID: 114049508289240274}
-<<<<<<< HEAD
   - component: {fileID: 212607538061232782}
-=======
->>>>>>> Room_Generation
   m_Layer: 0
   m_Name: TestFantasticWeapon 1
   m_TagString: Untagged
@@ -59,7 +56,6 @@ MonoBehaviour:
   fireRate: 10
   range: 20
   quality: 0
-<<<<<<< HEAD
 --- !u!212 &212607538061232782
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,5 +96,3 @@ SpriteRenderer:
   m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-=======
->>>>>>> Room_Generation

@@ -35,11 +35,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-<<<<<<< HEAD
     filterMode: 0
-=======
-    filterMode: -1
->>>>>>> Room_Generation
     aniso: -1
     mipBias: -1
     wrapMode: 1

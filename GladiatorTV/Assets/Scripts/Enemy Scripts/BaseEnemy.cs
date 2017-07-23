@@ -39,14 +39,9 @@ public class BaseEnemy : MonoBehaviour
     private float invincibleTime = 1f;
 
     //Difficulty
-<<<<<<< HEAD
     public enum Difficulty { Easy, Medium, Hard, Lunatic }
     public int thisDifficutly = 0;
     public int currentDifficulty = -1;
-=======
-    public enum Difficulty { Easy, Medium, Hard, Lunatic}
-    private int thisDifficutly;
->>>>>>> Room_Generation
 
     //Death
     private bool dying = false;

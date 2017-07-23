@@ -10,11 +10,7 @@ public class KnifeThrowerController : BaseEnemy
     public float cooldownTime;
     private float cooldownCounter;
     private bool coolDown;
-<<<<<<< HEAD
     //private SpriteRenderer Sprite;
-=======
-    private SpriteRenderer Sprite;
->>>>>>> Room_Generation
 
     public float minTeleportTime;
     public float maxTeleportTime;
@@ -24,14 +20,11 @@ public class KnifeThrowerController : BaseEnemy
 
     public Vector3 teleportLocation;
     public bool routineCalled = false;
-<<<<<<< HEAD
 
     public float knifeSpeed;
     public float MediumknifeSpeed;
     public float HardknifeSpeed;
 
-=======
->>>>>>> Room_Generation
     // Use this for initialization
     void Start()
     {
@@ -40,11 +33,7 @@ public class KnifeThrowerController : BaseEnemy
         Set_Attacking(true);
         anim = this.gameObject.GetComponent<Animator>();
         anim.SetBool("Attacking", true);
-<<<<<<< HEAD
         //Sprite = this.gameObject.GetComponent<SpriteRenderer>();
-=======
-        Sprite = this.gameObject.GetComponent<SpriteRenderer>();
->>>>>>> Room_Generation
         New_Teleport_Time();
     }
 
@@ -69,7 +58,6 @@ public class KnifeThrowerController : BaseEnemy
 
         if (teleportCounter >= currentTeleportTime && !Get_Attacking())
         {
-<<<<<<< HEAD
             if (!Get_Stunned())
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -103,58 +91,6 @@ public class KnifeThrowerController : BaseEnemy
                 anim.SetBool("Attacking", true);
                 Set_Attacking(true);
             }
-=======
-            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                Reset_Attack_Counter();
-                cooldownCounter = 0f;
-                Set_Attacking(false);
-                if (!routineCalled)
-                {
-                    StartCoroutine(Start_Teleport());
-                    routineCalled = true;
-                }
-
-            }
-        }
-        else if(!teleporting)
-        {
-            if (Get_Attack_Counter() >= Get_Attack_Time())
-            {
-                SpawnProjectile(Knife);
-                Reset_Attack_Counter();
-                anim.SetBool("Attacking", false);
-                coolDown = true;
-                Set_Attacking(false);
-            }
-            if (cooldownCounter == cooldownTime)
-            {
-                cooldownCounter = 0f;
-                coolDown = false;
-                anim.SetBool("Attacking", true);
-                Set_Attacking(true);
-            }
-        }
-    }
-
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch(val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
->>>>>>> Room_Generation
         }
     }
 
@@ -181,11 +117,7 @@ public class KnifeThrowerController : BaseEnemy
         {
             cooldownCounter += .25f;
         }
-<<<<<<< HEAD
         if (!teleporting)
-=======
-        if(!teleporting)
->>>>>>> Room_Generation
         {
             teleportCounter += .25f;
         }
@@ -208,7 +140,6 @@ public class KnifeThrowerController : BaseEnemy
         }
     }
 
-<<<<<<< HEAD
     //private void Flip()
     //{
     //    if(direction == 3)
@@ -234,33 +165,6 @@ public class KnifeThrowerController : BaseEnemy
     //        }
     //    }
     //}
-=======
-    private void Flip()
-    {
-        if(direction == 3)
-        {
-            if(Sprite.flipX)
-            {
-              
-            }
-            else
-            {
-                Sprite.flipX = true;
-            }
-        }
-        if (direction == 1)
-        {
-            if (Sprite.flipX)
-            {
-                Sprite.flipX = false;
-            }
-            else
-            {
-                
-            }
-        }
-    }
->>>>>>> Room_Generation
 
     private void New_Teleport_Time()
     {
@@ -284,7 +188,6 @@ public class KnifeThrowerController : BaseEnemy
 
     private void Teleport_To_Location(Vector3 point)
     {
-<<<<<<< HEAD
         this.gameObject.transform.position = point + new Vector3(1, 0, 0);
     }
 
@@ -305,8 +208,5 @@ public class KnifeThrowerController : BaseEnemy
                 knifeSpeed = HardknifeSpeed;
                 break;
         }
-=======
-        this.gameObject.transform.position = point + new Vector3(1,0,0);
->>>>>>> Room_Generation
     }
 }

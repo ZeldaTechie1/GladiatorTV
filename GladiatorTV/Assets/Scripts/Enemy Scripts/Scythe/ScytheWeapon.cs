@@ -2,23 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
 public class ScytheWeapon : MonoBehaviour
 {
-=======
-public class ScytheWeapon : MonoBehaviour {
->>>>>>> Room_Generation
     private float bottomLeft = 45f;
     private float topLeft = -45f;
     private float bottomRight = 135f;
     private float topRight = -135f;
 
     private float rotationAmount = 90f;
-<<<<<<< HEAD
     public enum Direction { Up, Right, Down, Left }
-=======
-    public enum Direction {Up,Right,Down,Left}
->>>>>>> Room_Generation
 
     public float rotationSpeed = 30;
 
@@ -33,7 +25,6 @@ public class ScytheWeapon : MonoBehaviour {
     public Vector3 moveVector;
     public float pullSpeed = 5;
     // Use this for initialization
-<<<<<<< HEAD
     void Start()
     {
         ScytheEnemy = GetComponentInParent<ScytheController>();
@@ -60,20 +51,6 @@ public class ScytheWeapon : MonoBehaviour {
             //Debug.Log(this.gameObject.transform.eulerAngles.z);
 
             if (!pull)
-=======
-    void Start () {
-        ScytheEnemy = GetComponentInParent<ScytheController>();
-        Blade = GetComponentInChildren<ScytheBlade>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(swinging)
-        {
-            //Debug.Log(this.gameObject.transform.eulerAngles.z);
-            
-            if(!pull)
->>>>>>> Room_Generation
             {
                 Swing(currentDirection);
                 if (Check_Swinging(currentDirection))
@@ -87,13 +64,8 @@ public class ScytheWeapon : MonoBehaviour {
                 Move_With_Vector();
             }
         }
-<<<<<<< HEAD
     }
 
-=======
-	}
-    
->>>>>>> Room_Generation
     public void SetRotation(int Dir)
     {
         this.gameObject.transform.localPosition = new Vector3(0, 0, 0);
@@ -169,11 +141,7 @@ public class ScytheWeapon : MonoBehaviour {
         switch (Dir)
         {
             case 0:
-<<<<<<< HEAD
                 if (this.gameObject.transform.eulerAngles.z <= 225f)
-=======
-                if(this.gameObject.transform.eulerAngles.z <= 225f)
->>>>>>> Room_Generation
                 {
                     return true;
                 }
