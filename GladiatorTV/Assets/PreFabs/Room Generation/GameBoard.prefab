@@ -51,17 +51,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4244e9fdfdb0425438374beadf00beaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 20
-  tileSize: 16
-  roomHeight: 11
-  roomWidth: 11
-  boardHeight: 100
-  boardWidth: 100
-  boardHolder: {fileID: 0}
   Walls:
   - {fileID: 1653096318438978, guid: ee255ba1ee633f146a7050d81e19b72c, type: 2}
   Floor:
   - {fileID: 1954232828023488, guid: 01d665362b5e55d4ba48222a07d5c0e5, type: 2}
   Doors:
   - {fileID: 1761832186701316, guid: 37381c79a4c5882489202e10051fedeb, type: 2}
-  Traps: []
+  Traps:
+  - {fileID: 1015899527694280, guid: dd70ad4cb00431e4d9884e609d4a9da2, type: 2}
+  Objectives:
+  - {fileID: 1332853630434172, guid: 6e6ca741c92ee0544b7eaedb98c63c9a, type: 2}
+  - {fileID: 1332853630434172, guid: 6e6ca741c92ee0544b7eaedb98c63c9a, type: 2}
+  numberOfRooms: 10
+  tileSize: 16
+  numberOfDeadend: 0
+  deadendRoomsPrecentage: 25
+  roomHeight: 11
+  roomWidth: 11
+  boardHeight: 100
+  boardWidth: 100
+  boardHolder: {fileID: 0}

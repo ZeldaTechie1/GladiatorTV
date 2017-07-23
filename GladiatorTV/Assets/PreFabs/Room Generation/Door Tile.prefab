@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1761832186701316}
+  m_RootGameObject: {fileID: 1145137078968370}
   m_IsPrefabParent: 1
---- !u!1 &1761832186701316
+--- !u!1 &1145137078968370
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4223625081489446}
-  - component: {fileID: 212069320439244880}
-  m_Layer: 0
+  - component: {fileID: 4941404764103568}
+  - component: {fileID: 212713163820997348}
+  m_Layer: 9
   m_Name: Door Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4223625081489446
+--- !u!4 &4941404764103568
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761832186701316}
+  m_GameObject: {fileID: 1145137078968370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 35335, y: 36303, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212069320439244880
+--- !u!212 &212713163820997348
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761832186701316}
+  m_GameObject: {fileID: 1145137078968370}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
