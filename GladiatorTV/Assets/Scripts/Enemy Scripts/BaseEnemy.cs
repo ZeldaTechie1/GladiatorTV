@@ -5,7 +5,11 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour {
     
     //basic variables
+
     public int health = 100;
+    public int MediumHealth;
+    public int HardHealth;
+
     public int direction;
     public float baseSpeed;
     private float speed;
@@ -17,8 +21,14 @@ public class BaseEnemy : MonoBehaviour {
     private bool attacking;
     private float attackTime;
     private float attackCounter = 0;
+
     public int AttackDamage;
+    public int MediumAttackDamage;
+    public int HardAttackDamage;
+
     public int TouchDamage;
+    public int MediumTouchDamage;
+    public int HardTouchDamage;
 
     //variables dealing with taking damage/getting hit
     private bool invincible;
@@ -29,7 +39,8 @@ public class BaseEnemy : MonoBehaviour {
 
     //Difficulty
     public enum Difficulty { Easy, Medium, Hard, Lunatic}
-    private int thisDifficutly;
+    public int thisDifficutly = 0;
+    public int currentDifficulty = -1;
 
     //Death
     private bool dying = false;
@@ -254,5 +265,22 @@ public class BaseEnemy : MonoBehaviour {
     public bool Get_Stunned()
     {
         return stunned;
+    }
+
+    public bool CheckDifficulty()
+    {
+        if(thisDifficutly == currentDifficulty)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Set_Current_Difficulty(int val)
+    {
+        currentDifficulty = val;
     }
 }

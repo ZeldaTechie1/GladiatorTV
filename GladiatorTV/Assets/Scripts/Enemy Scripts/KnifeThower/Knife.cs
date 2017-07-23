@@ -84,4 +84,14 @@ public class Knife : MonoBehaviour {
         if(reachedTarget)
             selfDestructCounter += .25f;
     }
+
+    public void Set_Speed(float val)
+    {
+        speed = val;
+    }
+
+    public void Set_Damage(int val)
+    {
+        damage = val;
+    }
 }

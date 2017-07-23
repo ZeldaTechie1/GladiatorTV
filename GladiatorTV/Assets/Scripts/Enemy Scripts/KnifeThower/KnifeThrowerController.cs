@@ -19,6 +19,11 @@ public class KnifeThrowerController : BaseEnemy {
 
     public Vector3 teleportLocation;
     public bool routineCalled = false;
+
+    public float knifeSpeed;
+    public float MediumknifeSpeed;
+    public float HardknifeSpeed;
+
     // Use this for initialization
     void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
@@ -32,6 +37,11 @@ public class KnifeThrowerController : BaseEnemy {
 
     // Update is called once per frame
     void Update () {
+        if(!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
         Set_Direction();
         Flip();
         checkInvincible();
@@ -76,29 +86,12 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch(val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-        }
-    }
-
     private void SpawnProjectile(GameObject Projectile)
     {
         GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        Object.GetComponent<Knife>().Set_Damage(AttackDamage);
+        Object.GetComponent<Knife>().Set_Speed(knifeSpeed);
+
     }
 
 
@@ -188,5 +181,24 @@ public class KnifeThrowerController : BaseEnemy {
     private void Teleport_To_Location(Vector3 point)
     {
         this.gameObject.transform.position = point + new Vector3(1,0,0);
+    }
+
+    private void Set_Values(int val)
+    {
+        switch(val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                knifeSpeed = MediumknifeSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                knifeSpeed = HardknifeSpeed;
+                break;
+        }
     }
 }

@@ -27,11 +27,23 @@ public class ScytheWeapon : MonoBehaviour {
     void Start () {
         ScytheEnemy = GetComponentInParent<ScytheController>();
         Blade = GetComponentInChildren<ScytheBlade>();
-	}
+        rotationSpeed = ScytheEnemy.rotationSpeed;
+        pullSpeed = ScytheEnemy.pullSpeed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(swinging)
+        if(rotationSpeed != ScytheEnemy.rotationSpeed)
+        {
+            rotationSpeed = ScytheEnemy.rotationSpeed;
+        }
+
+        if (pullSpeed != ScytheEnemy.pullSpeed)
+        {
+            pullSpeed = ScytheEnemy.pullSpeed;
+        }
+
+        if (swinging)
         {
             //Debug.Log(this.gameObject.transform.eulerAngles.z);
             

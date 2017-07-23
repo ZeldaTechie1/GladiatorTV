@@ -7,6 +7,17 @@ public class ScytheController : BaseEnemy {
     public GameObject Weapon;
     public ScytheWeapon WeaponController;
     public bool startedSwing = false;
+
+    public float MediumSpeed;
+    public float HardSpeed;
+
+    public float rotationSpeed;
+    public float MediumRotationSpeed;
+    public float HardRotationSpeed;
+
+    public float pullSpeed;
+    public float MediumPullSpeed;
+    public float HardPullSpeed;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
@@ -17,7 +28,13 @@ public class ScytheController : BaseEnemy {
     }
 	
 	// Update is called once per frame
-	void Update () {    
+	void Update () {
+        if (!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+
         checkInvincible();
         Check_If_Dead();
 
@@ -51,26 +68,6 @@ public class ScytheController : BaseEnemy {
         }
 	}
 
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch (val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-        }
-    }
-
     private void Increment_Counters()
     {
         if (Get_Dying())
@@ -92,6 +89,29 @@ public class ScytheController : BaseEnemy {
         if (collision.gameObject.CompareTag("Player"))
         {
             player_con.Deal_Damage(TouchDamage);
+        }
+    }
+
+    private void Set_Values(int val)
+    {
+        switch (val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                Set_Speed(MediumSpeed);
+                rotationSpeed = MediumRotationSpeed;
+                pullSpeed = MediumPullSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                Set_Speed(HardSpeed);
+                rotationSpeed = HardRotationSpeed;
+                pullSpeed = HardPullSpeed;
+                break;
         }
     }
 }

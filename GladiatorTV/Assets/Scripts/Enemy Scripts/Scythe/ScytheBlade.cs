@@ -18,7 +18,10 @@ public class ScytheBlade : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(bladeDamage != Scythe.AttackDamage)
+        {
+            Set_Blade_Damage(Scythe.AttackDamage);
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
