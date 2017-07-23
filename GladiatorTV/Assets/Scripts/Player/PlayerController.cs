@@ -30,6 +30,19 @@ public class PlayerController : MonoBehaviour
     private float deathTime = 1f;
 
     private bool stunned;
+
+    public int attackDamage;
+    public float range;
+    public float attackSpeed;
+
+
+    public bool attacking;
+    public float attackDuration;
+
+    public float attackCounter;
+    public bool attackCoolDown;
+
+
     // Use this for initialization
     void Start()
     {
@@ -43,7 +56,40 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Set_Direction();
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(!attackCoolDown)
+            {
+                if (!attacking)
+                {
+                    attacking = true;
+                }
+            }
+        }
+
+        if(attacking)
+        {
+            if(attackCounter == attackDuration)
+            {
+                attacking = false;
+                attackCoolDown = true;
+                attackCounter = 0;
+            }
+        }
+
+        if(attackCoolDown)
+        {
+            if(attackCounter == attackSpeed)
+            {
+                attackCoolDown = false;
+                attackCounter = 0;
+            }
+        }
+
+        if(!attacking)
+        {
+            Set_Direction();
+        }
         Check_Health();
         checkInvincible();
         if (deathCounter >= deathTime)
@@ -186,6 +232,10 @@ public class PlayerController : MonoBehaviour
         {
             deathCounter += .25f;
         }
+        if(attackCoolDown || attacking)
+        {
+            attackCounter += .25f;
+        }
     }
 
     private void Check_Health()
@@ -206,5 +256,35 @@ public class PlayerController : MonoBehaviour
     public bool Get_Stunned()
     {
         return stunned;
+    }
+
+    public void Set_Attack(int val)
+    {
+        attackDamage = val;
+    }
+
+    public void Set_AttackSpeed(int val)
+    {
+        attackSpeed = val;
+    }
+
+    public void Set_Range(int val)
+    {
+        range = val;
+    }
+
+    public int Get_Attack()
+    {
+        return attackDamage;
+    }
+
+    public float Get_AttackSpeed()
+    {
+        return attackSpeed;
+    }
+
+    public float Get_Range()
+    {
+        return range;
     }
 }
