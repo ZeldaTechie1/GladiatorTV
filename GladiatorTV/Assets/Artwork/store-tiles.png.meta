@@ -71,7 +71,11 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: -1
+>>>>>>> Room_Generation
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -110,6 +114,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
   - buildTarget: iPhone
     maxTextureSize: 2048
     textureFormat: -1
@@ -134,6 +139,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+=======
+>>>>>>> Room_Generation
   spriteSheet:
     serializedVersion: 2
     sprites:

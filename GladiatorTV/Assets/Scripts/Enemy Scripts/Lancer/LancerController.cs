@@ -63,7 +63,11 @@ public class LancerController : BaseEnemy
         if (Get_Attacking() && !Get_Stunned())
         {
             Prepare_Attack2();
+<<<<<<< HEAD
             if (chargeTime <= chargeCounter)
+=======
+            if(chargeTime <= chargeCounter)
+>>>>>>> Room_Generation
             {
                 anim.SetBool("Attacking", true);
                 anim.SetBool("Charging", false);
@@ -83,6 +87,26 @@ public class LancerController : BaseEnemy
                 waitCounter = 0;
                 waiting = false;
             }
+        }
+    }
+
+    public void SetValues(int val)
+    {
+        Set_Difficulty(val);
+        switch (val)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
         }
     }
 
@@ -119,7 +143,11 @@ public class LancerController : BaseEnemy
     {
         if (!waiting && !Get_Dying() && !charging)
         {
+<<<<<<< HEAD
             switch (direction)
+=======
+            switch(direction)
+>>>>>>> Room_Generation
             {
                 case 0:
                     targetLocation = player.transform.position;

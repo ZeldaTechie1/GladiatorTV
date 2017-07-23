@@ -8,6 +8,7 @@ public class ScytheController : BaseEnemy
     public GameObject Weapon;
     public ScytheWeapon WeaponController;
     public bool startedSwing = false;
+<<<<<<< HEAD
 
     public float MediumSpeed;
     public float HardSpeed;
@@ -22,6 +23,10 @@ public class ScytheController : BaseEnemy
     // Use this for initialization
     void Start()
     {
+=======
+	// Use this for initialization
+	void Start () {
+>>>>>>> Room_Generation
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attacking(false);
         WeaponController = Weapon.GetComponent<ScytheWeapon>();
@@ -51,6 +56,7 @@ public class ScytheController : BaseEnemy
         if (!Get_Attacking())
         {
             Set_Direction();
+<<<<<<< HEAD
             if (!Get_Stunned())
             {
                 Move_To_Location(player.transform.position);
@@ -59,6 +65,13 @@ public class ScytheController : BaseEnemy
         }
 
         if (Get_Attacking() && !startedSwing)
+=======
+            Move_To_Location(player.transform.position);
+            Weapon.SetActive(false);
+        }
+
+        if(Get_Attacking() && !startedSwing)
+>>>>>>> Room_Generation
         {
             startedSwing = true;
             Weapon.SetActive(true);
@@ -66,15 +79,41 @@ public class ScytheController : BaseEnemy
             WeaponController.Set_currentDir(direction);
             WeaponController.Set_Swinging(true);
         }
+<<<<<<< HEAD
         else if (Get_Attacking() && startedSwing)
         {
             if (WeaponController.Get_Swinging() == false)
+=======
+        else if(Get_Attacking() && startedSwing)
+        {
+            if(WeaponController.Get_Swinging() == false)
+>>>>>>> Room_Generation
             {
                 startedSwing = false;
                 Weapon.SetActive(false);
                 Set_Attacking(false);
                 Set_Direction();
             }
+        }
+    }
+
+    public void SetValues(int val)
+    {
+        Set_Difficulty(val);
+        switch (val)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
         }
     }
 

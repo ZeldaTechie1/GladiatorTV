@@ -20,7 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4114397808150310}
   - component: {fileID: 114603050663138378}
+<<<<<<< HEAD
   - component: {fileID: 212204876111282174}
+=======
+>>>>>>> Room_Generation
   m_Layer: 0
   m_Name: TestCrappyWeapon 1
   m_TagString: Untagged
@@ -56,6 +59,7 @@ MonoBehaviour:
   fireRate: 1
   range: 0.5
   quality: 2
+<<<<<<< HEAD
 --- !u!212 &212204876111282174
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -96,3 +100,5 @@ SpriteRenderer:
   m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+=======
+>>>>>>> Room_Generation

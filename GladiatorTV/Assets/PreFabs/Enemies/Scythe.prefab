@@ -100,6 +100,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+=======
+--- !u!1 &1574502350971300
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4984138377967200}
+  - component: {fileID: 61494453376066178}
+  - component: {fileID: 50305081070696408}
+  m_Layer: 0
+  m_Name: PullTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1605391304911050
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4286948330003250}
+  - component: {fileID: 61165926646955664}
+  - component: {fileID: 50019807237564222}
+  m_Layer: 0
+  m_Name: Blade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+>>>>>>> Room_Generation
 --- !u!4 &4286948330003250
 Transform:
   m_ObjectHideFlags: 1
@@ -107,7 +144,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605391304911050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -12, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: -8, y: 0, z: 0}
+>>>>>>> Room_Generation
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984138377967200}
@@ -326,7 +367,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+<<<<<<< HEAD
   m_Offset: {x: 6.418956, y: 0}
+=======
+  m_Offset: {x: 3.8019934, y: 0}
+>>>>>>> Room_Generation
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -337,7 +382,11 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 11.302862, y: 1}
+=======
+  m_Size: {x: 9, y: 1}
+>>>>>>> Room_Generation
   m_EdgeRadius: 0
 --- !u!114 &114003494225019920
 MonoBehaviour:
@@ -362,6 +411,7 @@ MonoBehaviour:
   MediumAttackDamage: 25
   HardAttackDamage: 30
   TouchDamage: 5
+<<<<<<< HEAD
   MediumTouchDamage: 8
   HardTouchDamage: 10
   thisDifficutly: 0
@@ -409,6 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8785beb0980aa4b9b497eaf95c310b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+  Weapon: {fileID: 1080938671063460}
+  WeaponController: {fileID: 0}
+  startedSwing: 0
+>>>>>>> Room_Generation
 --- !u!114 &114860481283347860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,10 +486,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699b119f98e0a4d4b865c78bdb31cc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   rotationSpeed: 80
   targetLocation: {x: 0, y: 0, z: 0}
   moveVector: {x: 0, y: 0, z: 0}
   pullSpeed: 2.5
+=======
+  rotationSpeed: 40
+>>>>>>> Room_Generation
 --- !u!212 &212364340749083684
 SpriteRenderer:
   m_ObjectHideFlags: 1

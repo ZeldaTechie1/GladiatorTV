@@ -797,7 +797,10 @@ RectTransform:
   - {fileID: 2021602883}
   - {fileID: 1520441263}
   - {fileID: 234436254}
+<<<<<<< HEAD
   - {fileID: 2069766576}
+=======
+>>>>>>> Room_Generation
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1116,7 +1119,10 @@ MonoBehaviour:
   upvoteDisplay: {fileID: 2021602884}
   downvoteDisplay: {fileID: 1520441264}
   fameDisplay: {fileID: 1524041278}
+<<<<<<< HEAD
   timer: {fileID: 2069766577}
+=======
+>>>>>>> Room_Generation
 --- !u!1 &1981716328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1418,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027194699}
+<<<<<<< HEAD
 --- !u!1 &2069766575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1493,8 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069766575}
+=======
+>>>>>>> Room_Generation
 --- !u!1 &2130386159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1503,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2130386160}
+<<<<<<< HEAD
   - component: {fileID: 2130386161}
+=======
+>>>>>>> Room_Generation
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -1515,6 +1527,7 @@ Transform:
   m_Father: {fileID: 372832521}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &2130386161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,3 +1543,5 @@ MonoBehaviour:
   - {fileID: 114003494225019920, guid: 91e69a7c198262d43814761f639457e0, type: 2}
   - {fileID: 114346570769802142, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
   - {fileID: 114842590165207960, guid: ddf69d288cffd804f9a893ca87473e82, type: 2}
+=======
+>>>>>>> Room_Generation

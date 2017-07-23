@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD:GladiatorTV/Assets/Scripts/Player/PlayerController.cs
         if(Input.GetMouseButtonDown(0))
         {
             if(!attackCoolDown)
@@ -90,6 +91,9 @@ public class PlayerController : MonoBehaviour
         {
             Set_Direction();
         }
+=======
+        Set_Direction();
+>>>>>>> Room_Generation:GladiatorTV/Assets/Scripts/PlayerController.cs
         Check_Health();
         checkInvincible();
         if (deathCounter >= deathTime)
@@ -101,10 +105,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD:GladiatorTV/Assets/Scripts/Player/PlayerController.cs
         if(!stunned)
         {
             Move();
         }
+=======
+        Move();
+>>>>>>> Room_Generation:GladiatorTV/Assets/Scripts/PlayerController.cs
     }
 
 

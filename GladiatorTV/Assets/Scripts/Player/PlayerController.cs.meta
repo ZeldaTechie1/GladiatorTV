@@ -1,5 +1,10 @@
+<<<<<<< HEAD:GladiatorTV/Assets/Scripts/Player/PlayerController.cs.meta
 fileFormatVersion: 2
 guid: b140fabdd81d64a4b9ce76fd66a966e6
+=======
+﻿fileFormatVersion: 2
+guid: e42f4afcbf80c534bb5415255ccd64b0
+>>>>>>> Room_Generation:GladiatorTV/Assets/Scripts/PlayerController.cs.meta
 timeCreated: 1500085287
 licenseType: Free
 MonoImporter:
