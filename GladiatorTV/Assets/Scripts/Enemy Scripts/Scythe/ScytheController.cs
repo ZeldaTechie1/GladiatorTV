@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScytheController : BaseEnemy {
+public class ScytheController : BaseEnemy
+{
 
     public GameObject Weapon;
     public ScytheWeapon WeaponController;
     public bool startedSwing = false;
-<<<<<<< HEAD
-=======
 
     public float MediumSpeed;
     public float HardSpeed;
@@ -20,46 +19,39 @@ public class ScytheController : BaseEnemy {
     public float pullSpeed;
     public float MediumPullSpeed;
     public float HardPullSpeed;
->>>>>>> Spector-Stuff
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attacking(false);
         WeaponController = Weapon.GetComponent<ScytheWeapon>();
         Weapon.SetActive(false);
         //Set_Attack_Time(1.5f);
     }
-	
-	// Update is called once per frame
-<<<<<<< HEAD
-	void Update () {    
-=======
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (!CheckDifficulty())
         {
             Set_Values(Get_Difficulty());
             Set_Current_Difficulty(Get_Difficulty());
         }
 
->>>>>>> Spector-Stuff
         checkInvincible();
         Check_If_Dead();
 
         if (!Get_Attacking())
         {
             Set_Direction();
-<<<<<<< HEAD
-            Move_To_Location(player.transform.position);
-=======
-            if(!Get_Stunned())
+            if (!Get_Stunned())
             {
                 Move_To_Location(player.transform.position);
             }
->>>>>>> Spector-Stuff
             Weapon.SetActive(false);
         }
 
-        if(Get_Attacking() && !startedSwing)
+        if (Get_Attacking() && !startedSwing)
         {
             startedSwing = true;
             Weapon.SetActive(true);
@@ -67,9 +59,9 @@ public class ScytheController : BaseEnemy {
             WeaponController.Set_currentDir(direction);
             WeaponController.Set_Swinging(true);
         }
-        else if(Get_Attacking() && startedSwing)
+        else if (Get_Attacking() && startedSwing)
         {
-            if(WeaponController.Get_Swinging() == false)
+            if (WeaponController.Get_Swinging() == false)
             {
                 startedSwing = false;
                 Weapon.SetActive(false);
@@ -77,31 +69,8 @@ public class ScytheController : BaseEnemy {
                 Set_Direction();
             }
         }
-	}
-
-<<<<<<< HEAD
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch (val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-        }
     }
 
-=======
->>>>>>> Spector-Stuff
     private void Increment_Counters()
     {
         if (Get_Dying())
@@ -125,8 +94,6 @@ public class ScytheController : BaseEnemy {
             player_con.Deal_Damage(TouchDamage);
         }
     }
-<<<<<<< HEAD
-=======
 
     private void Set_Values(int val)
     {
@@ -150,5 +117,4 @@ public class ScytheController : BaseEnemy {
                 break;
         }
     }
->>>>>>> Spector-Stuff
 }

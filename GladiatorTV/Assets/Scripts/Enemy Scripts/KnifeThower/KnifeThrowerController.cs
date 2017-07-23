@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeThrowerController : BaseEnemy {
+public class KnifeThrowerController : BaseEnemy
+{
 
     public GameObject Knife;
 
     public float cooldownTime;
     private float cooldownCounter;
     private bool coolDown;
-<<<<<<< HEAD
-    private SpriteRenderer Sprite;
-=======
     //private SpriteRenderer Sprite;
->>>>>>> Spector-Stuff
 
     public float minTeleportTime;
     public float maxTeleportTime;
@@ -23,39 +20,31 @@ public class KnifeThrowerController : BaseEnemy {
 
     public Vector3 teleportLocation;
     public bool routineCalled = false;
-<<<<<<< HEAD
-=======
 
     public float knifeSpeed;
     public float MediumknifeSpeed;
     public float HardknifeSpeed;
 
->>>>>>> Spector-Stuff
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attack_Time(1.5f);
         Set_Attacking(true);
         anim = this.gameObject.GetComponent<Animator>();
         anim.SetBool("Attacking", true);
-<<<<<<< HEAD
-        Sprite = this.gameObject.GetComponent<SpriteRenderer>();
-=======
         //Sprite = this.gameObject.GetComponent<SpriteRenderer>();
->>>>>>> Spector-Stuff
         New_Teleport_Time();
     }
 
     // Update is called once per frame
-    void Update () {
-<<<<<<< HEAD
-=======
-        if(!CheckDifficulty())
+    void Update()
+    {
+        if (!CheckDifficulty())
         {
             Set_Values(Get_Difficulty());
             Set_Current_Difficulty(Get_Difficulty());
         }
->>>>>>> Spector-Stuff
         Set_Direction();
         Flip();
         checkInvincible();
@@ -64,20 +53,7 @@ public class KnifeThrowerController : BaseEnemy {
 
         if (teleportCounter >= currentTeleportTime && !Get_Attacking())
         {
-<<<<<<< HEAD
-            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                Reset_Attack_Counter();
-                cooldownCounter = 0f;
-                Set_Attacking(false);
-                if (!routineCalled)
-                {
-                    StartCoroutine(Start_Teleport());
-                    routineCalled = true;
-                }
-
-=======
-            if(!Get_Stunned())
+            if (!Get_Stunned())
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 {
@@ -91,10 +67,9 @@ public class KnifeThrowerController : BaseEnemy {
                     }
 
                 }
->>>>>>> Spector-Stuff
             }
         }
-        else if(!teleporting)
+        else if (!teleporting)
         {
             if (Get_Attack_Counter() >= Get_Attack_Time())
             {
@@ -114,38 +89,12 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
-<<<<<<< HEAD
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch(val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-        }
-    }
-
-    private void SpawnProjectile(GameObject Projectile)
-    {
-        GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-=======
     private void SpawnProjectile(GameObject Projectile)
     {
         GameObject Object = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
         Object.GetComponent<Knife>().Set_Damage(AttackDamage);
         Object.GetComponent<Knife>().Set_Speed(knifeSpeed);
 
->>>>>>> Spector-Stuff
     }
 
 
@@ -155,7 +104,7 @@ public class KnifeThrowerController : BaseEnemy {
         {
             Increase_Attack_Counter(.25f);
         }
-        if(Get_Dying())
+        if (Get_Dying())
         {
             Increase_Death_Counter(.25f);
         }
@@ -163,7 +112,7 @@ public class KnifeThrowerController : BaseEnemy {
         {
             cooldownCounter += .25f;
         }
-        if(!teleporting)
+        if (!teleporting)
         {
             teleportCounter += .25f;
         }
@@ -174,7 +123,7 @@ public class KnifeThrowerController : BaseEnemy {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-           player_con.Deal_Damage(TouchDamage);
+            player_con.Deal_Damage(TouchDamage);
         }
     }
 
@@ -186,40 +135,13 @@ public class KnifeThrowerController : BaseEnemy {
         }
     }
 
-<<<<<<< HEAD
-    private void Flip()
-    {
-        if(direction == 3)
-        {
-            if(Sprite.flipX)
-            {
-              
-            }
-            else
-            {
-                Sprite.flipX = true;
-            }
-        }
-        if (direction == 1)
-        {
-            if (Sprite.flipX)
-            {
-                Sprite.flipX = false;
-            }
-            else
-            {
-                
-            }
-        }
-    }
-=======
     //private void Flip()
     //{
     //    if(direction == 3)
     //    {
     //        if(Sprite.flipX)
     //        {
-              
+
     //        }
     //        else
     //        {
@@ -234,11 +156,10 @@ public class KnifeThrowerController : BaseEnemy {
     //        }
     //        else
     //        {
-                
+
     //        }
     //    }
     //}
->>>>>>> Spector-Stuff
 
     private void New_Teleport_Time()
     {
@@ -262,14 +183,12 @@ public class KnifeThrowerController : BaseEnemy {
 
     private void Teleport_To_Location(Vector3 point)
     {
-        this.gameObject.transform.position = point + new Vector3(1,0,0);
+        this.gameObject.transform.position = point + new Vector3(1, 0, 0);
     }
-<<<<<<< HEAD
-=======
 
     private void Set_Values(int val)
     {
-        switch(val)
+        switch (val)
         {
             case 1:
                 health = MediumHealth;
@@ -285,5 +204,4 @@ public class KnifeThrowerController : BaseEnemy {
                 break;
         }
     }
->>>>>>> Spector-Stuff
 }

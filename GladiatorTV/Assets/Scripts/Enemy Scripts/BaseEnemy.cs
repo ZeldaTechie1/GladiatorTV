@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour {
-    
+public class BaseEnemy : MonoBehaviour
+{
+
     //basic variables
-<<<<<<< HEAD
-    public int health = 100;
-=======
 
     public int health = 100;
     public int MediumHealth;
     public int HardHealth;
 
->>>>>>> Spector-Stuff
     public int direction;
     public float baseSpeed;
     private float speed;
@@ -25,10 +22,6 @@ public class BaseEnemy : MonoBehaviour {
     private bool attacking;
     private float attackTime;
     private float attackCounter = 0;
-<<<<<<< HEAD
-    public int AttackDamage;
-    public int TouchDamage;
-=======
 
     public int AttackDamage;
     public int MediumAttackDamage;
@@ -37,7 +30,6 @@ public class BaseEnemy : MonoBehaviour {
     public int TouchDamage;
     public int MediumTouchDamage;
     public int HardTouchDamage;
->>>>>>> Spector-Stuff
 
     //variables dealing with taking damage/getting hit
     private bool invincible;
@@ -47,34 +39,23 @@ public class BaseEnemy : MonoBehaviour {
     private float invincibleTime = 1f;
 
     //Difficulty
-    public enum Difficulty { Easy, Medium, Hard, Lunatic}
-<<<<<<< HEAD
-    private int thisDifficutly;
-=======
+    public enum Difficulty { Easy, Medium, Hard, Lunatic }
     public int thisDifficutly = 0;
     public int currentDifficulty = -1;
->>>>>>> Spector-Stuff
 
     //Death
     private bool dying = false;
     private float deathCounter = 0;
     private float deathTime = 1;
-<<<<<<< HEAD
-
-=======
     private SpriteRenderer SpriteRend;
 
     private bool stunned = false;
->>>>>>> Spector-Stuff
     private void Awake()
     {
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         speed = baseSpeed;
-<<<<<<< HEAD
-=======
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
->>>>>>> Spector-Stuff
     }
     // Update is called once per frame
 
@@ -85,8 +66,8 @@ public class BaseEnemy : MonoBehaviour {
             health -= val;
             hit = true;
         }
-        
-        if(health <= 0)
+
+        if (health <= 0)
         {
             health = 0;
             dying = true;
@@ -226,7 +207,7 @@ public class BaseEnemy : MonoBehaviour {
 
     public bool Check_If_Dead()
     {
-        if(deathCounter == deathTime)
+        if (deathCounter == deathTime)
         {
             return true;
         }
@@ -250,8 +231,6 @@ public class BaseEnemy : MonoBehaviour {
     {
         speed = val;
     }
-<<<<<<< HEAD
-=======
 
     public void Flip()
     {
@@ -291,7 +270,7 @@ public class BaseEnemy : MonoBehaviour {
 
     public bool CheckDifficulty()
     {
-        if(thisDifficutly == currentDifficulty)
+        if (thisDifficutly == currentDifficulty)
         {
             return true;
         }
@@ -305,5 +284,4 @@ public class BaseEnemy : MonoBehaviour {
     {
         currentDifficulty = val;
     }
->>>>>>> Spector-Stuff
 }

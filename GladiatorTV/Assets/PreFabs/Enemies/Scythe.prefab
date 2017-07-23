@@ -59,11 +59,7 @@ GameObject:
   - component: {fileID: 114003494225019920}
   m_Layer: 0
   m_Name: Scythe
-<<<<<<< HEAD
-  m_TagString: Untagged
-=======
   m_TagString: Enemy
->>>>>>> Spector-Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,10 +74,7 @@ GameObject:
   - component: {fileID: 4984138377967200}
   - component: {fileID: 61494453376066178}
   - component: {fileID: 50305081070696408}
-<<<<<<< HEAD
-=======
   - component: {fileID: 114611879775741326}
->>>>>>> Spector-Stuff
   m_Layer: 0
   m_Name: PullTrigger
   m_TagString: Untagged
@@ -99,10 +92,7 @@ GameObject:
   - component: {fileID: 4286948330003250}
   - component: {fileID: 61165926646955664}
   - component: {fileID: 50019807237564222}
-<<<<<<< HEAD
-=======
   - component: {fileID: 114406321919936962}
->>>>>>> Spector-Stuff
   m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
@@ -117,11 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605391304911050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -8, y: 0, z: 0}
-=======
   m_LocalPosition: {x: -12, y: 0, z: 0}
->>>>>>> Spector-Stuff
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984138377967200}
@@ -320,11 +306,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.77, y: 6.92}
-<<<<<<< HEAD
-    newSize: {x: 6.92, y: 6.77}
-=======
     newSize: {x: 6.77, y: 6.92}
->>>>>>> Spector-Stuff
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -344,11 +326,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-<<<<<<< HEAD
-  m_Offset: {x: 3.8019934, y: 0}
-=======
   m_Offset: {x: 6.418956, y: 0}
->>>>>>> Spector-Stuff
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -359,11 +337,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Size: {x: 9, y: 1}
-=======
   m_Size: {x: 11.302862, y: 1}
->>>>>>> Spector-Stuff
   m_EdgeRadius: 0
 --- !u!114 &114003494225019920
 MonoBehaviour:
@@ -377,23 +351,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-<<<<<<< HEAD
-=======
   MediumHealth: 150
   HardHealth: 200
->>>>>>> Spector-Stuff
   direction: 0
   baseSpeed: 2
   anim: {fileID: 0}
   player: {fileID: 0}
   player_con: {fileID: 0}
   AttackDamage: 20
-<<<<<<< HEAD
-  TouchDamage: 5
-  Weapon: {fileID: 1080938671063460}
-  WeaponController: {fileID: 0}
-  startedSwing: 0
-=======
   MediumAttackDamage: 25
   HardAttackDamage: 30
   TouchDamage: 5
@@ -435,7 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8785beb0980aa4b9b497eaf95c310b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> Spector-Stuff
 --- !u!114 &114860481283347860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,14 +422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699b119f98e0a4d4b865c78bdb31cc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  rotationSpeed: 40
-=======
   rotationSpeed: 80
   targetLocation: {x: 0, y: 0, z: 0}
   moveVector: {x: 0, y: 0, z: 0}
   pullSpeed: 2.5
->>>>>>> Spector-Stuff
 --- !u!212 &212364340749083684
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -503,10 +463,6 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-<<<<<<< HEAD
-  m_Size: {x: 6.92, y: 6.77}
-=======
   m_Size: {x: 6.77, y: 6.92}
->>>>>>> Spector-Stuff
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

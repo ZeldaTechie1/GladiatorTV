@@ -797,10 +797,7 @@ RectTransform:
   - {fileID: 2021602883}
   - {fileID: 1520441263}
   - {fileID: 234436254}
-<<<<<<< HEAD
   - {fileID: 2069766576}
-=======
->>>>>>> Spector-Stuff
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1119,10 +1116,7 @@ MonoBehaviour:
   upvoteDisplay: {fileID: 2021602884}
   downvoteDisplay: {fileID: 1520441264}
   fameDisplay: {fileID: 1524041278}
-<<<<<<< HEAD
   timer: {fileID: 2069766577}
-=======
->>>>>>> Spector-Stuff
 --- !u!1 &1981716328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1412,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027194699}
-<<<<<<< HEAD
 --- !u!1 &2069766575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,8 +1486,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069766575}
-=======
->>>>>>> Spector-Stuff
 --- !u!1 &2130386159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1494,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2130386160}
+  - component: {fileID: 2130386161}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -1523,3 +1515,18 @@ Transform:
   m_Father: {fileID: 372832521}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130386161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2130386159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14aacd57532bc8743ac95b8a909b1493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 114003494225019920, guid: 91e69a7c198262d43814761f639457e0, type: 2}
+  - {fileID: 114346570769802142, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
+  - {fileID: 114842590165207960, guid: ddf69d288cffd804f9a893ca87473e82, type: 2}
