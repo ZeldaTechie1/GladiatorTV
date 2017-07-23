@@ -30,6 +30,12 @@ public class LancerController : BaseEnemy {
 	
 	// Update is called once per frame
 	void Update () {
+        Check_HP();
+        if (Check_if_Dying())
+        {
+            Die();
+        }
+
         if (!CheckDifficulty())
         {
             Set_Values(Get_Difficulty());
@@ -48,7 +54,7 @@ public class LancerController : BaseEnemy {
             Flip();
         }
         checkInvincible();
-        Check_If_Dead();
+
 
 
         if (Get_Attacking() && !Get_Stunned())

@@ -37,7 +37,13 @@ public class KnifeThrowerController : BaseEnemy {
 
     // Update is called once per frame
     void Update () {
-        if(!CheckDifficulty())
+        Check_HP();
+        if (Check_if_Dying())
+        {
+            Die();
+        }
+
+        if (!CheckDifficulty())
         {
             Set_Values(Get_Difficulty());
             Set_Current_Difficulty(Get_Difficulty());
@@ -45,7 +51,6 @@ public class KnifeThrowerController : BaseEnemy {
         Set_Direction();
         Flip();
         checkInvincible();
-        Check_If_Dead();
 
 
         if (teleportCounter >= currentTeleportTime && !Get_Attacking())
