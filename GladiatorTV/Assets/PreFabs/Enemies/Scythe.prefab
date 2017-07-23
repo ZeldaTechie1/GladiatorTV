@@ -366,6 +366,15 @@ MonoBehaviour:
   HardTouchDamage: 10
   thisDifficutly: 0
   currentDifficulty: -1
+  EasyDrop1: {fileID: 1101065030213320, guid: 4cfb30e340a2fee47b9f8c83f591ec16, type: 2}
+  EasyDrop2: {fileID: 1101065030213320, guid: da9a35b7a4aca744591fbdc3c82731f0, type: 2}
+  MediumDrop1: {fileID: 1663548950358202, guid: a5b6f2d8a27a28a48a2d0470bd0a0fb1,
+    type: 2}
+  MediumDrop2: {fileID: 1663548950358202, guid: efee10326bdec144195350d2f21b4ee7,
+    type: 2}
+  HardDrop1: {fileID: 1140572190779024, guid: 6010c00c5c0b4ab4ea90bb354fff57c5, type: 2}
+  HardDrop2: {fileID: 1140572190779024, guid: 23591b4b37ba767459eef816e6e6b099, type: 2}
+  particles: {fileID: 1742584339539402, guid: 843f0564f6d1bbc41b26e3936ce880c7, type: 2}
   Weapon: {fileID: 1080938671063460}
   WeaponController: {fileID: 0}
   startedSwing: 0

@@ -32,6 +32,13 @@ public class ScytheController : BaseEnemy
     // Update is called once per frame
     void Update()
     {
+        Check_HP();
+
+        if (Check_if_Dying())
+        {
+            Die();
+        }
+
         if (!CheckDifficulty())
         {
             Set_Values(Get_Difficulty());
@@ -39,7 +46,7 @@ public class ScytheController : BaseEnemy
         }
 
         checkInvincible();
-        Check_If_Dead();
+
 
         if (!Get_Attacking())
         {

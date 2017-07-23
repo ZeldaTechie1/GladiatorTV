@@ -50,6 +50,16 @@ public class BaseEnemy : MonoBehaviour
     private SpriteRenderer SpriteRend;
 
     private bool stunned = false;
+
+
+    public GameObject EasyDrop1;
+    public GameObject EasyDrop2;
+    public GameObject MediumDrop1;
+    public GameObject MediumDrop2;
+    public GameObject HardDrop1;
+    public GameObject HardDrop2;
+
+    public GameObject particles;
     private void Awake()
     {
         player = GameObject.Find("Player");
@@ -216,6 +226,18 @@ public class BaseEnemy : MonoBehaviour
             return false;
         }
     }
+    public void Check_HP()
+    {
+        if (health <= 0)
+        {
+            health = 0;
+            dying = true;
+        }
+    }
+    public bool Check_if_Dying()
+    {
+        return dying;
+    }
 
     public void Move_To_Location(Vector3 Target)
     {
@@ -283,5 +305,58 @@ public class BaseEnemy : MonoBehaviour
     public void Set_Current_Difficulty(int val)
     {
         currentDifficulty = val;
+    }
+
+    public void SpawnWeapon(GameObject Weapon)
+    {
+        GameObject Object = Instantiate(Weapon, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+    }
+
+    public void SelectWeapon(int difficulty)
+    {
+        int WeaponType = (int)Random.Range(0, 1);
+
+        switch(difficulty)
+        {
+            case 0:
+                if(WeaponType == 0)
+                {
+                    SpawnWeapon(EasyDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(EasyDrop2);
+                }
+                break;
+
+            case 1:
+                if (WeaponType == 0)
+                {
+                    SpawnWeapon(MediumDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(MediumDrop2);
+                }
+                break;
+
+            case 2:
+                if (WeaponType == 0)
+                {
+                    SpawnWeapon(HardDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(HardDrop2);
+                }
+                break;
+        }
+    }
+
+    public void Die()
+    {
+        SelectWeapon(currentDifficulty);
+        Destroy(this.gameObject);
+        GameObject Object = Instantiate(particles, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
     }
 }
