@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     public float attackCounter;
     public bool attackCoolDown;
 
-
+    public GameObject GameOver;
+    public GameObject PauseMenu;
     // Use this for initialization
     void Start()
     {
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
         if(Input.GetMouseButtonDown(0))
         {
             if(!attackCoolDown)
@@ -96,6 +102,12 @@ public class PlayerController : MonoBehaviour
         {
             dead = true;
             anim.SetBool("Dead", true);
+        }
+
+        if(dead)
+        {
+            GameOver.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
