@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: bb986e8cd8939794781618b753e39e22
-timeCreated: 1500606431
+guid: 3e84455b6358865478c89aba9a9da70b
+timeCreated: 1500917331
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lanceocharge_0
-    21300002: lanceocharge_1
-    21300004: lanceocharge_2
+    21300000: lanceochargeforward_0
+    21300002: lanceochargeforward_1
+    21300004: lanceochargeforward_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -129,39 +129,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lanceocharge_0
+      name: lanceochargeforward_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 41
-        width: 73
-        height: 43
+        x: 42
+        y: 13
+        width: 26
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: lanceocharge_1
+      name: lanceochargeforward_1
       rect:
         serializedVersion: 2
-        x: 161
-        y: 41
-        width: 73
-        height: 43
+        x: 170
+        y: 13
+        width: 26
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: lanceocharge_2
+      name: lanceochargeforward_2
       rect:
         serializedVersion: 2
-        x: 289
-        y: 41
-        width: 73
-        height: 43
+        x: 298
+        y: 13
+        width: 26
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
