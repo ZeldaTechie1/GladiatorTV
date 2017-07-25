@@ -2,33 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScytheController : BaseEnemy {
+public class ScytheController : BaseEnemy
+{
 
     public GameObject Weapon;
     public ScytheWeapon WeaponController;
     public bool startedSwing = false;
-	// Use this for initialization
-	void Start () {
+
+    public float MediumSpeed;
+    public float HardSpeed;
+
+    public float rotationSpeed;
+    public float MediumRotationSpeed;
+    public float HardRotationSpeed;
+
+    public float pullSpeed;
+    public float MediumPullSpeed;
+    public float HardPullSpeed;
+    // Use this for initialization
+    void Start()
+    {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attacking(false);
         WeaponController = Weapon.GetComponent<ScytheWeapon>();
         Weapon.SetActive(false);
         //Set_Attack_Time(1.5f);
     }
-	
-	// Update is called once per frame
-	void Update () {    
+
+    // Update is called once per frame
+    void Update()
+    {
+        Check_HP();
+
+        if (Check_if_Dying())
+        {
+            Die();
+        }
+
+        if (!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+
         checkInvincible();
-        Check_If_Dead();
+
 
         if (!Get_Attacking())
         {
             Set_Direction();
-            Move_To_Location(player.transform.position);
+            if (!Get_Stunned())
+            {
+                Move_To_Location(player.transform.position);
+            }
             Weapon.SetActive(false);
         }
 
-        if(Get_Attacking() && !startedSwing)
+        if (Get_Attacking() && !startedSwing)
         {
             startedSwing = true;
             Weapon.SetActive(true);
@@ -36,35 +66,15 @@ public class ScytheController : BaseEnemy {
             WeaponController.Set_currentDir(direction);
             WeaponController.Set_Swinging(true);
         }
-        else if(Get_Attacking() && startedSwing)
+        else if (Get_Attacking() && startedSwing)
         {
-            if(WeaponController.Get_Swinging() == false)
+            if (WeaponController.Get_Swinging() == false)
             {
                 startedSwing = false;
                 Weapon.SetActive(false);
                 Set_Attacking(false);
                 Set_Direction();
             }
-        }
-	}
-
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch (val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
         }
     }
 
@@ -89,6 +99,29 @@ public class ScytheController : BaseEnemy {
         if (collision.gameObject.CompareTag("Player"))
         {
             player_con.Deal_Damage(TouchDamage);
+        }
+    }
+
+    private void Set_Values(int val)
+    {
+        switch (val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                Set_Speed(MediumSpeed);
+                rotationSpeed = MediumRotationSpeed;
+                pullSpeed = MediumPullSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                Set_Speed(HardSpeed);
+                rotationSpeed = HardRotationSpeed;
+                pullSpeed = HardPullSpeed;
+                break;
         }
     }
 }

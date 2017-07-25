@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour {
-    
+public class BaseEnemy : MonoBehaviour
+{
+
     //basic variables
+
     public int health = 100;
+    public int MediumHealth;
+    public int HardHealth;
+
     public int direction;
     public float baseSpeed;
     private float speed;
@@ -17,8 +22,14 @@ public class BaseEnemy : MonoBehaviour {
     private bool attacking;
     private float attackTime;
     private float attackCounter = 0;
+
     public int AttackDamage;
+    public int MediumAttackDamage;
+    public int HardAttackDamage;
+
     public int TouchDamage;
+    public int MediumTouchDamage;
+    public int HardTouchDamage;
 
     //variables dealing with taking damage/getting hit
     private bool invincible;
@@ -28,19 +39,33 @@ public class BaseEnemy : MonoBehaviour {
     private float invincibleTime = 1f;
 
     //Difficulty
-    public enum Difficulty { Easy, Medium, Hard, Lunatic}
-    private int thisDifficutly;
+    public enum Difficulty { Easy, Medium, Hard, Lunatic }
+    public int thisDifficutly = 0;
+    public int currentDifficulty = -1;
 
     //Death
     private bool dying = false;
     private float deathCounter = 0;
     private float deathTime = 1;
+    private SpriteRenderer SpriteRend;
 
+    private bool stunned = false;
+
+
+    public GameObject EasyDrop1;
+    public GameObject EasyDrop2;
+    public GameObject MediumDrop1;
+    public GameObject MediumDrop2;
+    public GameObject HardDrop1;
+    public GameObject HardDrop2;
+
+    public GameObject particles;
     private void Awake()
     {
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         speed = baseSpeed;
+        SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
 
@@ -51,8 +76,8 @@ public class BaseEnemy : MonoBehaviour {
             health -= val;
             hit = true;
         }
-        
-        if(health <= 0)
+
+        if (health <= 0)
         {
             health = 0;
             dying = true;
@@ -192,7 +217,7 @@ public class BaseEnemy : MonoBehaviour {
 
     public bool Check_If_Dead()
     {
-        if(deathCounter == deathTime)
+        if (deathCounter == deathTime)
         {
             return true;
         }
@@ -200,6 +225,18 @@ public class BaseEnemy : MonoBehaviour {
         {
             return false;
         }
+    }
+    public void Check_HP()
+    {
+        if (health <= 0)
+        {
+            health = 0;
+            dying = true;
+        }
+    }
+    public bool Check_if_Dying()
+    {
+        return dying;
     }
 
     public void Move_To_Location(Vector3 Target)
@@ -215,5 +252,111 @@ public class BaseEnemy : MonoBehaviour {
     public void Set_Speed(float val)
     {
         speed = val;
+    }
+
+    public void Flip()
+    {
+        if (direction == 3)
+        {
+            if (SpriteRend.flipX)
+            {
+
+            }
+            else
+            {
+                SpriteRend.flipX = true;
+            }
+        }
+        if (direction == 1)
+        {
+            if (SpriteRend.flipX)
+            {
+                SpriteRend.flipX = false;
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public void Set_Stunned(bool val)
+    {
+        stunned = val;
+    }
+
+    public bool Get_Stunned()
+    {
+        return stunned;
+    }
+
+    public bool CheckDifficulty()
+    {
+        if (thisDifficutly == currentDifficulty)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Set_Current_Difficulty(int val)
+    {
+        currentDifficulty = val;
+    }
+
+    public void SpawnWeapon(GameObject Weapon)
+    {
+        GameObject Object = Instantiate(Weapon, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+    }
+
+    public void SelectWeapon(int difficulty)
+    {
+        int WeaponType = (int)Random.Range(0, 1);
+
+        switch(difficulty)
+        {
+            case 0:
+                if(WeaponType == 0)
+                {
+                    SpawnWeapon(EasyDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(EasyDrop2);
+                }
+                break;
+
+            case 1:
+                if (WeaponType == 0)
+                {
+                    SpawnWeapon(MediumDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(MediumDrop2);
+                }
+                break;
+
+            case 2:
+                if (WeaponType == 0)
+                {
+                    SpawnWeapon(HardDrop1);
+                }
+                else
+                {
+                    SpawnWeapon(HardDrop2);
+                }
+                break;
+        }
+    }
+
+    public void Die()
+    {
+        SelectWeapon(currentDifficulty);
+        Destroy(this.gameObject);
+        GameObject Object = Instantiate(particles, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
     }
 }

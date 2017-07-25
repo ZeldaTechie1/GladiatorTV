@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 91e69a7c198262d43814761f639457e0
+<<<<<<< HEAD
 timeCreated: 1500271381
+=======
+timeCreated: 1500525285
+>>>>>>> Spector-Stuff
 licenseType: Free
 NativeFormatImporter:
   mainObjectFileID: 100100000

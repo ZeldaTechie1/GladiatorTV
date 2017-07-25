@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScytheWeapon : MonoBehaviour {
+public class ScytheWeapon : MonoBehaviour
+{
     private float bottomLeft = 45f;
     private float topLeft = -45f;
     private float bottomRight = 135f;
     private float topRight = -135f;
 
     private float rotationAmount = 90f;
-    public enum Direction {Up,Right,Down,Left}
+    public enum Direction { Up, Right, Down, Left }
 
     public float rotationSpeed = 30;
 
@@ -24,18 +25,32 @@ public class ScytheWeapon : MonoBehaviour {
     public Vector3 moveVector;
     public float pullSpeed = 5;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         ScytheEnemy = GetComponentInParent<ScytheController>();
         Blade = GetComponentInChildren<ScytheBlade>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(swinging)
+        rotationSpeed = ScytheEnemy.rotationSpeed;
+        pullSpeed = ScytheEnemy.pullSpeed;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (rotationSpeed != ScytheEnemy.rotationSpeed)
+        {
+            rotationSpeed = ScytheEnemy.rotationSpeed;
+        }
+
+        if (pullSpeed != ScytheEnemy.pullSpeed)
+        {
+            pullSpeed = ScytheEnemy.pullSpeed;
+        }
+
+        if (swinging)
         {
             //Debug.Log(this.gameObject.transform.eulerAngles.z);
-            
-            if(!pull)
+
+            if (!pull)
             {
                 Swing(currentDirection);
                 if (Check_Swinging(currentDirection))
@@ -49,8 +64,8 @@ public class ScytheWeapon : MonoBehaviour {
                 Move_With_Vector();
             }
         }
-	}
-    
+    }
+
     public void SetRotation(int Dir)
     {
         this.gameObject.transform.localPosition = new Vector3(0, 0, 0);
@@ -126,7 +141,7 @@ public class ScytheWeapon : MonoBehaviour {
         switch (Dir)
         {
             case 0:
-                if(this.gameObject.transform.eulerAngles.z <= 225f)
+                if (this.gameObject.transform.eulerAngles.z <= 225f)
                 {
                     return true;
                 }

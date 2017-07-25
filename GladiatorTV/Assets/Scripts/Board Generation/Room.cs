@@ -6,23 +6,24 @@ public enum Direction
 {
     North, East, South, West, Null,
 }
-   
+
 public enum Type// The Rooms Type. This Signifies What The objective of the room will be.
 {
-    FirstRoom,Survive,Destroy,Kill,ClearRoom,FinalRoom,
+    FirstRoom, Survive, Destroy, Kill, ClearRoom, FinalRoom,
 }
 public enum Member// Member of the a room Either an Enemy, Objective , Trap OR NULL which is used if This field does not need to be tracked
 {
-    Enemy,Objective,Trap,NULL 
+    Enemy, Objective, Trap, NULL
 }
-public class Room{
+public class Room
+{
 
-    private  Tiles[][] tiles; // Tile Types
-    private  Location [][] obstacles;// Locations of all the obstacles in the room
+    private Tiles[][] tiles; // Tile Types
+    private Location[][] obstacles;// Locations of all the obstacles in the room
 
-    private  int Trapchoices; /// Traps To chose from 
-    private  int Objectivechoices;/// Objective Blocks to choose from
-    private int Enemychoices; 
+    private int Trapchoices; /// Traps To chose from 
+    private int Objectivechoices;/// Objective Blocks to choose from
+    private int Enemychoices;
 
     private int exitX = 0;
     private int exitY = 0;
@@ -39,14 +40,14 @@ public class Room{
     private Type type; // the type of room being generated
 
     private GameObject Parent;// Refrence to the parent transform
-    public GameObject exit =null; // reffrence to the Exit Door Game object
+    public GameObject exit = null; // reffrence to the Exit Door Game object
     public GameObject entrance = null; // reffrence to the Entrance Door Game object
     public GameObject deadend = null; // reffrence to the Dead End Door Game object
 
     private int roomWidth; // width of the room
     private int roomHeight;// Height of the room
     private int TileSize;// The Size of the floor and wall tiles
-   
+
     private List<Location> roomLocations;// Locations of all the obstacles that need to be placed.
     public List<Location> AdjacentRooms;
 
@@ -65,16 +66,16 @@ public class Room{
 
 
     // Overloaded Method for making a room with only an exit 
-    public void SetupRoom(int tileSize,int width, int height, Direction exit, GameObject parent,Location ThisRoom)
+    public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
         myLocation = ThisRoom;
 
         EXIT = exit;
 
         Parent = parent;
-        TileSize =tileSize;
-        roomWidth=width;
-        roomHeight=height;
+        TileSize = tileSize;
+        roomWidth = width;
+        roomHeight = height;
 
         type = Type.FirstRoom;
 
@@ -126,12 +127,12 @@ public class Room{
             for (int k = 0; k < tiles[j].Length; k++)
             {
 
-                if(j==exitX && k==exitY )
+                if (j == exitX && k == exitY)
                 {
                     tiles[j][k] = Tiles.Door;
                 }
 
-               else if(j==0||j==width-1)
+                else if (j == 0 || j == width - 1)
                 {
                     tiles[j][k] = Tiles.Wall;
                 }
@@ -292,7 +293,7 @@ public class Room{
     }
 
     // Overloaded Method for making a room with only an entrance
-    public void SetupRoom(int tileSize, int width, int height, Direction enterance,bool finalRoom, GameObject parent, Location ThisRoom)
+    public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent, Location ThisRoom)
     {
         ENTER = enterance;
         Parent = parent;
@@ -300,7 +301,7 @@ public class Room{
         roomWidth = width;
         roomHeight = height;
 
-        if(finalRoom)
+        if (finalRoom)
         {
             type = Type.FinalRoom;
         }
@@ -410,7 +411,7 @@ public class Room{
 
         int typechoice = Random.Range(1, 5);
 
-        switch(typechoice)
+        switch (typechoice)
         {
             case 1:
                 type = Type.Survive;
@@ -425,7 +426,7 @@ public class Room{
                 type = Type.ClearRoom;
                 break;
         }
-        
+
 
         // Go through all the tile arrays...
         for (int i = 0; i < tiles.Length; i++)
@@ -474,7 +475,7 @@ public class Room{
                 enterX = width / 2;
                 enterY = height - 1;
                 enterLocation = new Location(enterX, enterY);
-                AddAdjacentRoom(new Location(myLocation.x, myLocation.y+1));
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
                 break;
             case Direction.East:
                 enterX = width - 1;
@@ -487,7 +488,7 @@ public class Room{
                 enterX = width / 2;
                 enterY = 0;
                 enterLocation = new Location(enterX, enterY);
-                AddAdjacentRoom(new Location(myLocation.x , myLocation.y-1));
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
@@ -570,7 +571,7 @@ public class Room{
     public Type GetRoomType()// Returns the type of the room
     {
         return type;
-    } 
+    }
     public GameObject GetParent()// Returns the Parent Transform
     {
         return Parent;
@@ -578,7 +579,7 @@ public class Room{
 
     public Location GetExit()//Returns the Exit location in refrence to the room
     {
-        Location Exit=new Location(exitX, exitY);
+        Location Exit = new Location(exitX, exitY);
 
         return Exit;
     }
@@ -593,9 +594,9 @@ public class Room{
     public Location GetDeadEnd()//Returns The DeadEnd location in refrence to the room
     {
 
-            Location deadend = new Location(enterX, enterY);
+        Location deadend = new Location(enterX, enterY);
 
-            return deadend;
+        return deadend;
 
     }
 
@@ -609,13 +610,14 @@ public class Room{
         return obstacles;
     }
 
-    public void ObstacleSetup(int TrapChoices,int ObjectiveChoices,int EnemyChoices)//Sets up the room locations list
-    {   Trapchoices = TrapChoices;
+    public void ObstacleSetup(int TrapChoices, int ObjectiveChoices, int EnemyChoices)//Sets up the room locations list
+    {
+        Trapchoices = TrapChoices;
         Objectivechoices = ObjectiveChoices;
         Enemychoices = EnemyChoices;
 
 
-        bluePrint = new RoomBluePrint(type, Trapchoices, Objectivechoices,Enemychoices, roomHeight, roomWidth, exitLocation, enterLocation, deadendLocation);
+        bluePrint = new RoomBluePrint(type, Trapchoices, Objectivechoices, Enemychoices, roomHeight, roomWidth, exitLocation, enterLocation, deadendLocation);
         roomLocations = bluePrint.GetBluePrint();
 
 
@@ -629,7 +631,7 @@ public class Room{
             obstacles[i] = new Location[roomHeight];
             for (int l = 0; l < roomHeight; l++)
             {
-                obstacles[i][l] =new Location(i,l);
+                obstacles[i][l] = new Location(i, l);
             }
         }
 
@@ -637,11 +639,11 @@ public class Room{
         {
             for (int k = 0; k < roomHeight; k++)
             {
-               for(int i =0; i<roomLocations.Count;i++)
+                for (int i = 0; i < roomLocations.Count; i++)
                 {
-                    if(j==roomLocations[i].x && k==roomLocations[i].y)
+                    if (j == roomLocations[i].x && k == roomLocations[i].y)
                     {
-                        obstacles[j][k]=roomLocations[i];
+                        obstacles[j][k] = roomLocations[i];
                     }
                 }
 
@@ -659,7 +661,7 @@ public class Room{
 
     public void GetDoors(List<GameObject> doors)//Returns The rooms reffrences to its doors game object
     {
-        if (doors.Count<0)
+        if (doors.Count < 0)
         {
             doors.Add(exit);
             doors.Add(entrance);
@@ -686,7 +688,7 @@ public class Room{
 
     public void SetRoomDifficulty()
     {
-       
+
     }
 
 

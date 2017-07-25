@@ -2,82 +2,98 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LancerController : BaseEnemy {
+public class LancerController : BaseEnemy
+{
 
     public float chargeSpeed;
+    public float MediumchargeSpeed;
+    public float HardchargeSpeed;
 
     private bool charging = false;
     private float chargeTime = 1f;
     public float chargeCounter = 0f;
 
     private bool waiting = false;
-    private float waitTime = 2f;
+    public float waitTime = 2f;
+    public float MediumWaitTime;
+    public float HardWaitTime;
     public float waitCounter = 0f;
 
     public Vector3 targetLocation;
     private Vector3 moveVector;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         Set_Attack_Time(1.5f);
         Set_Attacking(true);
+        anim = this.gameObject.GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(!charging && !waiting)
+    // Update is called once per frame
+    void Update()
+    {
+        Check_HP();
+        if (Check_if_Dying())
+        {
+            Die();
+        }
+
+        if (!CheckDifficulty())
+        {
+            Set_Values(Get_Difficulty());
+            Set_Current_Difficulty(Get_Difficulty());
+        }
+
+        if (Get_Stunned())
+        {
+            anim.SetBool("Stunned", true);
+            Attack_Complete();
+        }
+
+        if (!charging && !waiting && !Get_Stunned())
         {
             Set_Direction();
+            Flip();
         }
         checkInvincible();
-        Check_If_Dead();
 
 
-        if (Get_Attacking())
+
+        if (Get_Attacking() && !Get_Stunned())
         {
             Prepare_Attack2();
-            if(chargeTime <= chargeCounter)
+            if (chargeTime <= chargeCounter)
             {
+                anim.SetBool("Attacking", true);
+                anim.SetBool("Charging", false);
                 Attack_Player();
+            }
+            else if (!waiting)
+            {
+                anim.SetBool("Charging", true);
             }
         }
 
-        if(waitTime <= waitCounter)
+        if (waitTime <= waitCounter)
         {
-            waitCounter = 0;
-            waiting = false;
-        }
-	}
-
-    public void SetValues(int val)
-    {
-        Set_Difficulty(val);
-        switch (val)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
+            if (!Get_Stunned())
+            {
+                anim.SetBool("Stunned", false);
+                waitCounter = 0;
+                waiting = false;
+            }
         }
     }
 
     private void Increment_Counters()
     {
-        if(charging)
+        if (charging)
         {
             chargeCounter += .25f;
         }
 
-        if(waiting)
+        if (waiting)
         {
             waitCounter += .25f;
         }
@@ -90,7 +106,7 @@ public class LancerController : BaseEnemy {
 
     private void Prepare_Attack()
     {
-        if(!waiting && !Get_Dying() && !charging)
+        if (!waiting && !Get_Dying() && !charging)
         {
             targetLocation = player.transform.position;
             moveVector = (targetLocation - this.gameObject.transform.position).normalized * chargeSpeed;
@@ -103,7 +119,7 @@ public class LancerController : BaseEnemy {
     {
         if (!waiting && !Get_Dying() && !charging)
         {
-            switch(direction)
+            switch (direction)
             {
                 case 0:
                     targetLocation = player.transform.position;
@@ -175,6 +191,8 @@ public class LancerController : BaseEnemy {
         if (collision.gameObject.CompareTag("Wall"))
         {
             Attack_Complete();
+            anim.SetBool("Stunned", true);
+            anim.SetBool("Attacking", false);
         }
     }
 
@@ -191,6 +209,27 @@ public class LancerController : BaseEnemy {
                 player_con.Deal_Damage(TouchDamage);
             }
             //Attack_Complete();
+        }
+    }
+
+    private void Set_Values(int val)
+    {
+        switch (val)
+        {
+            case 1:
+                health = MediumHealth;
+                AttackDamage = MediumAttackDamage;
+                TouchDamage = MediumTouchDamage;
+                waitTime = MediumWaitTime;
+                chargeSpeed = MediumchargeSpeed;
+                break;
+            case 2:
+                health = HardHealth;
+                AttackDamage = HardAttackDamage;
+                TouchDamage = HardTouchDamage;
+                waitTime = HardWaitTime;
+                chargeSpeed = HardchargeSpeed;
+                break;
         }
     }
 }
