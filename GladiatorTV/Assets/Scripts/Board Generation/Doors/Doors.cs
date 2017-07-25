@@ -54,8 +54,8 @@ public class Doors : MonoBehaviour {
 
     public void RoomTriggered()
     {
-        EventSystem system;
-        system = GetComponentInParent<EventSystem>();
+        DoorEventSystem system;
+        system = GetComponentInParent<DoorEventSystem>();
         system.ChangeRoom(parentroom);
     }
 

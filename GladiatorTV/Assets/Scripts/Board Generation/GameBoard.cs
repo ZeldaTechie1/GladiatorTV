@@ -47,6 +47,8 @@ public class GameBoard : MonoBehaviour
     public GameObject[] Objectives;
     public GameObject[] Enemies;
 
+    public EnemyManager EnemyManage;
+
 
     public int numberOfRooms = 3;
     public int tileSize = 64;
@@ -75,7 +77,7 @@ public class GameBoard : MonoBehaviour
     void Start()
     {
 
-
+        EnemyManage = gameObject.GetComponent<EnemyManager>();
 
         boardHolder = new GameObject("BoardHolder");
 
@@ -349,6 +351,7 @@ public class GameBoard : MonoBehaviour
         GameObject doorholder;
         BoxCollider2D doortrigger;
         Doors doorscript;
+        room.SetRoomDifficulty(RoomDifficulty());
 
 
         Vector3 newPosition = new Vector3(0, 0, 0);
@@ -590,6 +593,8 @@ public class GameBoard : MonoBehaviour
                     else if (Obstacles[j][k].member == Member.Enemy)
                     {
                         currentObstacle = Enemies[Obstacles[j][k].id];
+                        EnemyManage.SpawnEnemy(currentRoom.Difficulty, newPosition);
+                        
 
                     }
                 }

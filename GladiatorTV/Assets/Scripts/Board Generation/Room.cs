@@ -686,9 +686,9 @@ public class Room
         AdjacentRooms.Add(Roomlocal);
     }
 
-    public void SetRoomDifficulty()
+    public void SetRoomDifficulty(int dif)
     {
-
+        Difficulty = dif;
     }
 
 

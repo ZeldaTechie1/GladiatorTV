@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventSystem : MonoBehaviour {
+public class DoorEventSystem : MonoBehaviour {
 
 
     List<Location> RoomLocations;// List of Room Locations
