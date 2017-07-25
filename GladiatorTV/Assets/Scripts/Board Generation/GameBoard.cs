@@ -6,26 +6,26 @@ using UnityEngine;
 
 public enum Tiles
 {
-    Floor,Wall,Crowd,Door,Trap,Enemy,
+    Floor, Wall, Crowd, Door, Trap, Enemy,
 }
 
 public struct Location
 {
-   public int x;
-   public int y;
-   public int id;
-   public Member member;
+    public int x;
+    public int y;
+    public int id;
+    public Member member;
 
     public Location(int X, int Y)
     {
         x = X;
         y = Y;
         id = 0;
-        member=Member.NULL;
+        member = Member.NULL;
 
     }
 
-    public Location(int X, int Y, int ID ,Member MEM)
+    public Location(int X, int Y, int ID, Member MEM)
     {
         x = X;
         y = Y;
@@ -36,7 +36,8 @@ public struct Location
 }
 
 
-public class GameBoard : MonoBehaviour {
+public class GameBoard : MonoBehaviour
+{
 
 
     public GameObject[] Walls;
@@ -47,31 +48,32 @@ public class GameBoard : MonoBehaviour {
     public GameObject[] Enemies;
 
 
-    public int numberOfRooms=3;
-    public int tileSize=64;
+    public int numberOfRooms = 3;
+    public int tileSize = 64;
 
     public int numberOfDeadend;
 
-    public int deadendRoomsPrecentage =25;// determines the precentage chance a room spawns a dead end room.
+    public int deadendRoomsPrecentage = 25;// determines the precentage chance a room spawns a dead end room.
 
     public int roomHeight = 11;// Height of the room
     public int roomWidth = 11;// Width of the room
 
     public int boardHeight = 100; // Height of the board
     public int boardWidth = 100;// Width of the board
-    
+
     public Room[][] Board;
     public GameObject boardHolder;
 
-    
+
 
 
     private Vector3 Origin;
-    public List<Location> roomLocation= new List<Location>();// Location For all the rooms in the Board Array. The Members and id of these are NULL because only there X and Y coordinates are needed   
+    public List<Location> roomLocation = new List<Location>();// Location For all the rooms in the Board Array. The Members and id of these are NULL because only there X and Y coordinates are needed   
     public List<Location> deadEndLocation = new List<Location>();// Location For all the Deadend rooms in the Board Array. The Members and id of these are NULL because only there X and Y coordinates are needed   
     public List<GameObject> roomDoors = new List<GameObject>();
 
-    void Start () {
+    void Start()
+    {
 
 
 
@@ -83,12 +85,12 @@ public class GameBoard : MonoBehaviour {
         Board = new Room[boardWidth][];
 
         // Go through all the Board Arrays...
-        for (int j = 0; j <Board.Length; j++)
+        for (int j = 0; j < Board.Length; j++)
         {
             // ... and set each Board array is the correct number of rows.
             Board[j] = new Room[boardHeight];
 
-            for(int k = 0; k < Board[j].Length; k++)
+            for (int k = 0; k < Board[j].Length; k++)
             {
                 Board[j][k] = null;
             }
@@ -101,58 +103,58 @@ public class GameBoard : MonoBehaviour {
 
     private void PopulateBoard()
     {
-      
 
-        Direction enterance=Direction.South;
-        Direction exit=Direction.North;
+
+        Direction enterance = Direction.South;
+        Direction exit = Direction.North;
 
         bool final = true;
 
         Location roomIndex;
-        
 
-        int boardX = boardHeight/2 ;// Starts the Room population in the center of the game board.
-        int boardY = boardWidth/2 ;
+
+        int boardX = boardHeight / 2;// Starts the Room population in the center of the game board.
+        int boardY = boardWidth / 2;
 
         Vector3 populatePosition = new Vector3(0, 0, 0);
 
 
 
-        for (int i=0; i<numberOfRooms; i++)
+        for (int i = 0; i < numberOfRooms; i++)
         {
             Board[boardX][boardY] = new Room();
 
-          
 
-            GameObject parent = new GameObject("Room"+(i+1));
+
+            GameObject parent = new GameObject("Room" + (i + 1));
 
             parent.transform.SetParent(boardHolder.transform);// Makes Sure that the Parent Transform of all of the rooms is the same;
-            
+
             enterance = OppisiteDirection(exit);// Sets the entrance value opposite to the last rooms exit
 
-            populatePosition.x =Origin.x+ boardX*(roomWidth*tileSize ); // Location of rooms location on the X axis in reffrence to the Game Board;
-            populatePosition.y =Origin.y+ boardY*(roomHeight*tileSize);// Location of rooms location on the Y axis in reffrence to the Game Board;
+            populatePosition.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
+            populatePosition.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the Y axis in reffrence to the Game Board;
 
             parent.transform.SetPositionAndRotation(populatePosition, Quaternion.identity);
 
-            if (i==0)
+            if (i == 0)
             {
-               
 
-                roomIndex.x=boardX;
+
+                roomIndex.x = boardX;
                 roomIndex.y = boardY;
                 roomIndex.id = 0;
                 roomIndex.member = Member.NULL;
                 roomLocation.Add(roomIndex); // Adds Room locations to list for later use.
-                
-                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight, exit,parent);
-                BuildRoom(Board[boardX][boardY],populatePosition,false); //  buildRoom(Room room, Vector3 origin)
+
+                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, exit, parent);
+                BuildRoom(Board[boardX][boardY], populatePosition, false); //  buildRoom(Room room, Vector3 origin)
 
 
 
                 boardY++; // Since The exit is always north for the first room the Y position is always increased
             }
-            else if(i==numberOfRooms-1)
+            else if (i == numberOfRooms - 1)
             {
 
                 roomIndex.x = boardX;
@@ -161,14 +163,14 @@ public class GameBoard : MonoBehaviour {
                 roomIndex.member = Member.NULL;
                 roomLocation.Add(roomIndex); // Adds Room locations to list for later use.
 
-                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight,enterance,final,parent);
-                BuildRoom(Board[boardX][boardY], populatePosition,false);
+                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, final, parent);
+                BuildRoom(Board[boardX][boardY], populatePosition, false);
             }
 
             else
             {
-                bool Deadend= GetIsDeadEnd();
-                
+                bool Deadend = GetIsDeadEnd();
+
                 bool okDirection = false;
 
                 roomIndex.x = boardX;
@@ -176,13 +178,13 @@ public class GameBoard : MonoBehaviour {
                 roomIndex.id = 0;
                 roomIndex.member = Member.NULL;
                 roomLocation.Add(roomIndex); // Adds Room locations to list for later use.
-                
-                while(!okDirection)
+
+                while (!okDirection)
                 {
                     Direction test = RandomDirection();
                     Direction deadend;// direction for dead end room;
 
-                    if (test!=enterance)// Test To see if the next room would be overlapping or out of range.
+                    if (test != enterance)// Test To see if the next room would be overlapping or out of range.
                     {
                         try
                         {
@@ -193,20 +195,20 @@ public class GameBoard : MonoBehaviour {
 
                                     if (boardY < boardHeight && Board[boardX][boardY + 1] == null)
                                     {
-                                       // Debug.LogError("North");
+                                        // Debug.LogError("North");
 
                                         exit = test;
                                         okDirection = true;
-                                        if(Deadend)// if ther is a dead end ...
+                                        if (Deadend)// if ther is a dead end ...
                                         {
-                                           deadend=DeadEnd(exit,enterance, boardX, boardY);
-                                           
-                                           if(deadend!=Direction.Null)// ...and the generateed direction isn't null
+                                            deadend = DeadEnd(exit, enterance, boardX, boardY);
+
+                                            if (deadend != Direction.Null)// ...and the generateed direction isn't null
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit,deadend,parent);// set up room
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent);// set up room
                                                 BuildDeadEnd(deadend, boardX, boardY);
                                             }
-                                           else
+                                            else
                                             {
                                                 Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
                                             }
@@ -214,16 +216,16 @@ public class GameBoard : MonoBehaviour {
                                         }
                                         else
                                         {
-                                          Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
                                         }
 
-                                        BuildRoom(Board[boardX][boardY], populatePosition,false);
+                                        BuildRoom(Board[boardX][boardY], populatePosition, false);
                                         boardY++;
                                     }
                                     break;
 
                                 case Direction.East:
-                              
+
                                     if (boardX < boardWidth && Board[boardX + 1][boardY] == null)
                                     {
 
@@ -251,7 +253,7 @@ public class GameBoard : MonoBehaviour {
                                             Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
                                         }
 
-                                        BuildRoom(Board[boardX][boardY], populatePosition,false);
+                                        BuildRoom(Board[boardX][boardY], populatePosition, false);
 
 
                                         boardX++;
@@ -283,7 +285,7 @@ public class GameBoard : MonoBehaviour {
                                             Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
                                         }
 
-                                        BuildRoom(Board[boardX][boardY], populatePosition,false);
+                                        BuildRoom(Board[boardX][boardY], populatePosition, false);
 
                                         boardY--;
                                     }
@@ -315,32 +317,32 @@ public class GameBoard : MonoBehaviour {
                                             Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
                                         }
 
-                                        BuildRoom(Board[boardX][boardY], populatePosition,false);
+                                        BuildRoom(Board[boardX][boardY], populatePosition, false);
                                         boardX--;
                                     }
                                     break;
 
                                 default:
                                     Debug.Log("Error: Not valid Direction");
-                                    
+
                                     break;
                             }
                         }
                         catch
                         {
-                            Debug.LogError("Error: Unable to Populate Room " + (1+i));
+                            Debug.LogError("Error: Unable to Populate Room " + (1 + i));
                             okDirection = false;
                         }
                     }
                 }
 
             }
-   
+
         }
 
     }
 
-    private void BuildRoom(Room room, Vector3 origin,bool isDeadEnd)
+    private void BuildRoom(Room room, Vector3 origin, bool isDeadEnd)
     {
         Tiles[][] tiles = room.GetRoomTiles();
         GameObject Parent = room.GetParent();
@@ -362,7 +364,7 @@ public class GameBoard : MonoBehaviour {
 
                 switch (tiles[j][k])
                 {
-                    
+
                     case Tiles.Wall:
 
                         newPosition.z = 0.25f;
@@ -379,32 +381,32 @@ public class GameBoard : MonoBehaviour {
                         doorholder = Instantiate(currentTile, newPosition, Quaternion.identity);
 
                         doorholder.transform.SetParent(Parent.transform);
-                       /* 
-                        if(room.GetExit().x==localhold.x && room.GetExit().y == localhold.y)
-                        {
-                            switch(room.EXIT)
-                            {
-                                case Direction.North:
-                                    
-                                    
+                        /* 
+                         if(room.GetExit().x==localhold.x && room.GetExit().y == localhold.y)
+                         {
+                             switch(room.EXIT)
+                             {
+                                 case Direction.North:
 
-                                    
-                                    break;
-                                case Direction.East:
 
-                                    break;
 
-                                case Direction.South:
 
-                                    break;
+                                     break;
+                                 case Direction.East:
 
-                                case Direction.West:
-                                    
-                                    break;
+                                     break;
 
-                            }
-                            
-                        }*/
+                                 case Direction.South:
+
+                                     break;
+
+                                 case Direction.West:
+
+                                     break;
+
+                             }
+
+                         }*/
 
                         break;
 
@@ -418,14 +420,14 @@ public class GameBoard : MonoBehaviour {
 
     }
 
-    private void PopulateRoom(Room currentRoom,Vector3 origin, bool isDeadEnd)
+    private void PopulateRoom(Room currentRoom, Vector3 origin, bool isDeadEnd)
     {
-        int trapIDBase=0;// The base value of the trap ID
-        int objectiveIDBase=Traps.Length;// The base value of the objective IDs. Since the Locations Generated hold an ID this is required to locate the objectives in ther Objective Array in Game Board.
+        int trapIDBase = 0;// The base value of the trap ID
+        int objectiveIDBase = Traps.Length;// The base value of the objective IDs. Since the Locations Generated hold an ID this is required to locate the objectives in ther Objective Array in Game Board.
 
-        currentRoom.ObstacleSetup(Traps.Length,Objectives.Length,Enemies.Length);
+        currentRoom.ObstacleSetup(Traps.Length, Objectives.Length, Enemies.Length);
 
-        Location[][] Obstacles =currentRoom.GetObstacles();
+        Location[][] Obstacles = currentRoom.GetObstacles();
         GameObject Parent = new GameObject("Obstacles");
 
         Parent.transform.SetParent(currentRoom.GetParent().transform);
@@ -442,16 +444,17 @@ public class GameBoard : MonoBehaviour {
             {
                 newPosition.y = origin.y + (k * (tileSize));
 
-                if(Obstacles[j][k].member!=Member.NULL)
+                if (Obstacles[j][k].member != Member.NULL)
                 {
-                    if (Obstacles[j][k].member==Member.Objective)
-                        {   currentObstacle = Objectives[Obstacles[j][k].id];
-                            Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
-                        }
+                    if (Obstacles[j][k].member == Member.Objective)
+                    {
+                        currentObstacle = Objectives[Obstacles[j][k].id];
+                        Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                    }
                     else if (Obstacles[j][k].member == Member.Trap)
                     {
-                             currentObstacle = Traps[Obstacles[j][k].id];
-                             Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        currentObstacle = Traps[Obstacles[j][k].id];
+                        Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
                     }
 
                     else if (Obstacles[j][k].member == Member.Enemy)
@@ -460,20 +463,20 @@ public class GameBoard : MonoBehaviour {
                         Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
                     }
                 }
-                    
+
             }
         }
 
-     }
-        
+    }
+
 
 
 
     private Direction RandomDirection()
     {
-        int dir = Random.Range(0,4);
+        int dir = Random.Range(0, 4);
 
-        switch(dir)
+        switch (dir)
         {
 
             case 0:
@@ -539,7 +542,7 @@ public class GameBoard : MonoBehaviour {
 
     private bool GetIsDeadEnd()
     {
-        int choice =Random.Range(1,100);
+        int choice = Random.Range(1, 100);
 
         return choice < (deadendRoomsPrecentage);
     }
@@ -570,7 +573,7 @@ public class GameBoard : MonoBehaviour {
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
 
-                    BuildRoom(Board[boardX][boardY], position,true);
+                    BuildRoom(Board[boardX][boardY], position, true);
 
                     break;
 
@@ -578,13 +581,13 @@ public class GameBoard : MonoBehaviour {
                     boardX++;
 
                     Board[boardX][boardY] = new Room();
-                
+
                     Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent);
 
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
 
-                    BuildRoom(Board[boardX][boardY], position,true);
+                    BuildRoom(Board[boardX][boardY], position, true);
 
                     break;
 
@@ -598,7 +601,7 @@ public class GameBoard : MonoBehaviour {
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
 
-                    BuildRoom(Board[boardX][boardY], position,true);
+                    BuildRoom(Board[boardX][boardY], position, true);
 
                     break;
 
@@ -613,7 +616,7 @@ public class GameBoard : MonoBehaviour {
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
 
-                    BuildRoom(Board[boardX][boardY], position,true);
+                    BuildRoom(Board[boardX][boardY], position, true);
                     break;
             }
 
@@ -627,9 +630,10 @@ public class GameBoard : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
 
-		
-	}
+
+    }
 }
