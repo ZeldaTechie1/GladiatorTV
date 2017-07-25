@@ -243,10 +243,10 @@ MonoBehaviour:
   - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
   - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
   Enemies:
-  - {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
-  - {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
-  - {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
-  - {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618, type: 2}
+  - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
+  - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
+  - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
+  - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
   numberOfRooms: 4
   tileSize: 64
   numberOfDeadend: 0

@@ -251,8 +251,8 @@ MonoBehaviour:
     y: 0
     width: 412
     height: 427
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -362,20 +362,20 @@ MonoBehaviour:
     height: 406
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5a050000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: de0ffeff0613fefff01cfeff4e31feffe83efeff1042feffb04dfeff4eeafeff7eedfeff943dffffc440ffffea78ffff107cffff4484ffff58faffffdefbffff00000000
+    m_ExpandedIDs: fa34ffffc639fffffa3cfffffe3cffffd051ffff5c53ffffd054ffff0458ffff0858ffff0a67fffffa6bffff326fffff7888fffff289ffff2a8dffff6894ffff9897ffffa099ffff5c9bffff8c9effff909effff26a5ffffdefbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GameBoard
-      m_OriginalName: GameBoard
+      m_Name: Door Tile(Clone)
+      m_OriginalName: Door Tile(Clone)
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 9978
+      m_UserData: -44196
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -457,19 +457,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Board Generation/Doors
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Board Generation/Doors
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Benjamin\Documents\GladiatorTV\GladiatorTV
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3a250000
-    m_LastClickedID: 9530
-    m_ExpandedIDs: 0000000012250000ca250000082600002626000042260000502600004a27000000ca9a3bffffff7f
+    m_SelectedIDs: 44260000
+    m_LastClickedID: 9796
+    m_ExpandedIDs: 000000001425000080250000cc2500000a2600002826000044260000522600005c27000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -497,7 +497,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000122500007e250000082600002626000042260000502600004a270000
+    m_ExpandedIDs: 0000000014250000cc2500000a2600002826000044260000522600005c270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -655,14 +655,14 @@ MonoBehaviour:
     width: 946
     height: 452
   m_SceneLighting: 1
-  lastFramingTime: 27944.376185523266
+  lastFramingTime: 10908.959929196637
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.28, y: -16.779999, z: 0}
+    m_Target: {x: 35520, y: 35840, z: 0.25}
     speed: 2
-    m_Value: {x: 1.28, y: -16.779999, z: 0}
+    m_Value: {x: 35520, y: 35840, z: 0.25}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -689,9 +689,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22
+    m_Target: 422.4279
     speed: 2
-    m_Value: 22
+    m_Value: 422.4279
   m_Ortho:
     m_Target: 1
     speed: 2

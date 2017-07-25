@@ -145,7 +145,7 @@ public class GameBoard : MonoBehaviour {
                 roomIndex.member = Member.NULL;
                 roomLocation.Add(roomIndex); // Adds Room locations to list for later use.
                 
-                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight, exit,parent);
+                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight, exit,parent,roomIndex);
                 BuildRoom(Board[boardX][boardY],populatePosition,false); //  buildRoom(Room room, Vector3 origin)
 
 
@@ -161,7 +161,7 @@ public class GameBoard : MonoBehaviour {
                 roomIndex.member = Member.NULL;
                 roomLocation.Add(roomIndex); // Adds Room locations to list for later use.
 
-                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight,enterance,final,parent);
+                Board[boardX][boardY].SetupRoom(tileSize,roomWidth, roomHeight,enterance,final,parent,roomIndex);
                 BuildRoom(Board[boardX][boardY], populatePosition,false);
             }
 
@@ -203,18 +203,18 @@ public class GameBoard : MonoBehaviour {
                                            
                                            if(deadend!=Direction.Null)// ...and the generateed direction isn't null
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit,deadend,parent);// set up room
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit,deadend,parent,roomIndex);// set up room
                                                 BuildDeadEnd(deadend, boardX, boardY);
                                             }
                                            else
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent,roomIndex);
                                             }
 
                                         }
                                         else
                                         {
-                                          Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                          Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent,roomIndex);
                                         }
 
                                         BuildRoom(Board[boardX][boardY], populatePosition,false);
@@ -237,18 +237,18 @@ public class GameBoard : MonoBehaviour {
 
                                             if (deadend != Direction.Null)
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent, roomIndex);
                                                 BuildDeadEnd(deadend, boardX, boardY);
                                             }
                                             else
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                             }
 
                                         }
                                         else
                                         {
-                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                         }
 
                                         BuildRoom(Board[boardX][boardY], populatePosition,false);
@@ -269,18 +269,18 @@ public class GameBoard : MonoBehaviour {
 
                                             if (deadend != Direction.Null)
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent,roomIndex);
                                                 BuildDeadEnd(deadend, boardX, boardY);
                                             }
                                             else
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                             }
 
                                         }
                                         else
                                         {
-                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                         }
 
                                         BuildRoom(Board[boardX][boardY], populatePosition,false);
@@ -301,18 +301,18 @@ public class GameBoard : MonoBehaviour {
 
                                             if (deadend != Direction.Null)
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, deadend, parent, roomIndex);
                                                 BuildDeadEnd(deadend, boardX, boardY);
                                             }
                                             else
                                             {
-                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                                Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                             }
 
                                         }
                                         else
                                         {
-                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent);
+                                            Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, enterance, exit, parent, roomIndex);
                                         }
 
                                         BuildRoom(Board[boardX][boardY], populatePosition,false);
@@ -345,6 +345,9 @@ public class GameBoard : MonoBehaviour {
         Tiles[][] tiles = room.GetRoomTiles();
         GameObject Parent = room.GetParent();
         GameObject doorholder;
+        BoxCollider2D doortrigger;
+        Doors doorscript; 
+
 
         Vector3 newPosition = new Vector3(0, 0, 0);
 
@@ -378,33 +381,160 @@ public class GameBoard : MonoBehaviour {
                         currentTile = Doors[0];
                         doorholder = Instantiate(currentTile, newPosition, Quaternion.identity);
 
-                        doorholder.transform.SetParent(Parent.transform);
-                       /* 
-                        if(room.GetExit().x==localhold.x && room.GetExit().y == localhold.y)
+                        doorholder.transform.SetParent(Parent.transform); 
+                        if(room.GetExit().x==localhold.x && room.GetExit().y == localhold.y) // moves the room enter trigger to infront of the doors.
                         {
-                            switch(room.EXIT)
+                            switch(room.EXIT) 
                             {
                                 case Direction.North:
-                                    
-                                    
 
-                                    
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset=new Vector2(0, -16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+                                   
+
                                     break;
                                 case Direction.East:
+                                  
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(-16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
 
                                     break;
 
                                 case Direction.South:
 
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(0, +16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
                                     break;
 
                                 case Direction.West:
-                                    
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(+16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+
                                     break;
 
                             }
                             
-                        }*/
+                        }
+                        if (room.GetEntrance().x == localhold.x && room.GetEntrance().y == localhold.y)
+                        {
+                            switch (room.ENTER)
+                            {
+                                case Direction.North:
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(0, -16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+
+                                    break;
+                                case Direction.East:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(-16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+                                    break;
+
+                                case Direction.South:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(0, +16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+                                    break;
+
+                                case Direction.West:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(+16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+
+                                   
+                                    break;
+
+                            }
+
+                        }
+                        if (room.GetDeadEnd().x == localhold.x && room.GetExit().y == localhold.y)
+                        {
+                            switch (room.EXIT)
+                            {
+                                case Direction.North:
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(0, -16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+
+                                    break;
+                                case Direction.East:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(-16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+                                    break;
+
+                                case Direction.South:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(0, +16);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+                                    break;
+
+                                case Direction.West:
+
+
+                                    doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
+                                    doortrigger.offset = new Vector2(+16, 0);
+
+                                    doorscript = doorholder.GetComponent<Doors>();
+                                    doorscript.SetRoom(room);
+
+
+                                    break;
+                            }
+
+                        }
 
                         break;
 
@@ -420,7 +550,7 @@ public class GameBoard : MonoBehaviour {
 
     private void PopulateRoom(Room currentRoom,Vector3 origin, bool isDeadEnd)
     {
-        int trapIDBase=0;// The base value of the trap ID
+       
         int objectiveIDBase=Traps.Length;// The base value of the objective IDs. Since the Locations Generated hold an ID this is required to locate the objectives in ther Objective Array in Game Board.
 
         currentRoom.ObstacleSetup(Traps.Length,Objectives.Length,Enemies.Length);
@@ -457,7 +587,7 @@ public class GameBoard : MonoBehaviour {
                     else if (Obstacles[j][k].member == Member.Enemy)
                     {
                         currentObstacle = Enemies[Obstacles[j][k].id];
-                        Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        
                     }
                 }
                     
@@ -551,6 +681,8 @@ public class GameBoard : MonoBehaviour {
         GameObject parent = new GameObject("Dead End Room" + numberOfDeadend);
         numberOfDeadend++;
 
+        Location roomIndex = new Location(boardX, boardY);
+
         parent.transform.SetParent(boardHolder.transform);
 
         try
@@ -565,7 +697,7 @@ public class GameBoard : MonoBehaviour {
 
 
 
-                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent);
+                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent, roomIndex);
 
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
@@ -579,7 +711,7 @@ public class GameBoard : MonoBehaviour {
 
                     Board[boardX][boardY] = new Room();
                 
-                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent);
+                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent, roomIndex);
 
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
@@ -593,7 +725,7 @@ public class GameBoard : MonoBehaviour {
 
                     Board[boardX][boardY] = new Room();
 
-                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent);
+                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent, roomIndex);
 
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
@@ -608,7 +740,7 @@ public class GameBoard : MonoBehaviour {
 
                     Board[boardX][boardY] = new Room();
 
-                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent);
+                    Board[boardX][boardY].SetupRoom(tileSize, roomWidth, roomHeight, OppisiteDirection(deadend), false, parent, roomIndex);
 
                     position.x = Origin.x + boardX * (roomWidth * tileSize); // Location of rooms location on the X axis in reffrence to the Game Board;
                     position.y = Origin.y + boardY * (roomHeight * tileSize);// Location of rooms location on the y axis in reffrence to the Game Board;
@@ -624,6 +756,26 @@ public class GameBoard : MonoBehaviour {
         }
     }
 
+    private int RoomDifficulty()
+    {
+        TwitchChatController TCC = FindObjectOfType<TwitchChatController>();
+        
+        if(TCC.fame<25)
+        {
+            return 0;
+        }
+
+        else if(TCC.fame < 75)
+        {
+            return 1;
+        }
+
+        else
+        {
+            return 2;
+        }
+
+    }
 
 
     // Update is called once per frame
