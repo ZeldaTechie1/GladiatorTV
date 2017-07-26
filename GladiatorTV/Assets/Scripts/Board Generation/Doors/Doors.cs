@@ -7,6 +7,8 @@ public class Doors : MonoBehaviour {
     BoxCollider2D doorBox; // The box collider attached to the door;
     bool doorOpen = false;
     Room parentroom;
+    [SerializeField]
+    GameObject gameBoard;
 
 	// Use this for initialization
 	void Start () {
@@ -55,7 +57,7 @@ public class Doors : MonoBehaviour {
     public void RoomTriggered()
     {
         DoorEventSystem system;
-        system = GetComponentInParent<DoorEventSystem>();
+        system = gameBoard.GetComponent<DoorEventSystem>();
         system.ChangeRoom(parentroom);
     }
 
