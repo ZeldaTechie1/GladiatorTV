@@ -3,21 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
-  - Wall
   - Enemy
   - Objective
->>>>>>> Spector-Stuff
-=======
-  tags:
-  - Enemy
-  - Wall
-  - BOARD
->>>>>>> Room_Generation
   layers:
   - Default
   - TransparentFX
@@ -27,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - Floor
-  - PlayArea
-  - Cover
+  - 
+  - 
+  - 
   - 
   - 
   - 
