@@ -26,6 +26,7 @@ public class DoorEventSystem : MonoBehaviour {
     int firstRoomY;
     public GameObject camera;
     public RoomCamera roomcam;
+    bool doorsOpen = false;
 
 
 	// Use this for initialization
@@ -49,7 +50,7 @@ public class DoorEventSystem : MonoBehaviour {
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
         CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
-        Debug.Log("COUNT---------------->" + CurrentRoom.AdjacentRooms.Count);
+       
         GetAllDoors();    
         ObjectiveCheck();      
 
@@ -62,8 +63,11 @@ public class DoorEventSystem : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-
-        ObjectiveCheck();
+        if(!doorsOpen&&!CurrentRoom.ObjectiveComplete)
+        {
+            ObjectiveCheck();
+        }
+        
 
         if(CurrentRoomType==Type.Survive && !CurrentRoom.TimeIsUp)
         {
@@ -207,7 +211,7 @@ public class DoorEventSystem : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Door is Closed!");
+                
             }
         }
 
@@ -259,7 +263,6 @@ public class DoorEventSystem : MonoBehaviour {
             door = board.Board[DeadEndRooms[i].x][DeadEndRooms[i].y].entrance;
             if (door != null)
             {
-                Debug.Log("Hello");
                 Doors.Add(door);
             }
             door = board.Board[DeadEndRooms[i].x][DeadEndRooms[i].y].deadend;
