@@ -35,18 +35,21 @@ public class Room
     private Location deadendLocation; // location of the deadend in the room
     private Location enterLocation; // location of the entrance location
     private Location exitLocation;// location of the exit.
+    public Location myLocation;
 
     private Type type; // the type of room being generated
 
-    private GameObject exit = null; // reffrence to the Exit Door Game object
-    private GameObject entrance = null; // reffrence to the Entrance Door Game object
-    private GameObject deadend = null; // reffrence to the Dead End Door Game object
+    private GameObject Parent;// Refrence to the parent transform
+    public GameObject exit = null; // reffrence to the Exit Door Game object
+    public GameObject entrance = null; // reffrence to the Entrance Door Game object
+    public GameObject deadend = null; // reffrence to the Dead End Door Game object
 
     private int roomWidth; // width of the room
     private int roomHeight;// Height of the room
     private int TileSize;// The Size of the floor and wall tiles
-    private GameObject Parent;// Refrence to the parent transform
+
     private List<Location> roomLocations;// Locations of all the obstacles that need to be placed.
+    public List<Location> AdjacentRooms;
 
     public RoomBluePrint bluePrint;// refrence to the RoomBluePrint specific to this room;
 
@@ -54,6 +57,7 @@ public class Room
     public bool TimeIsUp = false; // Keeps Track of room time for Survival type;
     public float SurviveTime = 10; // The Amount of time that will elapse in a Survival room
     public string flavorText;
+    public int Difficulty;
 
     public Direction EXIT = Direction.Null;
     public Direction ENTER = Direction.Null;
@@ -62,8 +66,10 @@ public class Room
 
 
     // Overloaded Method for making a room with only an exit 
-    public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent)
+    public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
+        myLocation = ThisRoom;
+
         EXIT = exit;
 
         Parent = parent;
@@ -89,6 +95,7 @@ public class Room
                 exitX = width / 2;
                 exitY = height - 1;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
 
                 break;
             case Direction.East:
@@ -96,20 +103,22 @@ public class Room
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
 
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
+
                 break;
 
             case Direction.South:
                 exitX = width / 2;
                 exitY = 0;
                 exitLocation = new Location(exitX, exitY);
-
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 exitX = 0;
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
-
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -145,7 +154,7 @@ public class Room
     }
 
     // Overloaded Method for making a room with an exit and an entrance
-    public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, GameObject parent)
+    public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, GameObject parent, Location ThisRoom)
     {
         EXIT = exit;
         ENTER = enterance;
@@ -184,30 +193,36 @@ public class Room
             tiles[i] = new Tiles[height];
         }
 
-
         switch (exit)
         {
             case Direction.North:
                 exitX = width / 2;
                 exitY = height - 1;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
+
                 break;
             case Direction.East:
                 exitX = width - 1;
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
+
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
+
                 break;
 
             case Direction.South:
                 exitX = width / 2;
                 exitY = 0;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 exitX = 0;
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -217,23 +232,27 @@ public class Room
                 enterX = width / 2;
                 enterY = height - 1;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
                 break;
             case Direction.East:
                 enterX = width - 1;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
                 break;
 
             case Direction.South:
                 enterX = width / 2;
                 enterY = 0;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 enterX = 0;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -274,7 +293,7 @@ public class Room
     }
 
     // Overloaded Method for making a room with only an entrance
-    public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent)
+    public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent, Location ThisRoom)
     {
         ENTER = enterance;
         Parent = parent;
@@ -322,23 +341,27 @@ public class Room
                 enterX = width / 2;
                 enterY = height - 1;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
                 break;
             case Direction.East:
                 enterX = width - 1;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
                 break;
 
             case Direction.South:
                 enterX = width / 2;
                 enterY = 0;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 enterX = 0;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -373,7 +396,7 @@ public class Room
     }
 
     //Overloaded Method for Making a room with dead ends;
-    public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, Direction Deadend, GameObject parent)
+    public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, Direction Deadend, GameObject parent, Location ThisRoom)
     {
         EXIT = exit;
         ENTER = enterance;
@@ -419,23 +442,30 @@ public class Room
                 exitX = width / 2;
                 exitY = height - 1;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
+
                 break;
             case Direction.East:
                 exitX = width - 1;
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
+
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
+
                 break;
 
             case Direction.South:
                 exitX = width / 2;
                 exitY = 0;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 exitX = 0;
                 exitY = height / 2;
                 exitLocation = new Location(exitX, exitY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -445,23 +475,27 @@ public class Room
                 enterX = width / 2;
                 enterY = height - 1;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
                 break;
             case Direction.East:
                 enterX = width - 1;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
                 break;
 
             case Direction.South:
                 enterX = width / 2;
                 enterY = 0;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 enterX = 0;
                 enterY = height / 2;
                 enterLocation = new Location(enterX, enterY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -471,24 +505,28 @@ public class Room
                 deadendX = width / 2;
                 deadendY = height - 1;
                 deadendLocation = new Location(deadendX, deadendY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y + 1));
                 break;
 
             case Direction.East:
                 deadendX = width - 1;
                 deadendY = height / 2;
                 deadendLocation = new Location(deadendX, deadendY);
+                AddAdjacentRoom(new Location(myLocation.x + 1, myLocation.y));
                 break;
 
             case Direction.South:
                 deadendX = width / 2;
                 deadendY = 0;
                 deadendLocation = new Location(deadendX, deadendY);
+                AddAdjacentRoom(new Location(myLocation.x, myLocation.y - 1));
                 break;
 
             case Direction.West:
                 deadendX = 0;
                 deadendY = height / 2;
                 deadendLocation = new Location(deadendX, deadendY);
+                AddAdjacentRoom(new Location(myLocation.x - 1, myLocation.y));
                 break;
         }
 
@@ -551,6 +589,15 @@ public class Room
         Location Entrance = new Location(enterX, enterY);
 
         return Entrance;
+    }
+
+    public Location GetDeadEnd()//Returns The DeadEnd location in refrence to the room
+    {
+
+        Location deadend = new Location(enterX, enterY);
+
+        return deadend;
+
     }
 
     public Tiles[][] GetRoomTiles()// returns an array of tile types for the base room
@@ -632,6 +679,16 @@ public class Room
     public RoomBluePrint GetBluePrint()// Returns the rooms reffrence to its blue print
     {
         return bluePrint;
+    }
+
+    public void AddAdjacentRoom(Location Roomlocal)
+    {
+        AdjacentRooms.Add(Roomlocal);
+    }
+
+    public void SetRoomDifficulty()
+    {
+
     }
 
 

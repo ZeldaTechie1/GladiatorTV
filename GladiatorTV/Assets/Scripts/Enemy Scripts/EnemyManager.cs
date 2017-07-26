@@ -7,13 +7,13 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField]
     BaseEnemy[] enemies;
 
-    private void Update()
+    /*private void Update()
     {
         if(Input.GetButtonDown("Fire2"))
         {
             SpawnEnemy(Vector3.zero);
         }
-    }
+    }*/
     public void SpawnEnemy(Vector3 spawnLocation)
     {
         SpawnEnemy(0, spawnLocation);

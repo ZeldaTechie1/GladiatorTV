@@ -21,6 +21,24 @@ public class TwitchIRC : MonoBehaviour
     private System.Threading.Thread inProc, outProc;
     private void StartIRC()
     {
+        if(PlayerPrefs.HasKey("Token"))
+        {
+            oauth = PlayerPrefs.GetString("Token");
+        }
+        else
+        {
+            Debug.LogError("Token is required, before the game starts! This shouldn't happen if the menu scene is done properly.");
+            return;
+        }
+        if(PlayerPrefs.HasKey("Username"))
+        {
+            channelName = nickName = PlayerPrefs.GetString("Username");
+        }
+        else
+        {
+            Debug.LogError("Username is required, please input this! This shouldn't happen if the menu scene is done properly");
+            return;
+        }
         System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
         sock.Connect(server, port);
         if (!sock.Connected)
@@ -43,6 +61,7 @@ public class TwitchIRC : MonoBehaviour
         //input proc
         inProc = new System.Threading.Thread(() => IRCInputProcedure(input, networkStream));
         inProc.Start();
+        Debug.Log("IRC HAS STARTED");
     }
     private void IRCInputProcedure(System.IO.TextReader input, System.Net.Sockets.NetworkStream networkStream)
     {
@@ -122,11 +141,11 @@ public class TwitchIRC : MonoBehaviour
     void Start()
     {
     }
-    void OnEnable()
+    /*void OnEnable()
     {
         stopThreads = false;
         StartIRC();
-    }
+    }*/
     void OnDisable()
     {
         stopThreads = true;
@@ -143,16 +162,25 @@ public class TwitchIRC : MonoBehaviour
     }
     void Update()
     {
-        lock (recievedMsgs)
+        if(Input.GetKeyDown(KeyCode.End))//for testing only, needs to be changed once game is done
         {
-            if (recievedMsgs.Count > 0)
+            stopThreads = false;
+            StartIRC();
+        }
+        if(oauth!="")
+        {
+            lock (recievedMsgs)
             {
-                for (int i = 0; i < recievedMsgs.Count; i++)
+                if (recievedMsgs.Count > 0)
                 {
-                    messageRecievedEvent.Invoke(recievedMsgs[i]);
+                    for (int i = 0; i < recievedMsgs.Count; i++)
+                    {
+                        messageRecievedEvent.Invoke(recievedMsgs[i]);
+                    }
+                    recievedMsgs.Clear();
                 }
-                recievedMsgs.Clear();
             }
         }
+        
     }
 }

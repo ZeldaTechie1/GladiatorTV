@@ -6,9 +6,13 @@ public class Doors : MonoBehaviour {
 
     BoxCollider2D doorBox; // The box collider attached to the door;
     bool doorOpen = false;
+    Room parentroom;
 
 	// Use this for initialization
 	void Start () {
+
+        doorBox = gameObject.transform.GetComponent<BoxCollider2D>();
+
 		
 	}
 	
@@ -36,20 +40,43 @@ public class Doors : MonoBehaviour {
             return false;
         }
     }
+
     public bool TryCloseDoor()
     {
         CloseDoor();
         return true;
     }
 
+    public void SetRoom(Room room)
+    {
+        parentroom = room;
+    }
+
+    public void RoomTriggered()
+    {
+        EventSystem system;
+        system = GetComponentInParent<EventSystem>();
+        system.ChangeRoom(parentroom);
+    }
+
     private void OpenDoor()
     {
         doorBox.enabled = false;
         doorOpen = true;
+ 
+        UpdateAnimation();
     }
     private void CloseDoor()
     {
         doorBox.enabled = true;
         doorOpen = false;
+        UpdateAnimation();
     }
+
+    private void UpdateAnimation()
+    {
+
+    }
+
+
 }

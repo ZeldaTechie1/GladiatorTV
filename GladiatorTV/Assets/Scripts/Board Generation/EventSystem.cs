@@ -7,6 +7,7 @@ public class EventSystem : MonoBehaviour {
 
     List<Location> RoomLocations;// List of Room Locations
     List<Location> DeadEndRooms;// List of Deadend Locations
+    List<GameObject> AdjoinningEntrances; 
     GameBoard BOARD;// Game Board Reffrence
 
     Room CurrentRoom;// Current Room Type
@@ -67,6 +68,11 @@ public class EventSystem : MonoBehaviour {
         CurrentRoom.GetDoors(CurrentRoomsDoors);
 
         TimeRemaining = CurrentRoom.SurviveTime;
+
+        if(!CurrentRoom.ObjectiveComplete)
+        {
+            CloseDoors();
+        }
 
         // <----------------------------------------------------------------ADD UPDATE CAMERA POSITION
         UpdateRoomFlavorText(CurrentRoom.flavorText);
@@ -157,7 +163,7 @@ public class EventSystem : MonoBehaviour {
     {
         for (int i = 0; i < CurrentRoomsDoors.Count; i++)
         {
-           if(!CurrentRoomsDoors[i].gameObject.GetComponent<Doors>().TryOpenDoor())
+           if(!CurrentRoomsDoors[i].GetComponent<Doors>().TryOpenDoor())
             {
                 Debug.Log("Door was already open!");
             }
@@ -166,17 +172,21 @@ public class EventSystem : MonoBehaviour {
                 Debug.Log("Door is open!");
             }
         }
+        
     }
 
-    public void OpenEntrance()
+    public void OpenEntrances()
     {
-        if (!CurrentRoomsDoors[1].gameObject.GetComponent<Doors>().TryOpenDoor())
+        for (int i = 0; i < AdjoinningEntrances.Count; i++)
         {
-            Debug.Log("Door was already open!");
-        }
-        else
-        {
-            Debug.Log("Door is open!");
+            if (!AdjoinningEntrances[i].GetComponent<Doors>().TryOpenDoor())
+            {
+                Debug.Log("Door was already open!");
+            }
+            else
+            {
+                Debug.Log("Door is open!");
+            }
         }
 
     }
@@ -205,6 +215,74 @@ public class EventSystem : MonoBehaviour {
     public void UpdateRoomFlavorText(string Flavatown)
     {
         roomFlavorText = Flavatown;
+    }
+    private void GetAdjecentEntrances()
+    {
+        GameBoard board = gameObject.GetComponent<GameBoard>();
+        GameObject door;
+        Direction adjoiningdoor;
+        Room Nextdoor;
+        Location check;
+
+
+        for(int i =0; i< CurrentRoom.AdjacentRooms.Count;i++)
+        {
+            check = CurrentRoom.AdjacentRooms[i];
+            Nextdoor = board.Board[check.x][check.y];
+            if(check.y<CurrentRoom.myLocation.y)
+            {
+                adjoiningdoor = Direction.North;
+            }
+            else if(check.y > CurrentRoom.myLocation.y)
+            {
+                adjoiningdoor = Direction.South;
+            }
+            else if (check.x < CurrentRoom.myLocation.x)
+            {
+                adjoiningdoor = Direction.West;
+            }
+            else 
+            {
+                adjoiningdoor = Direction.East;
+            }
+
+            if (Nextdoor.EXIT == adjoiningdoor)
+            {
+                AdjoinningEntrances.Add(Nextdoor.exit);
+            }
+            else if (Nextdoor.ENTER == adjoiningdoor) 
+            {
+                AdjoinningEntrances.Add(Nextdoor.entrance);
+            }
+            else if (Nextdoor.DEADEND == adjoiningdoor) 
+            {
+                AdjoinningEntrances.Add(Nextdoor.deadend);
+            }
+        }
+
+    }
+
+    private Direction OppositeDirection(Direction dir)
+    {
+        switch (dir)
+        {
+
+            case Direction.North:
+                return Direction.South;
+
+            case Direction.East:
+                return Direction.West;
+
+            case Direction.South:
+                return Direction.North;
+
+            case Direction.West:
+                return Direction.East;
+
+            default:
+                Debug.Log("Error: Not valid Direction. Default Direction set to North");
+                return Direction.North;
+        }
     }
 
 

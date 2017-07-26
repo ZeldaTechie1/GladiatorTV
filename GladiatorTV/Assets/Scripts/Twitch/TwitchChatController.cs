@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwitchChatController : MonoBehaviour {
+public class TwitchChatController : MonoBehaviour
+{
 
     public float numVotes;
     public float upvotes;
@@ -19,10 +20,10 @@ public class TwitchChatController : MonoBehaviour {
         fame = 0f;
         //RasterizeVotingSystem();
     }
-    
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Insert))//if left control or left mouse button is pressed
+        if (Input.GetKeyDown(KeyCode.Insert))//if left control or left mouse button is pressed
         {
             RasterizeVotingSystem();
         }
@@ -30,14 +31,14 @@ public class TwitchChatController : MonoBehaviour {
 
     public void TranslateMessage(string message)
     {
-        
-        if(message.IndexOf(" ") == -1)//there is only one word in this stupid message
+
+        if (message.IndexOf(" ") == -1)//there is only one word in this stupid message
         {
             ValidateCommand(message);
         }
         else
         {
-            message = message.Substring(0,message.IndexOf(" "));//grab the first word in the message
+            message = message.Substring(0, message.IndexOf(" "));//grab the first word in the message
             ValidateCommand(message);
         }
 
@@ -52,13 +53,13 @@ public class TwitchChatController : MonoBehaviour {
         if (test == 1 || test == -1)//command is valid
         {
             Debug.Log(command + " is a valid command!");
-            if(validCommands[command] == 1)
+            if (validCommands[command] == 1)
             {
                 Debug.Log("That Command was an upvote!");
                 upvotes++;
                 numVotes++;
             }
-            else if(validCommands[command] == -1)
+            else if (validCommands[command] == -1)
             {
                 Debug.Log("That Command was a downvote!");
                 downvotes++;
@@ -128,14 +129,14 @@ public class TwitchChatController : MonoBehaviour {
             //Debug.Log(downvotes);
             foreach (string down in downvoteArray)//apply all the downvotes in the valid commands
             {
-                if(down != "" && down != " ")
+                if (down != "" && down != " ")
                 {
                     validCommands.Add(down, -1);//make it a downvote if it is not empty or a space
                     commandCount++;
                 }
-                
+
             }
-            if(commandCount == 0)//there were no valid commands in the string provide, set defaults
+            if (commandCount == 0)//there were no valid commands in the string provide, set defaults
             {
                 Debug.Log("Default Downvotes being saved.");
                 validCommands.Clear();//just make sure the commands are empty
