@@ -21,13 +21,13 @@ public class TwitchChatController : MonoBehaviour
         //RasterizeVotingSystem();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Insert))//if left control or left mouse button is pressed
         {
             RasterizeVotingSystem();
         }
-    }
+    }*/
 
     public void TranslateMessage(string message)
     {
@@ -86,7 +86,7 @@ public class TwitchChatController : MonoBehaviour
         guiController.UpdateDisplays(upvotes, downvotes, fame);
     }
 
-    void RasterizeVotingSystem()//applies upvotes and downvotes based on player prefs, defaults are :) and :( respectively
+    public void RasterizeVotingSystem()//applies upvotes and downvotes based on player prefs, defaults are :) and :( respectively
     {
         //Debug.Log("Rasterizing Voting System");
 
@@ -97,11 +97,12 @@ public class TwitchChatController : MonoBehaviour
             Debug.Log("Upvotes have been saved, importing now.");
             string upvotes = PlayerPrefs.GetString("Upvotes");//grabs the upvotes stored in the system
             string[] upvoteArray = upvotes.Split(new char[] { ',', ' ' });//separate the string based on commas and spaces
-            //Debug.Log(upvotes);
+            Debug.Log(upvotes);
             foreach (string up in upvoteArray)//apply all the upvotes in the valid commands
             {
                 if (up != "" && up != " ")
                 {
+                    Debug.Log(up);
                     validCommands.Add(up, 1);//make it an upvote if it is not empty or a space
                     commandCount++;
                 }
@@ -110,15 +111,13 @@ public class TwitchChatController : MonoBehaviour
             if (commandCount == 0)//there were no valid commands in the string provide, set defaults
             {
                 Debug.Log("Default Upvotes being saved.");
-                validCommands.Clear();//just make sure the commands are empty
                 validCommands.Add(":)", 1);
             }
         }
         else
         {
-            Debug.Log("Default Downvotes being saved.");
-            validCommands.Clear();//just make sure the commands are empty
-            validCommands.Add(":(", -1);
+            Debug.Log("Default Upvotes being saved.");
+            validCommands.Add(":)", 1);
         }
         if (PlayerPrefs.HasKey("Downvotes"))//the downvotes have been set
         {
@@ -139,14 +138,12 @@ public class TwitchChatController : MonoBehaviour
             if (commandCount == 0)//there were no valid commands in the string provide, set defaults
             {
                 Debug.Log("Default Downvotes being saved.");
-                validCommands.Clear();//just make sure the commands are empty
                 validCommands.Add(":(", -1);
             }
         }
         else
         {
             Debug.Log("Default Downvotes being saved.");
-            validCommands.Clear();//just make sure the commands are empty
             validCommands.Add(":(", -1);
         }
 

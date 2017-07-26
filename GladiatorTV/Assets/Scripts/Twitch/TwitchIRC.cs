@@ -19,49 +19,44 @@ public class TwitchIRC : MonoBehaviour
     private Queue<string> commandQueue = new Queue<string>();
     private List<string> recievedMsgs = new List<string>();
     private System.Threading.Thread inProc, outProc;
+    [SerializeField]
+    private TwitchChatController controller;
     private void StartIRC()
     {
-        if(PlayerPrefs.HasKey("Token"))
+        if(AllCredentialsObtained())
         {
+            controller.RasterizeVotingSystem();
             oauth = PlayerPrefs.GetString("Token");
-        }
-        else
-        {
-            Debug.LogError("Token is required, before the game starts! This shouldn't happen if the menu scene is done properly.");
-            return;
-        }
-        if(PlayerPrefs.HasKey("Username"))
-        {
             channelName = nickName = PlayerPrefs.GetString("Username");
+            System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
+            sock.Connect(server, port);
+            if (!sock.Connected)
+            {
+                Debug.Log("Failed to connect!");
+                return;
+            }
+            var networkStream = sock.GetStream();
+            var input = new System.IO.StreamReader(networkStream);
+            var output = new System.IO.StreamWriter(networkStream);
+
+            //Send PASS & NICK.
+            output.WriteLine("PASS " + oauth);
+            output.WriteLine("NICK " + nickName.ToLower());
+            output.Flush();
+
+            //output proc
+            outProc = new System.Threading.Thread(() => IRCOutputProcedure(output));
+            outProc.Start();
+            //input proc
+            inProc = new System.Threading.Thread(() => IRCInputProcedure(input, networkStream));
+            inProc.Start();
+            Debug.Log("IRC HAS STARTED");
         }
         else
         {
-            Debug.LogError("Username is required, please input this! This shouldn't happen if the menu scene is done properly");
             return;
         }
-        System.Net.Sockets.TcpClient sock = new System.Net.Sockets.TcpClient();
-        sock.Connect(server, port);
-        if (!sock.Connected)
-        {
-            Debug.Log("Failed to connect!");
-            return;
-        }
-        var networkStream = sock.GetStream();
-        var input = new System.IO.StreamReader(networkStream);
-        var output = new System.IO.StreamWriter(networkStream);
-
-        //Send PASS & NICK.
-        output.WriteLine("PASS " + oauth);
-        output.WriteLine("NICK " + nickName.ToLower());
-        output.Flush();
-
-        //output proc
-        outProc = new System.Threading.Thread(() => IRCOutputProcedure(output));
-        outProc.Start();
-        //input proc
-        inProc = new System.Threading.Thread(() => IRCInputProcedure(input, networkStream));
-        inProc.Start();
-        Debug.Log("IRC HAS STARTED");
+        
     }
     private void IRCInputProcedure(System.IO.TextReader input, System.Net.Sockets.NetworkStream networkStream)
     {
@@ -141,11 +136,11 @@ public class TwitchIRC : MonoBehaviour
     void Start()
     {
     }
-    /*void OnEnable()
+    void OnEnable()
     {
         stopThreads = false;
         StartIRC();
-    }*/
+    }
     void OnDisable()
     {
         stopThreads = true;
@@ -182,5 +177,19 @@ public class TwitchIRC : MonoBehaviour
             }
         }
         
+    }
+    bool AllCredentialsObtained()
+    {
+        if(!PlayerPrefs.HasKey("Username"))
+        {
+            Debug.LogError("Username is not entered, PUT IT IN BITCH!!!");
+            return false;
+        }
+        if(!PlayerPrefs.HasKey("Token"))
+        {
+            Debug.LogError("Token has not been provided, PUT IT IN SON!");
+            return false;
+        }
+        return true;
     }
 }

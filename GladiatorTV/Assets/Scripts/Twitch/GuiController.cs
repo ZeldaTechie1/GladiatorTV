@@ -13,16 +13,16 @@ public class GuiController : MonoBehaviour
     float fame = 0f;
 
     //Gui stuff
-    Vector2 fameBarPosition = new Vector2(80, 540);
+    /*Vector2 fameBarPosition = new Vector2(100, 540);
     Vector2 fameBarSize = new Vector2(100, 20);
     Texture2D emptyBarTexture;
     Texture2D fullBarTexture;
     GUIStyle fullBarStyle = new GUIStyle();
     GUIStyle emptyBarStyle = new GUIStyle();
     Color barrFillColor = Color.green;
-    Color emptyBarrFillColor = Color.red;
+    Color emptyBarrFillColor = Color.red;*/
 
-    private void Awake()
+    /*private void Awake()
     {
         fullBarTexture = new Texture2D(1, 1);
         emptyBarTexture = new Texture2D(1, 1);
@@ -46,12 +46,12 @@ public class GuiController : MonoBehaviour
         GUI.EndGroup();
 
         GUI.EndGroup();
-    }
+    }*/
 
     public void UpdateDisplays(float upvotes, float downvotes, float fame)
     {
         upvoteDisplay.text = "Upvotes: " + upvotes;
         downvoteDisplay.text = "Downvotes: " + downvotes;
-        this.fame = fame;
+        fameDisplay.text = "Fame: " + fame + "%";
     }
 }

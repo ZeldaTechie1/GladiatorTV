@@ -19,6 +19,7 @@ public class PlayerPreferenceController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+       // PlayerPrefs.DeleteAll();
 		if(isPlayMode)
         {
             this.gameObject.SetActive(false);
