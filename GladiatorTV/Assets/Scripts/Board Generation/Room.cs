@@ -67,12 +67,19 @@ public class Room
     public Direction ENTER = Direction.Null;
     public Direction DEADEND = Direction.Null;
 
+    
+
 
 
     // Overloaded Method for making a room with only an exit 
     public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
+        flavorText = "BOI IM SPICY";
+
+        AdjacentRooms = new List<Location>();
         DOORREFFRENCES = new List<GameObject>();
+
+        ObjectiveComplete = true;
 
         myLocation = ThisRoom;
 
@@ -162,6 +169,7 @@ public class Room
     // Overloaded Method for making a room with an exit and an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
         myLocation = ThisRoom;
 
         DOORREFFRENCES = new List<GameObject>();
@@ -304,6 +312,7 @@ public class Room
     // Overloaded Method for making a room with only an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
         myLocation = ThisRoom;
 
         DOORREFFRENCES = new List<GameObject>();
@@ -410,6 +419,7 @@ public class Room
     //Overloaded Method for Making a room with dead ends;
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, Direction Deadend, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
         DOORREFFRENCES = new List<GameObject>();
 
         myLocation = ThisRoom;
@@ -696,10 +706,11 @@ public class Room
     {
         if(AdjacentRooms==null)
         {
-            AdjacentRooms = new List<Location>();
+            
         }
-
+        
         AdjacentRooms.Add(Roomlocal);
+
     }
 
     public void SetRoomDifficulty(int dif)
