@@ -74,9 +74,9 @@ public class GameBoard : MonoBehaviour
     public List<Location> deadEndLocation = new List<Location>();// Location For all the Deadend rooms in the Board Array. The Members and id of these are NULL because only there X and Y coordinates are needed   
     public List<GameObject> roomDoors = new List<GameObject>();
 
-    void Start()
+    void Awake()
     {
-
+        
         EnemyManage = gameObject.GetComponent<EnemyManager>();
 
         boardHolder = new GameObject("BoardHolder");
@@ -379,13 +379,25 @@ public class GameBoard : MonoBehaviour
                         break;
                     case Tiles.Floor:
                         currentTile = Floor[0];
-                        Instantiate(currentTile, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        if (j == roomWidth / 2 && k == roomHeight / 2)
+                        {
+                            room.roomCenter = Instantiate(currentTile, newPosition, Quaternion.identity);
+                            room.roomCenter.transform.SetParent(Parent.transform);
+                        }
+
+                        else
+                        {
+                            Instantiate(currentTile, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        }
+                       
+
                         break;
 
                     case Tiles.Door:
+                        
                         currentTile = Doors[0];
                         doorholder = Instantiate(currentTile, newPosition, Quaternion.identity);
-
+                        doorscript = doorholder.GetComponent<Doors>();
                         doorholder.transform.SetParent(Parent.transform);
                         if (room.GetExit().x == localhold.x && room.GetExit().y == localhold.y) // moves the room enter trigger to infront of the doors.
                         {
@@ -396,7 +408,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+                                   
                                     doorscript.SetRoom(room);
 
 
@@ -407,7 +419,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -418,7 +429,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -429,7 +439,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -447,7 +456,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -458,7 +466,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -469,7 +477,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -480,7 +488,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -499,7 +506,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
 
@@ -510,7 +517,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -521,7 +528,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -532,7 +538,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 

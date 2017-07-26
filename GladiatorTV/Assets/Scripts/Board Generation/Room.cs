@@ -44,6 +44,10 @@ public class Room
     public GameObject entrance = null; // reffrence to the Entrance Door Game object
     public GameObject deadend = null; // reffrence to the Dead End Door Game object
 
+    public GameObject roomCenter;
+
+    public List<GameObject> DOORREFFRENCES;
+
     private int roomWidth; // width of the room
     private int roomHeight;// Height of the room
     private int TileSize;// The Size of the floor and wall tiles
@@ -657,24 +661,13 @@ public class Room
         exit = Exit;
         entrance = Enter;
         deadend = DeadEnd;
+
+        DOORREFFRENCES.Add(Exit);
+        DOORREFFRENCES.Add(Enter);
+        DOORREFFRENCES.Add(DeadEnd);
     }
 
-    public void GetDoors(List<GameObject> doors)//Returns The rooms reffrences to its doors game object
-    {
-        if (doors.Count < 0)
-        {
-            doors.Add(exit);
-            doors.Add(entrance);
-            doors.Add(deadend);
-        }
-
-        else
-        {
-            doors[0] = exit;
-            doors[1] = entrance;
-            doors[2] = deadend;
-        }
-    }
+   
 
     public RoomBluePrint GetBluePrint()// Returns the rooms reffrence to its blue print
     {
@@ -683,6 +676,11 @@ public class Room
 
     public void AddAdjacentRoom(Location Roomlocal)
     {
+        if(AdjacentRooms==null)
+        {
+            AdjacentRooms = new List<Location>();
+        }
+
         AdjacentRooms.Add(Roomlocal);
     }
 

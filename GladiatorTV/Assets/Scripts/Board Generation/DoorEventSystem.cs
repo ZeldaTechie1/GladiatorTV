@@ -8,11 +8,11 @@ public class DoorEventSystem : MonoBehaviour {
     List<Location> RoomLocations;// List of Room Locations
     List<Location> DeadEndRooms;// List of Deadend Locations
     List<GameObject> AdjoinningEntrances; 
-    GameBoard BOARD;// Game Board Reffrence
+    public GameBoard BOARD;// Game Board Reffrence
 
-    Room CurrentRoom;// Current Room Type
-    Type CurrentRoomType;// Type of the current room
-    Vector3 CurrentRoomsPos;
+   public Room CurrentRoom;// Current Room Type
+   public Type CurrentRoomType;// Type of the current room
+   public Vector3 CurrentRoomsPos;
 
     RoomBluePrint CurrentRoomBluePrint;// Reffrence to the current Rooms Position.
 
@@ -24,24 +24,29 @@ public class DoorEventSystem : MonoBehaviour {
     string roomFlavorText=null;// Flavor Text For the Room;
 
     float TimeRemaining=0;
+    int firstRoomX;
+    int firstRoomY;
 
 
 	// Use this for initialization
 	void Start () {
 
+      
 
         RoomLocations = BOARD.roomLocation;
         DeadEndRooms = BOARD.deadEndLocation;
 
-        CurrentRoom = BOARD.Board[RoomLocations[0].x][RoomLocations[0].y];
-        
+        firstRoomX=RoomLocations[0].x;
+        firstRoomY = RoomLocations[0].y;
+        CurrentRoom = BOARD.Board[firstRoomX][firstRoomY];
+        CurrentRoomsDoors = CurrentRoom.DOORREFFRENCES;
         CurrentRoomType = CurrentRoom.GetRoomType();
         CurrentRoomBluePrint = CurrentRoom.bluePrint;
 
         currentObjectives = CurrentRoomBluePrint.numberofobjectives;
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
-        CurrentRoom.GetDoors(CurrentRoomsDoors);
+        
 
 
     }
@@ -65,7 +70,7 @@ public class DoorEventSystem : MonoBehaviour {
         currentObjectives = CurrentRoomBluePrint.numberofobjectives;
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
-        CurrentRoom.GetDoors(CurrentRoomsDoors);
+        CurrentRoomsDoors= CurrentRoom.DOORREFFRENCES;
 
         TimeRemaining = CurrentRoom.SurviveTime;
 
