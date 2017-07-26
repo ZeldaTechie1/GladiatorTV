@@ -16,8 +16,9 @@ public class DoorTrigger : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter()
+    void OnTriggerEnter2D(Collider2D collider)
     {
+       
         Doors door = GetComponentInParent<Doors>();
         door.RoomTriggered();
     }

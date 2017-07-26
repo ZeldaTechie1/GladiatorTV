@@ -44,6 +44,10 @@ public class Room
     public GameObject entrance = null; // reffrence to the Entrance Door Game object
     public GameObject deadend = null; // reffrence to the Dead End Door Game object
 
+    public GameObject roomCenter;
+
+    public List<GameObject> DOORREFFRENCES;
+
     private int roomWidth; // width of the room
     private int roomHeight;// Height of the room
     private int TileSize;// The Size of the floor and wall tiles
@@ -63,11 +67,20 @@ public class Room
     public Direction ENTER = Direction.Null;
     public Direction DEADEND = Direction.Null;
 
+    
+
 
 
     // Overloaded Method for making a room with only an exit 
     public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
+        flavorText = "BOI IM SPICY";
+
+        AdjacentRooms = new List<Location>();
+        DOORREFFRENCES = new List<GameObject>();
+
+        ObjectiveComplete = true;
+
         myLocation = ThisRoom;
 
         EXIT = exit;
@@ -156,6 +169,10 @@ public class Room
     // Overloaded Method for making a room with an exit and an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
+        myLocation = ThisRoom;
+
+        DOORREFFRENCES = new List<GameObject>();
         EXIT = exit;
         ENTER = enterance;
 
@@ -295,6 +312,10 @@ public class Room
     // Overloaded Method for making a room with only an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
+        myLocation = ThisRoom;
+
+        DOORREFFRENCES = new List<GameObject>();
         ENTER = enterance;
         Parent = parent;
         TileSize = tileSize;
@@ -398,6 +419,11 @@ public class Room
     //Overloaded Method for Making a room with dead ends;
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, Direction Deadend, GameObject parent, Location ThisRoom)
     {
+        AdjacentRooms = new List<Location>();
+        DOORREFFRENCES = new List<GameObject>();
+
+        myLocation = ThisRoom;
+
         EXIT = exit;
         ENTER = enterance;
         DEADEND = Deadend;
@@ -594,7 +620,7 @@ public class Room
     public Location GetDeadEnd()//Returns The DeadEnd location in refrence to the room
     {
 
-        Location deadend = new Location(enterX, enterY);
+        Location deadend = new Location(deadendX, deadendY);
 
         return deadend;
 
@@ -652,29 +678,24 @@ public class Room
 
     }
 
-    public void SetDoors(GameObject Exit, GameObject Enter, GameObject DeadEnd)//Sets the rooms GameObject Reffrences for its doors
+    public void SetExit(GameObject Exit)
     {
-        exit = Exit;
-        entrance = Enter;
-        deadend = DeadEnd;
+        exit =Exit;
+        DOORREFFRENCES.Add(Exit);
+    }
+    public void SetEnter(GameObject enter)
+    {
+        entrance = enter;
+        DOORREFFRENCES.Add(enter);
+    }
+    public void SetDeadend(GameObject Dead)
+    {
+        deadend = Dead;
+        DOORREFFRENCES.Add(Dead);
     }
 
-    public void GetDoors(List<GameObject> doors)//Returns The rooms reffrences to its doors game object
-    {
-        if (doors.Count < 0)
-        {
-            doors.Add(exit);
-            doors.Add(entrance);
-            doors.Add(deadend);
-        }
 
-        else
-        {
-            doors[0] = exit;
-            doors[1] = entrance;
-            doors[2] = deadend;
-        }
-    }
+   
 
     public RoomBluePrint GetBluePrint()// Returns the rooms reffrence to its blue print
     {
@@ -683,12 +704,18 @@ public class Room
 
     public void AddAdjacentRoom(Location Roomlocal)
     {
+        if(AdjacentRooms==null)
+        {
+            
+        }
+        
         AdjacentRooms.Add(Roomlocal);
+
     }
 
-    public void SetRoomDifficulty()
+    public void SetRoomDifficulty(int dif)
     {
-
+        Difficulty = dif;
     }
 
 

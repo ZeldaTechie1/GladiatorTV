@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 609b053087eee184082a012b5eb790cc
-timeCreated: 1501077816
+guid: c70ad155f60664d4f880a908f23155c5
+timeCreated: 1501007017
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - doorBox: {instanceID: 0}
-  - system: {instanceID: 0}
-  - gameBoard: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

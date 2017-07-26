@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4941404764103568}
   - component: {fileID: 212713163820997348}
-  - component: {fileID: 65906301969216520}
+  - component: {fileID: 114519887444439788}
+  - component: {fileID: 61996099443156138}
   m_Layer: 9
   m_Name: Door Tile
   m_TagString: Untagged
@@ -37,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4306689265819876}
   - component: {fileID: 61334830634991648}
+  - component: {fileID: 114448342701968552}
   m_Layer: 0
   m_Name: DoorTrigger
   m_TagString: Untagged
@@ -96,18 +98,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
---- !u!65 &65906301969216520
-BoxCollider:
+--- !u!61 &61996099443156138
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145137078968370}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16, y: 16, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 16, y: 16}
+  m_EdgeRadius: 0
+--- !u!114 &114448342701968552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606643831891248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1da405d15bd8e45b1559494f1b1e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114519887444439788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145137078968370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609b053087eee184082a012b5eb790cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorBox: {fileID: 61996099443156138}
+  system: {fileID: 0}
+  gameBoard: {fileID: 1901718358568562, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
 --- !u!212 &212713163820997348
 SpriteRenderer:
   m_ObjectHideFlags: 1

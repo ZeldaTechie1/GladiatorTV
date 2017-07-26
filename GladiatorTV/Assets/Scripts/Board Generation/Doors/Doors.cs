@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour {
 
-    BoxCollider2D doorBox; // The box collider attached to the door;
+    public BoxCollider2D doorBox; // The box collider attached to the door;
+    public DoorEventSystem system;
     bool doorOpen = false;
     Room parentroom;
+    [SerializeField]
+    GameObject gameBoard;
 
 	// Use this for initialization
 	void Start () {
 
-        doorBox = gameObject.transform.GetComponent<BoxCollider2D>();
+        gameBoard = GameObject.FindWithTag("BOARD");
+        system = gameBoard.GetComponent(typeof (DoorEventSystem)) as DoorEventSystem;
 
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -53,9 +57,7 @@ public class Doors : MonoBehaviour {
     }
 
     public void RoomTriggered()
-    {
-        EventSystem system;
-        system = GetComponentInParent<EventSystem>();
+    {   
         system.ChangeRoom(parentroom);
     }
 

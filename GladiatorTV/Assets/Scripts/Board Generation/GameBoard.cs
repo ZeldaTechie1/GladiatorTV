@@ -47,6 +47,8 @@ public class GameBoard : MonoBehaviour
     public GameObject[] Objectives;
     public GameObject[] Enemies;
 
+    public EnemyManager EnemyManage;
+
 
     public int numberOfRooms = 3;
     public int tileSize = 64;
@@ -72,10 +74,11 @@ public class GameBoard : MonoBehaviour
     public List<Location> deadEndLocation = new List<Location>();// Location For all the Deadend rooms in the Board Array. The Members and id of these are NULL because only there X and Y coordinates are needed   
     public List<GameObject> roomDoors = new List<GameObject>();
 
-    void Start()
+    void Awake()
     {
 
-
+        
+        EnemyManage = gameObject.GetComponent<EnemyManager>();
 
         boardHolder = new GameObject("BoardHolder");
 
@@ -99,10 +102,16 @@ public class GameBoard : MonoBehaviour
 
         PopulateBoard();//Fills the game board with rooms
 
+
+
+        LinkRooms();
+
     }
 
     private void PopulateBoard()
     {
+        roomLocation = new List<Location>();
+        deadEndLocation= new List<Location>();
 
 
         Direction enterance = Direction.South;
@@ -349,6 +358,7 @@ public class GameBoard : MonoBehaviour
         GameObject doorholder;
         BoxCollider2D doortrigger;
         Doors doorscript;
+        room.SetRoomDifficulty(RoomDifficulty());
 
 
         Vector3 newPosition = new Vector3(0, 0, 0);
@@ -376,16 +386,30 @@ public class GameBoard : MonoBehaviour
                         break;
                     case Tiles.Floor:
                         currentTile = Floor[0];
-                        Instantiate(currentTile, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        if (j == roomWidth / 2 && k == roomHeight / 2)
+                        {
+                            room.roomCenter = Instantiate(currentTile, newPosition, Quaternion.identity);
+                            room.roomCenter.transform.SetParent(Parent.transform);
+                        }
+
+                        else
+                        {
+                            Instantiate(currentTile, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        }
+                       
+
                         break;
 
                     case Tiles.Door:
+                        
                         currentTile = Doors[0];
                         doorholder = Instantiate(currentTile, newPosition, Quaternion.identity);
-
+                        doorscript = doorholder.GetComponent<Doors>();
                         doorholder.transform.SetParent(Parent.transform);
                         if (room.GetExit().x == localhold.x && room.GetExit().y == localhold.y) // moves the room enter trigger to infront of the doors.
                         {
+                            room.SetExit(doorholder);
+
                             switch (room.EXIT)
                             {
                                 case Direction.North:
@@ -393,7 +417,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+                                   
                                     doorscript.SetRoom(room);
 
 
@@ -404,7 +428,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -415,7 +438,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -426,7 +448,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -435,8 +456,9 @@ public class GameBoard : MonoBehaviour
                             }
 
                         }
-                        if (room.GetEntrance().x == localhold.x && room.GetEntrance().y == localhold.y)
+                        else if (room.GetEntrance().x == localhold.x && room.GetEntrance().y == localhold.y)
                         {
+                            room.SetEnter(doorholder);
                             switch (room.ENTER)
                             {
                                 case Direction.North:
@@ -444,7 +466,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -455,7 +476,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -466,7 +487,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -477,7 +498,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -487,16 +507,18 @@ public class GameBoard : MonoBehaviour
                             }
 
                         }
-                        if (room.GetDeadEnd().x == localhold.x && room.GetExit().y == localhold.y)
+                        else if (room.GetDeadEnd().x == localhold.x && room.GetDeadEnd().y == localhold.y)
                         {
-                            switch (room.EXIT)
+
+                            room.SetDeadend(doorholder);
+                            switch (room.DEADEND)
                             {
                                 case Direction.North:
 
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, -16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
 
@@ -507,7 +529,7 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(-16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
+
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -518,7 +540,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(0, +16);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
                                     break;
@@ -529,7 +550,6 @@ public class GameBoard : MonoBehaviour
                                     doortrigger = doorholder.transform.Find("DoorTrigger").transform.GetComponent<BoxCollider2D>();
                                     doortrigger.offset = new Vector2(+16, 0);
 
-                                    doorscript = doorholder.GetComponent<Doors>();
                                     doorscript.SetRoom(room);
 
 
@@ -590,6 +610,8 @@ public class GameBoard : MonoBehaviour
                     else if (Obstacles[j][k].member == Member.Enemy)
                     {
                         currentObstacle = Enemies[Obstacles[j][k].id];
+                        EnemyManage.SpawnEnemy(currentRoom.Difficulty, newPosition);
+                        
 
                     }
                 }
@@ -777,6 +799,230 @@ public class GameBoard : MonoBehaviour
         {
             return 2;
         }
+
+    }
+
+    private void LinkRooms()
+    {
+        Location check;
+        Room room,roomcheck;
+
+
+        for(int i =0; i<roomLocation.Count;i++)
+        {
+
+            check = roomLocation[i];
+            room = Board[check.x][check.y];
+            if(room.EXIT!=Direction.Null)
+            {
+
+                if(i==0)
+                {
+                    
+                }
+
+                switch (room.EXIT)
+                {
+                            
+                    case Direction.North:
+                        roomcheck = Board[(check.x)][(check.y + 1)];
+                        if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    case Direction.East:
+                        roomcheck = Board[(check.x + 1)][(check.y)];
+                        if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    case Direction.South:
+
+                        roomcheck = Board[(check.x)][(check.y - 1)];
+                        if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                        {
+
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    case Direction.West:
+                        roomcheck = Board[(check.x - 1)][(check.y)];
+                        if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    default:
+
+                        break;
+                }
+            }
+
+            if (room.ENTER!= Direction.Null)
+            {
+
+                switch (room.ENTER)
+                {
+
+                    case Direction.North:
+                        roomcheck = Board[(check.x)][(check.y + 1)];
+                        if (OppisiteDirection(room.ENTER) == roomcheck.EXIT || OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    case Direction.East:
+                        roomcheck = Board[(check.x + 1)][(check.y)];
+                        if (OppisiteDirection(room.ENTER) == roomcheck.EXIT || OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    case Direction.South:
+
+                        roomcheck = Board[(check.x)][(check.y - 1)];
+                        if (OppisiteDirection(room.ENTER) == roomcheck.EXIT || OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                        {
+
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    case Direction.West:
+                        roomcheck = Board[(check.x - 1)][(check.y)];
+                        if (OppisiteDirection(room.ENTER) == roomcheck.EXIT || OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+
+                        }
+                        break;
+
+                    default:
+
+                        break;
+                }
+            }
+
+            if (room.DEADEND != Direction.Null)
+            {
+    
+                switch (room.DEADEND)
+                {
+                    case Direction.North:
+                        roomcheck = Board[(check.x)][(check.y + 1)];
+                        if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    case Direction.East:
+                        roomcheck = Board[(check.x + 1)][(check.y)];
+                        if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    case Direction.South:
+
+                        roomcheck = Board[(check.x)][(check.y - 1)];
+                        if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                        {
+
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    case Direction.West:
+                        roomcheck = Board[(check.x - 1)][(check.y)];
+                        if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                        {
+                            room.AddAdjacentRoom(roomcheck.myLocation);
+
+                        }
+                        break;
+
+                    default:
+
+                        break;
+                 }   
+               }
+        }
+
+       /* for (int i = 0; i < deadEndLocation.Count; i++)
+        {
+
+            check = deadEndLocation[i];
+            room = Board[check.x][check.y];
+            switch (room.ENTER)
+            {
+
+                case Direction.North:
+                    roomcheck = Board[(check.x)][(check.y + 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.East:
+                    roomcheck = Board[(check.x + 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.South:
+
+                    roomcheck = Board[(check.x)][(check.y - 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.West:
+                    roomcheck = Board[(check.x - 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+            }
+            
+        }*/
 
     }
 
