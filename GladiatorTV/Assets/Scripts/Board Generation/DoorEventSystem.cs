@@ -19,39 +19,52 @@ public class DoorEventSystem : MonoBehaviour {
     int currentObjectives;// The Number Objectives needed to be destroyed.
     int currentTraps;// The Current Number Traps.
     int currentEnemies;// The Current Number of Enemies;
-
-    List<GameObject> CurrentRoomsDoors;// current doors for the room
     string roomFlavorText=null;// Flavor Text For the Room;
 
     float TimeRemaining=0;
     int firstRoomX;
     int firstRoomY;
+    public GameObject camera;
+    public RoomCamera roomcam;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        AdjoinningEntrances = new List<GameObject>();
 
-      
 
+        camera = GameObject.FindWithTag("MainCamera");
+        //roomcam = camera.gameObject.GetComponent<RoomCamera>();
         RoomLocations = BOARD.roomLocation;
         DeadEndRooms = BOARD.deadEndLocation;
 
         firstRoomX=RoomLocations[0].x;
         firstRoomY = RoomLocations[0].y;
         CurrentRoom = BOARD.Board[firstRoomX][firstRoomY];
-        CurrentRoomsDoors = CurrentRoom.DOORREFFRENCES;
         CurrentRoomType = CurrentRoom.GetRoomType();
         CurrentRoomBluePrint = CurrentRoom.bluePrint;
+        CurrentRoom.ObjectiveComplete = true;
 
         currentObjectives = CurrentRoomBluePrint.numberofobjectives;
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
-        
+        CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
+
+        GetAdjecentEntrances();       
+
+        ChangeRoom(CurrentRoom);
+        OpenDoors();
+
+
+
 
 
     }
 	// Update is called once per frame
 	void Update () {
+
+        ObjectiveCheck();
 
         if(CurrentRoomType==Type.Survive && !CurrentRoom.TimeIsUp)
         {
@@ -61,7 +74,9 @@ public class DoorEventSystem : MonoBehaviour {
 	}
 
     public void ChangeRoom(Room room)
-    {
+      {
+
+
         CurrentRoom = room;
 
         CurrentRoomType = CurrentRoom.GetRoomType();
@@ -70,16 +85,20 @@ public class DoorEventSystem : MonoBehaviour {
         currentObjectives = CurrentRoomBluePrint.numberofobjectives;
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
-        CurrentRoomsDoors= CurrentRoom.DOORREFFRENCES;
-
         TimeRemaining = CurrentRoom.SurviveTime;
+
+        ObjectiveCheck();
+
+      
+        GetAdjecentEntrances();
 
         if(!CurrentRoom.ObjectiveComplete)
         {
             CloseDoors();
         }
+        CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
 
-        // <----------------------------------------------------------------ADD UPDATE CAMERA POSITION
+        roomcam.CameraUpdate(CurrentRoomsPos);// <----------------------------------------------------------------ADD UPDATE CAMERA POSITION
         UpdateRoomFlavorText(CurrentRoom.flavorText);
     }
 
@@ -92,8 +111,6 @@ public class DoorEventSystem : MonoBehaviour {
 
                     CurrentRoom.ObjectiveComplete = true;
                     OpenDoors();
-
-
                     break;
 
                 case Type.Survive:
@@ -166,9 +183,9 @@ public class DoorEventSystem : MonoBehaviour {
 
     public void OpenDoors()
     {
-        for (int i = 0; i < CurrentRoomsDoors.Count; i++)
+        for (int i = 0; i < CurrentRoom.DOORREFFRENCES.Count; i++)
         {
-           if(!CurrentRoomsDoors[i].GetComponent<Doors>().TryOpenDoor())
+           if(!CurrentRoom.DOORREFFRENCES[i].GetComponent<Doors>().TryOpenDoor())
             {
                 Debug.Log("Door was already open!");
             }
@@ -176,6 +193,18 @@ public class DoorEventSystem : MonoBehaviour {
             {
                 Debug.Log("Door is open!");
             }
+        }
+        for (int i = 0; i < AdjoinningEntrances.Count; i++)
+        {
+            if (AdjoinningEntrances[i].GetComponent<Doors>().TryOpenDoor())
+            {
+                Debug.Log("Door was already open!");
+            }
+            else
+            {
+                Debug.Log("Door is open!");
+            }
+
         }
         
     }
@@ -198,9 +227,9 @@ public class DoorEventSystem : MonoBehaviour {
 
     public void CloseDoors()
     {
-        for (int i = 0; i < CurrentRoomsDoors.Count; i++)
+        for (int i = 0; i < CurrentRoom.DOORREFFRENCES.Count; i++)
         {
-            if (!CurrentRoomsDoors[i].gameObject.GetComponent<Doors>().TryCloseDoor())
+            if (!CurrentRoom.DOORREFFRENCES[i].gameObject.GetComponent<Doors>().TryCloseDoor())
             {
                 Debug.Log("Door was already closed!");
             }
@@ -232,37 +261,52 @@ public class DoorEventSystem : MonoBehaviour {
 
         for(int i =0; i< CurrentRoom.AdjacentRooms.Count;i++)
         {
-            check = CurrentRoom.AdjacentRooms[i];
-            Nextdoor = board.Board[check.x][check.y];
-            if(check.y<CurrentRoom.myLocation.y)
-            {
-                adjoiningdoor = Direction.North;
-            }
-            else if(check.y > CurrentRoom.myLocation.y)
-            {
-                adjoiningdoor = Direction.South;
-            }
-            else if (check.x < CurrentRoom.myLocation.x)
-            {
-                adjoiningdoor = Direction.West;
-            }
-            else 
-            {
-                adjoiningdoor = Direction.East;
-            }
+            
 
-            if (Nextdoor.EXIT == adjoiningdoor)
-            {
-                AdjoinningEntrances.Add(Nextdoor.exit);
-            }
-            else if (Nextdoor.ENTER == adjoiningdoor) 
-            {
-                AdjoinningEntrances.Add(Nextdoor.entrance);
-            }
-            else if (Nextdoor.DEADEND == adjoiningdoor) 
-            {
-                AdjoinningEntrances.Add(Nextdoor.deadend);
-            }
+            check = CurrentRoom.AdjacentRooms[i];
+            Debug.Log("X="+check.x +", Y="+check.y+" Room Number:"+i );
+
+            if (true)
+            { 
+                Nextdoor = board.Board[check.x][check.y];
+                if(check.y<CurrentRoom.myLocation.y)
+                {
+                    adjoiningdoor = Direction.North;
+                }
+                else if(check.y > CurrentRoom.myLocation.y)
+                {
+                    adjoiningdoor = Direction.South;
+                }
+                else if (check.x < CurrentRoom.myLocation.x)
+                {
+                    adjoiningdoor = Direction.West;
+                }
+                else 
+                {
+                    adjoiningdoor = Direction.East;
+                }
+
+                if(adjoiningdoor==Direction.Null)
+                {
+                    Debug.Log("Papas!!!");
+                }
+
+                if (Nextdoor.EXIT == adjoiningdoor)
+                {
+                    AdjoinningEntrances.Add(Nextdoor.exit);
+                }
+                else if (Nextdoor.ENTER == adjoiningdoor) 
+                {
+                    if(AdjoinningEntrances==null)
+                
+
+                    AdjoinningEntrances.Add(Nextdoor.entrance);
+                }
+                else if (Nextdoor.DEADEND == adjoiningdoor) 
+                {
+                    AdjoinningEntrances.Add(Nextdoor.deadend);
+                }
+}
         }
 
     }

@@ -471,6 +471,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114998600627001752, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 897857042}
+    - target: {fileID: 114998600627001752, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: roomcam
+      value: 
+      objectReference: {fileID: 897857048}
+    - target: {fileID: 1901718358568562, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
+      propertyPath: m_TagString
+      value: BOARD
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
   m_IsPrefabParent: 0
@@ -859,15 +873,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4726247655056118, guid: 999d2226d8870194ebd32d54ba23a439, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 35310.4
       objectReference: {fileID: 0}
     - target: {fileID: 4726247655056118, guid: 999d2226d8870194ebd32d54ba23a439, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 35310.4
       objectReference: {fileID: 0}
     - target: {fileID: 4726247655056118, guid: 999d2226d8870194ebd32d54ba23a439, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4726247655056118, guid: 999d2226d8870194ebd32d54ba23a439, type: 2}
       propertyPath: m_LocalRotation.x

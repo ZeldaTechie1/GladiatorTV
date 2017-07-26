@@ -101,6 +101,8 @@ public class GameBoard : MonoBehaviour
 
         PopulateBoard();//Fills the game board with rooms
 
+        LinkRooms();
+
     }
 
     private void PopulateBoard()
@@ -401,6 +403,8 @@ public class GameBoard : MonoBehaviour
                         doorholder.transform.SetParent(Parent.transform);
                         if (room.GetExit().x == localhold.x && room.GetExit().y == localhold.y) // moves the room enter trigger to infront of the doors.
                         {
+                            room.SetExit(doorholder);
+
                             switch (room.EXIT)
                             {
                                 case Direction.North:
@@ -447,8 +451,9 @@ public class GameBoard : MonoBehaviour
                             }
 
                         }
-                        if (room.GetEntrance().x == localhold.x && room.GetEntrance().y == localhold.y)
+                        else if (room.GetEntrance().x == localhold.x && room.GetEntrance().y == localhold.y)
                         {
+                            room.SetEnter(doorholder);
                             switch (room.ENTER)
                             {
                                 case Direction.North:
@@ -497,9 +502,11 @@ public class GameBoard : MonoBehaviour
                             }
 
                         }
-                        if (room.GetDeadEnd().x == localhold.x && room.GetExit().y == localhold.y)
+                        else if (room.GetDeadEnd().x == localhold.x && room.GetDeadEnd().y == localhold.y)
                         {
-                            switch (room.EXIT)
+                            Debug.Log("HI");
+                            room.SetDeadend(doorholder);
+                            switch (room.DEADEND)
                             {
                                 case Direction.North:
 
@@ -786,6 +793,199 @@ public class GameBoard : MonoBehaviour
         else
         {
             return 2;
+        }
+
+    }
+
+    private void LinkRooms()
+    {
+        Location check;
+        Room room,roomcheck;
+
+
+        for(int i =0; i<roomLocation.Count;i++)
+        {
+
+            check = roomLocation[i];
+            room = Board[check.x][check.y];
+
+    
+            switch (room.EXIT)
+            {
+
+                case Direction.North:
+                    roomcheck = Board[(check.x)][(check.y + 1)];
+                    if(OppisiteDirection(room.EXIT)==roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.East:
+                    roomcheck = Board[(check.x + 1)][(check.y)];
+                    if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.South:
+
+                    roomcheck = Board[(check.x)][(check.y - 1)];
+                    if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                    {
+                        
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.West:
+                    roomcheck = Board[(check.x - 1)][(check.y)];
+                    if (OppisiteDirection(room.EXIT) == roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                        break;
+
+                default:
+
+                    break;
+            }
+
+            switch (room.ENTER)
+            {
+
+                case Direction.North:
+                    roomcheck = Board[(check.x)][(check.y + 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.EXIT)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.East:
+                    roomcheck = Board[(check.x + 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.EXIT)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.South:
+
+                    roomcheck = Board[(check.x)][(check.y - 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.EXIT)
+                    {
+
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.West:
+                    roomcheck = Board[(check.x - 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.EXIT)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+            }
+
+
+            switch (room.DEADEND)
+            {
+                case Direction.North:
+                    roomcheck = Board[(check.x)][(check.y + 1)];
+                    if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.East:
+                    roomcheck = Board[(check.x + 1)][(check.y)];
+                    if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.South:
+
+                    roomcheck = Board[(check.x)][(check.y - 1)];
+                    if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                    {
+
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.West:
+                    roomcheck = Board[(check.x - 1)][(check.y)];
+                    if (OppisiteDirection(room.DEADEND) == roomcheck.ENTER)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+
+        for (int i = 0; i < deadEndLocation.Count; i++)
+        {
+
+            check = deadEndLocation[i];
+            room = Board[check.x][check.y];
+            switch (room.ENTER)
+            {
+
+                case Direction.North:
+                    roomcheck = Board[(check.x)][(check.y + 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.East:
+                    roomcheck = Board[(check.x + 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.South:
+
+                    roomcheck = Board[(check.x)][(check.y - 1)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                case Direction.West:
+                    roomcheck = Board[(check.x - 1)][(check.y)];
+                    if (OppisiteDirection(room.ENTER) == roomcheck.DEADEND)
+                    {
+                        room.AddAdjacentRoom(roomcheck.myLocation);
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+            }
+            
         }
 
     }

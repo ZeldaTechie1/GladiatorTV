@@ -9,7 +9,7 @@ public class RoomCamera : MonoBehaviour {
     Camera camera;
     public Transform currentposition;
     Vector3 centerposition;
-    Transform newPosition;
+    Vector3 newPosition;
 
     // Use this for initialization
     public static float pixlesToUnits = 1f;// Ratio of Pixles to number of units 
@@ -18,8 +18,9 @@ public class RoomCamera : MonoBehaviour {
 
     void Awake()
     {
-
+        newPosition = new Vector3(0,0,0);
         camera = GetComponent<Camera>();
+
 
         if (camera.orthographic)
         {
@@ -65,16 +66,24 @@ public class RoomCamera : MonoBehaviour {
 		
 	}
 
-    public void CameraUpdate(Transform newSpot)
+    public void CameraUpdate(Vector3 newSpot)
     {
+        if (newPosition == null)
+        {
+            Debug.Log("SHIT!!!");
+        }
+        newPosition= newSpot;
 
-        newPosition = newSpot;
-
-        centerposition.x = newPosition.transform.position.x / 2;
-        centerposition.y = newPosition.transform.position.y / 2;
-        centerposition.z = 10;
+        centerposition.x = newPosition.x ;
+        centerposition.y = newPosition.y;
+        centerposition.z = -10;
 
         OnPoint = false;
 
+    }
+
+    public void HELLO()
+    {
+        Debug.Log("HELLO YES THIS IS BUG!");
     }
 }

@@ -72,6 +72,8 @@ public class Room
     // Overloaded Method for making a room with only an exit 
     public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
+        DOORREFFRENCES = new List<GameObject>();
+
         myLocation = ThisRoom;
 
         EXIT = exit;
@@ -160,6 +162,9 @@ public class Room
     // Overloaded Method for making a room with an exit and an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, GameObject parent, Location ThisRoom)
     {
+        myLocation = ThisRoom;
+
+        DOORREFFRENCES = new List<GameObject>();
         EXIT = exit;
         ENTER = enterance;
 
@@ -299,6 +304,9 @@ public class Room
     // Overloaded Method for making a room with only an entrance
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, bool finalRoom, GameObject parent, Location ThisRoom)
     {
+        myLocation = ThisRoom;
+
+        DOORREFFRENCES = new List<GameObject>();
         ENTER = enterance;
         Parent = parent;
         TileSize = tileSize;
@@ -402,6 +410,10 @@ public class Room
     //Overloaded Method for Making a room with dead ends;
     public void SetupRoom(int tileSize, int width, int height, Direction enterance, Direction exit, Direction Deadend, GameObject parent, Location ThisRoom)
     {
+        DOORREFFRENCES = new List<GameObject>();
+
+        myLocation = ThisRoom;
+
         EXIT = exit;
         ENTER = enterance;
         DEADEND = Deadend;
@@ -598,7 +610,7 @@ public class Room
     public Location GetDeadEnd()//Returns The DeadEnd location in refrence to the room
     {
 
-        Location deadend = new Location(enterX, enterY);
+        Location deadend = new Location(deadendX, deadendY);
 
         return deadend;
 
@@ -656,16 +668,22 @@ public class Room
 
     }
 
-    public void SetDoors(GameObject Exit, GameObject Enter, GameObject DeadEnd)//Sets the rooms GameObject Reffrences for its doors
+    public void SetExit(GameObject Exit)
     {
-        exit = Exit;
-        entrance = Enter;
-        deadend = DeadEnd;
-
+        exit =Exit;
         DOORREFFRENCES.Add(Exit);
-        DOORREFFRENCES.Add(Enter);
-        DOORREFFRENCES.Add(DeadEnd);
     }
+    public void SetEnter(GameObject enter)
+    {
+        entrance = enter;
+        DOORREFFRENCES.Add(enter);
+    }
+    public void SetDeadend(GameObject Dead)
+    {
+        deadend = Dead;
+        DOORREFFRENCES.Add(Dead);
+    }
+
 
    
 
