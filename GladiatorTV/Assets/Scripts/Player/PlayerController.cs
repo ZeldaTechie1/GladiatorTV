@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject GameOver;
     public GameObject PauseMenu;
+
+    public Rigidbody2D RB;
     // Use this for initialization
     void Start()
     {
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Init_Vals();
 
         InvokeRepeating("IncrementCounters", 0f, .25f);
+        RB = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -116,6 +119,10 @@ public class PlayerController : MonoBehaviour
         if(!stunned)
         {
             Move();
+        }
+        if(stunned)
+        {
+            RB.velocity = new Vector3(0, 0, 0);
         }
     }
 
@@ -198,8 +205,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+
         Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-        transform.position += move.normalized * playerSpeed * Time.deltaTime;
+        //transform.position += move.normalized * playerSpeed * Time.deltaTime;
+        RB.velocity= (move.normalized * playerSpeed);
     }
 
     private float Get_Mouse_Angle()
