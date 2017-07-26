@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 65551ac712f69f24693f738d717ae45c
   - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 74dc81f8490fe9a44a638c2bc1b0ddc0
+  - enabled: 1
     path: Assets/Scenes/EnemyTestScene.unity
-    guid: 00000000000000000000000000000000
+    guid: 3e1aff57b5c1f904e9f84d3872f4e15f
