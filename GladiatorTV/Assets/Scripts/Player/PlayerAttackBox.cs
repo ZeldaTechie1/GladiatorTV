@@ -58,6 +58,11 @@ public class PlayerAttackBox : MonoBehaviour {
         {
             collision.GetComponent<BaseEnemy>().Deal_Damage(attackDamage);
         }
+
+        if (collision.gameObject.CompareTag("Objective"))
+        {
+            collision.GetComponent<Objective>().Deal_Damage(attackDamage);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -65,6 +70,11 @@ public class PlayerAttackBox : MonoBehaviour {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<BaseEnemy>().Deal_Damage(attackDamage);
+        }
+
+        if (collision.gameObject.CompareTag("Objective"))
+        {
+            collision.GetComponent<Objective>().Deal_Damage(attackDamage);
         }
     }
 }

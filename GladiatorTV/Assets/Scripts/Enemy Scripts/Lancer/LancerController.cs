@@ -54,8 +54,10 @@ public class LancerController : BaseEnemy
         if (!charging && !waiting && !Get_Stunned())
         {
             Set_Direction();
+            anim.SetInteger("Direction", direction);
             Flip();
         }
+        FlipY();
         checkInvincible();
 
 
@@ -230,6 +232,36 @@ public class LancerController : BaseEnemy
                 waitTime = HardWaitTime;
                 chargeSpeed = HardchargeSpeed;
                 break;
+        }
+    }
+
+    private void FlipY()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("StunnedLancer"))
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().flipY = false;
+        }
+        else if (direction == 0)
+        {
+            if (this.gameObject.GetComponent<SpriteRenderer>().flipY)
+            {
+
+            }
+            else
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().flipY = true;
+            }
+        }
+        else if (direction == 2)
+        {
+            if (this.gameObject.GetComponent<SpriteRenderer>().flipY)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().flipY = false;
+            }
+            else
+            {
+
+            }
         }
     }
 }
