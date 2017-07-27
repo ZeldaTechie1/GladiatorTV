@@ -261,6 +261,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 6.5}
   m_EdgeRadius: 0
+--- !u!1 &219017124 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1901718358568562, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+    type: 2}
+  m_PrefabInternal: {fileID: 504760378}
 --- !u!1001 &504760378
 Prefab:
   m_ObjectHideFlags: 0
@@ -770,8 +775,8 @@ MonoBehaviour:
   GameOver: {fileID: 559441049}
   PauseMenu: {fileID: 1324908985}
   RB: {fileID: 0}
-  GameBoard: {fileID: 0}
-  BoardScript: {fileID: 0}
+  GameBoard: {fileID: 219017124}
+  BoardScript: {fileID: 652706617}
   spawned: 0
 --- !u!50 &1733350992
 Rigidbody2D:
@@ -835,6 +840,7 @@ SpriteRenderer:
   m_Size: {x: 6.92, y: 6.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1733350994
 Transform:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class Room
 
     private Tiles[][] tiles; // Tile Types
     private Location[][] obstacles;// Locations of all the obstacles in the room
+    public Vector3 origin;
 
     private int Trapchoices; /// Traps To chose from 
     private int Objectivechoices;/// Objective Blocks to choose from
