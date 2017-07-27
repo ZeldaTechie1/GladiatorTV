@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114998600627001752}
   m_Layer: 0
   m_Name: GameBoard
-  m_TagString: Untagged
+  m_TagString: BOARD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +112,5 @@ MonoBehaviour:
   BOARD: {fileID: 114238527703956828}
   CurrentRoomType: 0
   CurrentRoomsPos: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}
+  roomcam: {fileID: 0}
