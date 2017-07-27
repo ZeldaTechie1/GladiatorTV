@@ -164,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035753196373634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 33.7, z: 0}
+  m_LocalPosition: {x: -0.75013673, y: -0.6971859, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 4722038548800916}
@@ -427,23 +427,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1035753196373634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42f4afcbf80c534bb5415255ccd64b0, type: 3}
+  m_Script: {fileID: 11500000, guid: b140fabdd81d64a4b9ce76fd66a966e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   direction: 0
-  baseSpeed: 3
+  baseSpeed: 50
   dead: 0
   invincibleTime: 1
-  attackDamage: 10
-  range: 5
-  attackSpeed: 2
+  attackDamage: 5
+  range: 3
+  attackSpeed: 10
   attacking: 0
   attackDuration: 1
   attackCounter: 0
   attackCoolDown: 0
   GameOver: {fileID: 0}
   PauseMenu: {fileID: 0}
+  RB: {fileID: 0}
+  GameBoard: {fileID: 0}
+  BoardScript: {fileID: 0}
+  spawned: 0
 --- !u!212 &212748473717144192
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -484,3 +488,4 @@ SpriteRenderer:
   m_Size: {x: 6.92, y: 6.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
