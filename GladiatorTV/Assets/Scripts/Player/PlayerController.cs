@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public GameObject GameBoard;
     public GameBoard BoardScript;
     public bool spawned = false;
+    public SpriteRenderer SpriteRend;
     // Use this for initialization
     void Start()
     {
@@ -60,11 +61,11 @@ public class PlayerController : MonoBehaviour
         InvokeRepeating("IncrementCounters", 0f, .25f);
         RB = this.gameObject.GetComponent<Rigidbody2D>();
 
-        GameBoard = GameObject.Find("GameBoard");
+        GameBoard = GameObject.FindGameObjectWithTag("BOARD");
         BoardScript = GameBoard.GetComponent<GameBoard>();
 
-        Debug.Log(BoardScript.Board[0][0].roomCenter.transform.position);
-        Go_To_Spawn(BoardScript.Board[0][0].roomCenter.transform.position);
+        SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
+        Go_To_Spawn(BoardScript.Board[BoardScript.roomLocation[0].x][BoardScript.roomLocation[0].y].roomCenter.transform.position);
     }
 
     // Update is called once per frame
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
         if(attacking)
         {
-            if(attackCounter == attackDuration)
+            if(attackCounter >= attackDuration)
             {
                 attacking = false;
                 attackCoolDown = true;
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         if(attackCoolDown)
         {
-            if(attackCounter == attackSpeed)
+            if(attackCounter >= attackSpeed)
             {
                 attackCoolDown = false;
                 attackCounter = 0;
@@ -122,6 +123,8 @@ public class PlayerController : MonoBehaviour
             GameOver.SetActive(true);
             Time.timeScale = 0;
         }
+        Flip();
+
     }
 
     private void FixedUpdate()
@@ -321,6 +324,33 @@ public class PlayerController : MonoBehaviour
 
     public void Go_To_Spawn(Vector3 location)
     {
+        location = new Vector3(location.x, location.y, -1);
         this.gameObject.transform.position = location;
+    }
+
+    public void Flip()
+    {
+        if (direction == 3)
+        {
+            if (SpriteRend.flipX)
+            {
+
+            }
+            else
+            {
+                SpriteRend.flipX = true;
+            }
+        }
+        if (direction == 1)
+        {
+            if (SpriteRend.flipX)
+            {
+                SpriteRend.flipX = false;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

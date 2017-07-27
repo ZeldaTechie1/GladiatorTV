@@ -11,7 +11,7 @@ public class LoadScene : MonoBehaviour {
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void LoadByIndex(int sceneIndex)
@@ -27,8 +27,14 @@ public class LoadScene : MonoBehaviour {
         }
     }
 
+    public void RestartScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     public void approveCredentials()
     {
-        credentialsEntered = mediator.GetCredentialsSet();
+        if(mediator!=null)
+            credentialsEntered = mediator.GetCredentialsSet();
     }
 }

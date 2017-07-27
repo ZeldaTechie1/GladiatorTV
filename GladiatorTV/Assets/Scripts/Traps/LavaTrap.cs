@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LavaTrap : MonoBehaviour {
     public int trapDamage;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public Animator anim;
+    // Use this for initialization
+    void Start () {
+        anim = this.gameObject.GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {

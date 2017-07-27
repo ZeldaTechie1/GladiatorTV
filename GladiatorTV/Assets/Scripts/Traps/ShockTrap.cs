@@ -12,16 +12,18 @@ public class ShockTrap : MonoBehaviour {
     public float currentTimer;
 
     public float counter;
+    public Animator anim;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
+        anim = this.gameObject.GetComponent<Animator>();
         Get_New_Time();
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-		if(counter >= currentTimer)
+        anim.SetBool("Active", active);
+        if (counter >= currentTimer)
         {
             Change_State();
             counter = 0;

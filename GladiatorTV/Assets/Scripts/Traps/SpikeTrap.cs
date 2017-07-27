@@ -12,9 +12,11 @@ public class SpikeTrap : MonoBehaviour {
     public bool activated;
 
     public float counter;
+    public Animator anim;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,9 @@ public class SpikeTrap : MonoBehaviour {
             if(counter >= delayTime)
             {
                 triggered = false;
+                anim.SetBool("triggered", false);
                 activated = true;
+                anim.SetBool("active", true);
                 counter = 0;
             }
         }
@@ -46,7 +50,9 @@ public class SpikeTrap : MonoBehaviour {
             if (counter >= activeTime)
             {
                 triggered = false;
+                anim.SetBool("triggered", false);
                 activated = false;
+                anim.SetBool("active", false);
                 counter = 0;
             }
         }
@@ -63,6 +69,7 @@ public class SpikeTrap : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player") && !activated)
         {
             triggered = true;
+            anim.SetBool("triggered", true);
         }
 
         if (collision.gameObject.CompareTag("Enemy") && activated)
@@ -74,6 +81,7 @@ public class SpikeTrap : MonoBehaviour {
         if (collision.gameObject.CompareTag("Enemy") && !activated)
         {
             triggered = true;
+            anim.SetBool("triggered", true);
         }
     }
 
@@ -88,6 +96,7 @@ public class SpikeTrap : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player") && !activated)
         {
             triggered = true;
+            anim.SetBool("triggered", true);
         }
 
 
@@ -101,6 +110,7 @@ public class SpikeTrap : MonoBehaviour {
         if (collision.gameObject.CompareTag("Enemy") && !activated)
         {
             triggered = true;
+            anim.SetBool("triggered", true);
         }
     }
 }

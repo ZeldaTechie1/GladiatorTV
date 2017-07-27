@@ -60,12 +60,19 @@ public class BaseEnemy : MonoBehaviour
     public GameObject HardDrop2;
 
     public GameObject particles;
+    public Rigidbody2D Rigid;
+
+    public float pushBackAmount = 5f;
+    public int pointsAmount = 2;
+    ScoreSystem scoreSystem;
     private void Awake()
     {
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         speed = baseSpeed;
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
+        Rigid = this.gameObject.GetComponent<Rigidbody2D>();
+        scoreSystem = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScoreSystem>();
     }
     // Update is called once per frame
 
@@ -241,7 +248,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void Move_To_Location(Vector3 Target)
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
+        Rigid.MovePosition(transform.position + Target * Time.deltaTime * speed);
     }
 
     public void Set_Invincible_Time(float val)
@@ -356,7 +364,27 @@ public class BaseEnemy : MonoBehaviour
     public void Die()
     {
         SelectWeapon(currentDifficulty);
-        Destroy(this.gameObject);
+        scoreSystem.scoreEvent.Invoke(pointsAmount);
         GameObject Object = Instantiate(particles, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
+    public void BounceBack(int direction)
+    {
+        switch(direction)
+        {
+            case 0:
+                this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - pushBackAmount, this.gameObject.transform.position.z);
+                break;
+            case 1:
+                this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x - pushBackAmount, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+                break;
+            case 2:
+                this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + pushBackAmount, this.gameObject.transform.position.z);
+                break;
+            case 3:
+                this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x + pushBackAmount, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+                break;
+        }
     }
 }

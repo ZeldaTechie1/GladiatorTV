@@ -19,7 +19,6 @@ public class DoorEventSystem : MonoBehaviour {
     int currentObjectives;// The Number Objectives needed to be destroyed.
     int currentTraps;// The Current Number Traps.
     int currentEnemies;// The Current Number of Enemies;
-    string roomFlavorText=null;// Flavor Text For the Room;
 
     float TimeRemaining=0;
     int firstRoomX;
@@ -27,6 +26,9 @@ public class DoorEventSystem : MonoBehaviour {
     public GameObject camera;
     public RoomCamera roomcam;
     bool doorsOpen = false;
+
+    [SerializeField]
+    FlavorText flavorTextSystem;
 
 
 	// Use this for initialization
@@ -57,9 +59,6 @@ public class DoorEventSystem : MonoBehaviour {
         ChangeRoom(CurrentRoom);
 
 
-
-
-
     }
 	// Update is called once per frame
 	void Update () {
@@ -79,7 +78,10 @@ public class DoorEventSystem : MonoBehaviour {
     public void ChangeRoom(Room room)
       {
 
-
+        if(room == CurrentRoom)
+        {
+            return;
+        }
         CurrentRoom = room;
 
         CurrentRoomType = CurrentRoom.GetRoomType();
@@ -99,9 +101,8 @@ public class DoorEventSystem : MonoBehaviour {
         CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
 
         roomcam.CameraUpdate(CurrentRoomsPos);// <----------------------------------------------------------------ADD UPDATE CAMERA POSITION
-        UpdateRoomFlavorText(CurrentRoom.flavorText);
 
-       
+        StartCoroutine(flavorTextSystem.showFlavorText(CurrentRoom.flavaTown));
     }
 
     public void ObjectiveCheck()
@@ -220,11 +221,6 @@ public class DoorEventSystem : MonoBehaviour {
     public void ENDGAME()
     {
 
-    }
-
-    public void UpdateRoomFlavorText(string Flavatown)
-    {
-        roomFlavorText = Flavatown;
     }
     private void GetAllDoors()
     {
