@@ -18,9 +18,12 @@ public class DoorTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-       
-        Doors door = GetComponentInParent<Doors>();
-        door.RoomTriggered();
+       if(collider.CompareTag("Player"))
+        {
+            Doors door = GetComponentInParent<Doors>();
+            door.RoomTriggered();   
+        }
+        
     }
 
     
