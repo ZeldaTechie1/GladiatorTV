@@ -88,15 +88,12 @@ public class DoorEventSystem : MonoBehaviour {
         currentObjectives = CurrentRoomBluePrint.numberofobjectives;
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
-        
-
         TimeRemaining = CurrentRoom.SurviveTime;
 
         ObjectiveCheck();
 
         if(!CurrentRoom.ObjectiveComplete)
         {
-            BOARD.RoomEnemySpawn(CurrentRoom);
             CloseDoors();
         }
         CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
