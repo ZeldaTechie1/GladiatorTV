@@ -97,12 +97,10 @@ public class TwitchChatController : MonoBehaviour
             Debug.Log("Upvotes have been saved, importing now.");
             string upvotes = PlayerPrefs.GetString("Upvotes");//grabs the upvotes stored in the system
             string[] upvoteArray = upvotes.Split(new char[] { ',', ' ' });//separate the string based on commas and spaces
-            Debug.Log(upvotes);
             foreach (string up in upvoteArray)//apply all the upvotes in the valid commands
             {
                 if (up != "" && up != " ")
                 {
-                    Debug.Log(up);
                     validCommands.Add(up, 1);//make it an upvote if it is not empty or a space
                     commandCount++;
                 }

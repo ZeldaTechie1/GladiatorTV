@@ -5,8 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour {
 
+    bool credentialsEntered;
+    [SerializeField]
+    Mediator mediator;
+
+    private void Awake()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void LoadByIndex(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        approveCredentials();
+        if(credentialsEntered)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        else
+        {
+            Debug.LogError("BITCH YOU FORGOT THE CREDENTIALS");
+        }
+    }
+
+    public void approveCredentials()
+    {
+        credentialsEntered = mediator.GetCredentialsSet();
     }
 }

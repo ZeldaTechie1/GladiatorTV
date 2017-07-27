@@ -15,12 +15,12 @@ public class PlayerPreferenceController : MonoBehaviour {
     [SerializeField]
     InputField Username;
     [SerializeField]
-    bool isPlayMode = false;
+    bool inPlayMode = false;
 
 	// Use this for initialization
 	void Start () {
        // PlayerPrefs.DeleteAll();
-		if(isPlayMode)
+		if(inPlayMode)
         {
             this.gameObject.SetActive(false);
         }
@@ -52,6 +52,7 @@ public class PlayerPreferenceController : MonoBehaviour {
         StoreUpvotes(upvoteInput.text);
         Debug.Log("Storing downvotes: " + downvoteInput.text);
         StoreDownvotes(downvoteInput.text);
+        
             
     }
 
