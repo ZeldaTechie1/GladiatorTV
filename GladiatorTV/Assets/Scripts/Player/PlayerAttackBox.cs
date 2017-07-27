@@ -16,6 +16,7 @@ public class PlayerAttackBox : MonoBehaviour {
         player_con = this.gameObject.GetComponentInParent<PlayerController>();
         thisCollider = this.gameObject.GetComponent<BoxCollider2D>();
         thisCollider.enabled = false;
+        Set_Attack_Values();
 	}
 	
 	// Update is called once per frame
