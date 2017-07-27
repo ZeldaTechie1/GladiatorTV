@@ -24,8 +24,9 @@ public class TwitchIRC : MonoBehaviour
 
     [SerializeField]
     Mediator mediator;
-    private void StartIRC()
+    public void StartIRC()
     {
+        stopThreads = false;
         if(AllCredentialsObtained())
         {
             controller.RasterizeVotingSystem();
@@ -160,11 +161,11 @@ public class TwitchIRC : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.End))//for testing only, needs to be changed once game is done
+        /*if(Input.GetKeyDown(KeyCode.End))//for testing only, needs to be changed once game is done
         {
             stopThreads = false;
             StartIRC();
-        }
+        }*/
         if(oauth!="")
         {
             lock (recievedMsgs)

@@ -261,6 +261,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 6.5}
   m_EdgeRadius: 0
+--- !u!1001 &348704139
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -23.979319
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.00429
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548630438723964, guid: ae5e8a15864d2da46921ff42e295ec84,
+        type: 2}
+      propertyPath: inPlayMode
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &504760378
 Prefab:
   m_ObjectHideFlags: 0
@@ -757,6 +804,7 @@ SpriteRenderer:
   m_Size: {x: 6.92, y: 6.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1733350994
 Transform:
   m_ObjectHideFlags: 0

@@ -980,7 +980,7 @@ MonoBehaviour:
   downvoteInput: {fileID: 114054812693976796}
   OAuthToken: {fileID: 114250494876152522}
   Username: {fileID: 114886361282348080}
-  isPlayMode: 0
+  inPlayMode: 0
 --- !u!114 &114623665164951270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1031,6 +1031,7 @@ MonoBehaviour:
   nickName: javi1kenobi
   channelName: javi1kenobi
   controller: {fileID: 114773462104847110}
+  mediator: {fileID: 0}
 --- !u!114 &114643591796810582
 MonoBehaviour:
   m_ObjectHideFlags: 1

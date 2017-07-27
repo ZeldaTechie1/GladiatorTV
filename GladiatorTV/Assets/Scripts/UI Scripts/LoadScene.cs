@@ -11,7 +11,7 @@ public class LoadScene : MonoBehaviour {
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void LoadByIndex(int sceneIndex)
