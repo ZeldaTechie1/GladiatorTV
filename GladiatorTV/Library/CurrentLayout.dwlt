@@ -95,8 +95,13 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 51
 --- !u!114 &5
+=======
+  controlID: 137
+--- !u!114 &4
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -116,7 +121,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1920
+<<<<<<< HEAD
     height: 997
+=======
+    height: 1037
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &6
@@ -160,12 +169,21 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1920
+<<<<<<< HEAD
     height: 947
   m_MinSize: {x: 883, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
   controlID: 71
 --- !u!114 &8
+=======
+    height: 987
+  m_MinSize: {x: 709, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
+  vertical: 0
+  controlID: 135
+--- !u!114 &7
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -203,6 +221,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 202
     y: 0
+<<<<<<< HEAD
     width: 1276
     height: 947
   m_MinSize: {x: 404, y: 492}
@@ -210,6 +229,15 @@ MonoBehaviour:
   vertical: 1
   controlID: 72
 --- !u!114 &10
+=======
+    width: 1478
+    height: 987
+  m_MinSize: {x: 434, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
+  vertical: 1
+  controlID: 136
+--- !u!114 &9
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -242,6 +270,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
+=======
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 12}
+  - {fileID: 13}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 716
+    width: 1478
+    height: 271
+  m_MinSize: {x: 434, y: 271}
+  m_MaxSize: {x: 14004, y: 10021}
+  vertical: 0
+  controlID: 73
+--- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -250,11 +305,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 637
     height: 675
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 17}
+=======
+    width: 739
+    height: 271
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 19}
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
   m_Panes:
   - {fileID: 17}
   m_Selected: 0
@@ -381,19 +444,34 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
     - Assets/PreFabs/Room Generation
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
   - Assets/PreFabs/Room Generation
+=======
+    - Assets/Scripts/General Scripts
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Scripts/General Scripts
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\user\Desktop\GladiatorTV\GladiatorTV
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 73.22099}
     m_SelectedIDs: 942b0000
     m_LastClickedID: 11156
     m_ExpandedIDs: 00000000742a0000102b0000462b0000802b0000902b0000a42b00005c2c0000b22d000000ca9a3bffffff7f
+=======
+    scrollPos: {x: 0, y: 287}
+    m_SelectedIDs: 22270000
+    m_LastClickedID: 10018
+    m_ExpandedIDs: 00000000462500000626000060260000c6260000f426000028270000ee270000342b000000ca9a3bffffff7f
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -421,7 +499,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000742a0000102b0000462b0000802b0000902b0000a42b00005c2c0000b22d0000
+=======
+    m_ExpandedIDs: 00000000462500000626000060260000c6260000f426000028270000ee270000342b0000
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -465,7 +547,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -613,9 +695,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 41.587826
     speed: 2
     m_Value: 41.587826
+=======
+    m_Target: 4863.535
+    speed: 2
+    m_Value: 4863.535
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -654,9 +742,15 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 9267fcff
     m_LastClickedID: -235630
     m_ExpandedIDs: aa11fdff1015fdff681dfdffe487fdff38eaffff76edffffcef4ffff00000000
+=======
+    m_SelectedIDs: 0ee6ffff
+    m_LastClickedID: -6642
+    m_ExpandedIDs: 0ee6ffff14e7ffff98f5ffffd2fbffff00000000
+>>>>>>> c3a9722fa6b87a4bc40a708782ce4c0d51dbd67b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Lancer(Clone)
