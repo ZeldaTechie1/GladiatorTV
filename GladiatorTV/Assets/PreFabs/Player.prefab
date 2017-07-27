@@ -437,7 +437,7 @@ MonoBehaviour:
   invincibleTime: 1
   attackDamage: 5
   range: 3
-  attackSpeed: 10
+  attackSpeed: 1.5
   attacking: 0
   attackDuration: 1
   attackCounter: 0
@@ -488,4 +488,3 @@ SpriteRenderer:
   m_Size: {x: 6.92, y: 6.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1

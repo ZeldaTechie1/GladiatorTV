@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if(attacking)
         {
-            if(attackCounter == attackDuration)
+            if(attackCounter >= attackDuration)
             {
                 attacking = false;
                 attackCoolDown = true;
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if(attackCoolDown)
         {
-            if(attackCounter == attackSpeed)
+            if(attackCounter >= attackSpeed)
             {
                 attackCoolDown = false;
                 attackCounter = 0;
