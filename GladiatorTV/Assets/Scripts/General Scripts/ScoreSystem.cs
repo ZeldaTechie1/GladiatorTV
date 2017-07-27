@@ -7,6 +7,7 @@ public class ScoreSystem : MonoBehaviour
 
     public class ScoreEvent : UnityEngine.Events.UnityEvent<int> { };
     public ScoreEvent scoreEvent = new ScoreEvent();
+    [SerializeField]
     int score = 0;
 
     // Use this for initialization

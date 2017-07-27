@@ -172,6 +172,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &389402949 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114007036371507648, guid: 72b33b57720535d49983fa151db22f8c,
+    type: 2}
+  m_PrefabInternal: {fileID: 890436592}
+  m_Script: {fileID: 11500000, guid: 6a4eeda01a19b4b448b2dcd59d9f33de, type: 3}
 --- !u!224 &416510804 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224360888850949786, guid: ae5e8a15864d2da46921ff42e295ec84,
@@ -357,6 +363,11 @@ Prefab:
       propertyPath: PauseMenu
       value: 
       objectReference: {fileID: 1324908985}
+    - target: {fileID: 114956955459427066, guid: 04536daec85839c48a9b9309cb6580d1,
+        type: 2}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 389402949}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04536daec85839c48a9b9309cb6580d1, type: 2}
   m_IsPrefabParent: 0

@@ -51,6 +51,16 @@ public class PlayerController : MonoBehaviour
     public GameBoard BoardScript;
     public bool spawned = false;
     public SpriteRenderer SpriteRend;
+
+    //the pickup system stuff
+    [SerializeField]
+    string[] pickups;
+    int pickupRadius = 200;
+    string weaponEquipped = "hand";
+    WeaponSpawner.weaponQuality weaponQuality = WeaponSpawner.weaponQuality.Crappy;
+    [SerializeField]
+    ScoreSystem score;
+
     // Use this for initialization
     void Start()
     {
@@ -125,6 +135,53 @@ public class PlayerController : MonoBehaviour
         }
         Flip();
 
+        //this is for picking stuff up
+        if(Input.GetKeyDown(KeyCode.F))//press the f key to pick stuff up
+        {
+            //Debug.Log("Trying to pick up ze shit");
+            pickup();
+        }
+
+    }
+
+    private void pickup()
+    {
+        Collider2D[] objectsInRadius = Physics2D.OverlapCircleAll(this.transform.position,pickupRadius);//these are all the things in range
+        for(int count = 0; count<objectsInRadius.Length;count++)
+        {
+            GameObject objectInRadius = objectsInRadius[count].gameObject;
+            string objectTag = objectInRadius.tag;
+            //Debug.Log("Picking up this shit: " + objectTag);
+            switch(objectTag)
+            {
+                case "Weapon":ApplyWeapon(objectInRadius);break;
+                case "Money": MoneyPickedUp(objectInRadius);break;
+            }
+        }
+    }
+
+    void ApplyWeapon(GameObject weaponPickUp)
+    {
+        Weapon weapon = weaponPickUp.GetComponent<Weapon>();
+        if(weapon != null)
+        {
+            range = weapon.GetRange();
+            weaponEquipped = weapon.GetWeaponName();
+            weaponQuality = weapon.GetQuality();
+            attackSpeed = weapon.GetFireRate();
+            attackDamage = (int)weapon.GetDamage();
+            Destroy(weapon.gameObject);
+        }
+    }
+
+    void MoneyPickedUp(GameObject moneyPickUp)
+    {
+        Money money = moneyPickUp.GetComponent<Money>();
+        if(money!=null)
+        {
+            score.scoreEvent.Invoke(money.GetMoney());
+            Destroy(money.gameObject);
+        }
     }
 
     private void FixedUpdate()

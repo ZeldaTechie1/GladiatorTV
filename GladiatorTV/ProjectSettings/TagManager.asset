@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Menu
   - Irc
+  - Weapon
+  - Money
   layers:
   - Default
   - TransparentFX

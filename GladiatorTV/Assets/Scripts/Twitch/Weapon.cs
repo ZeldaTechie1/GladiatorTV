@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour {
     float range;
     [SerializeField]
     WeaponSpawner.weaponQuality quality;
+    [SerializeField]
+    float damage;
 
 	// Use this for initialization
 	void Start () {
@@ -38,5 +40,9 @@ public class Weapon : MonoBehaviour {
     public WeaponSpawner.weaponQuality GetQuality()
     {
         return quality;
+    }
+    public float GetDamage()
+    {
+        return damage;
     }
 }
