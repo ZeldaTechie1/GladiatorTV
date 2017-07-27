@@ -63,6 +63,8 @@ public class BaseEnemy : MonoBehaviour
     public Rigidbody2D Rigid;
 
     public float pushBackAmount = 5f;
+    public int pointsAmount = 2;
+    ScoreSystem scoreSystem;
     private void Awake()
     {
         player = GameObject.Find("Player");
@@ -70,6 +72,7 @@ public class BaseEnemy : MonoBehaviour
         speed = baseSpeed;
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
         Rigid = this.gameObject.GetComponent<Rigidbody2D>();
+        scoreSystem = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScoreSystem>();
     }
     // Update is called once per frame
 
@@ -361,6 +364,7 @@ public class BaseEnemy : MonoBehaviour
     public void Die()
     {
         SelectWeapon(currentDifficulty);
+        scoreSystem.scoreEvent.Invoke(pointsAmount);
         GameObject Object = Instantiate(particles, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
         Destroy(this.gameObject);
     }
