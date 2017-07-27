@@ -60,21 +60,18 @@ public class Room
     public bool ObjectiveComplete = false;// Keeps Track of the rooms objective;
     public bool TimeIsUp = false; // Keeps Track of room time for Survival type;
     public float SurviveTime = 10; // The Amount of time that will elapse in a Survival room
-    public string flavorText;
     public int Difficulty;
 
     public Direction EXIT = Direction.Null;
     public Direction ENTER = Direction.Null;
     public Direction DEADEND = Direction.Null;
 
-    
-
-
+    public string flavaTown;
 
     // Overloaded Method for making a room with only an exit 
     public void SetupRoom(int tileSize, int width, int height, Direction exit, GameObject parent, Location ThisRoom)
     {
-        flavorText = "BOI IM SPICY";
+        //flavorText = "BOI IM SPICY";
 
         AdjacentRooms = new List<Location>();
         DOORREFFRENCES = new List<GameObject>();
@@ -646,7 +643,7 @@ public class Room
         bluePrint = new RoomBluePrint(type, Trapchoices, Objectivechoices, Enemychoices, roomHeight, roomWidth, exitLocation, enterLocation, deadendLocation);
         roomLocations = bluePrint.GetBluePrint();
 
-
+        SetFlavorText();
 
         obstacles = new Location[roomWidth][];// Array of Traps
 
@@ -718,6 +715,18 @@ public class Room
         Difficulty = dif;
     }
 
+    public void SetFlavorText()
+    {
+        Type thisRoomType = GetRoomType();
+        switch (thisRoomType)
+        {
+            case Type.Kill:flavaTown = "OH MY GOD, WHAT IS THAT!\nIT'S UGLIER THAN YOUR MOM, AND THAT'S SAYING SOMETHING!"; break;
+            case Type.Survive:flavaTown = "TRY NOT TO FINISH FIRST! ;)";break;
+            case Type.Destroy:flavaTown = "FEELING WRECKLESS?";break;
+            case Type.ClearRoom:flavaTown = "YOU JUST GOT COMMUNITY SERVICE FOR BEING A VERY BAD BOY!\n OR GIRL, WHATEVER!";break;
+            case Type.FinalRoom:flavaTown = "I'D BEAT MYSELF BUT THEY'D TAKE ME OFF THE AIR!";break;
+        }
 
+    }
 
 }

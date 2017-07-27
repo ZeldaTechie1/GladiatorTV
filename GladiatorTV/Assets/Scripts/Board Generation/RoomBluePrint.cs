@@ -99,7 +99,7 @@ public class RoomBluePrint {
                         i++;
                     }
                 }
-
+                
                 break;
 
             case Type.Destroy:// adds objects that the player must destroy to move forward. The player must do this while avoiding enemies and traps;
