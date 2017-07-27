@@ -60,11 +60,11 @@ public class PlayerController : MonoBehaviour
         InvokeRepeating("IncrementCounters", 0f, .25f);
         RB = this.gameObject.GetComponent<Rigidbody2D>();
 
-        GameBoard = GameObject.Find("GameBoard");
+        GameBoard = GameObject.FindGameObjectWithTag("BOARD");
         BoardScript = GameBoard.GetComponent<GameBoard>();
 
-        Debug.Log(BoardScript.Board[0][0].roomCenter.transform.position);
-        Go_To_Spawn(BoardScript.Board[0][0].roomCenter.transform.position);
+        
+        Go_To_Spawn(BoardScript.Board[BoardScript.roomLocation[0].x][BoardScript.roomLocation[0].y].roomCenter.transform.position);
     }
 
     // Update is called once per frame
@@ -321,6 +321,7 @@ public class PlayerController : MonoBehaviour
 
     public void Go_To_Spawn(Vector3 location)
     {
+        location = new Vector3(location.x, location.y, -1);
         this.gameObject.transform.position = location;
     }
 }

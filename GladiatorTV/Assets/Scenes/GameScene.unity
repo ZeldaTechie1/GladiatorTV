@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   direction: 0
-  baseSpeed: 0
+  baseSpeed: 50
   dead: 0
   invincibleTime: 0
   attackDamage: 0
