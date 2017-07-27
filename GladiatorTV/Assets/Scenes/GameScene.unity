@@ -347,6 +347,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114998600627001752, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: roomcam
+      value: 
+      objectReference: {fileID: 1637550420}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
   m_IsPrefabParent: 0
@@ -429,6 +434,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 6.5}
   m_EdgeRadius: 0
+--- !u!1001 &632336036
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -23.979319
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.00429
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332632745111890, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &643396737
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +538,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652706615 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114998600627001752, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+    type: 2}
+  m_PrefabInternal: {fileID: 504760378}
+  m_Script: {fileID: 11500000, guid: 867bef2da7d9e264a85e72909b6ae22b, type: 3}
+--- !u!114 &652706617 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+    type: 2}
+  m_PrefabInternal: {fileID: 504760378}
+  m_Script: {fileID: 11500000, guid: 41416ff6243a5aa48b2fc7478f880257, type: 3}
 --- !u!1001 &890436592
 Prefab:
   m_ObjectHideFlags: 0
@@ -534,6 +593,16 @@ Prefab:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
+        type: 2}
+      propertyPath: board
+      value: 
+      objectReference: {fileID: 652706617}
+    - target: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
+        type: 2}
+      propertyPath: dooreventsystem
+      value: 
+      objectReference: {fileID: 652706615}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72b33b57720535d49983fa151db22f8c, type: 2}
   m_IsPrefabParent: 0
@@ -650,6 +719,12 @@ Transform:
   m_Father: {fileID: 1733350994}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1637550420 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
+    type: 2}
+  m_PrefabInternal: {fileID: 890436592}
+  m_Script: {fileID: 11500000, guid: c70ad155f60664d4f880a908f23155c5, type: 3}
 --- !u!1 &1733350988
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   direction: 0
-  baseSpeed: 0
+  baseSpeed: 50
   dead: 0
   invincibleTime: 0
   attackDamage: 0
@@ -742,6 +817,9 @@ MonoBehaviour:
   GameOver: {fileID: 559441049}
   PauseMenu: {fileID: 1324908985}
   RB: {fileID: 0}
+  GameBoard: {fileID: 0}
+  BoardScript: {fileID: 0}
+  spawned: 0
 --- !u!50 &1733350992
 Rigidbody2D:
   serializedVersion: 4
