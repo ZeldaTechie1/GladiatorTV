@@ -195,6 +195,7 @@ public class LancerController : BaseEnemy
             Attack_Complete();
             anim.SetBool("Stunned", true);
             anim.SetBool("Attacking", false);
+            BounceBack(direction);
         }
     }
 
@@ -211,6 +212,14 @@ public class LancerController : BaseEnemy
                 player_con.Deal_Damage(TouchDamage);
             }
             //Attack_Complete();
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Attack_Complete();
+            anim.SetBool("Stunned", true);
+            anim.SetBool("Attacking", false);
+            BounceBack(direction);
         }
     }
 
