@@ -7,6 +7,7 @@ public class SawBlad : MonoBehaviour {
     public float speed;
     public int direction;
     public Vector3 move;
+    public float rotationSpeed;
 	// Use this for initialization
 	void Start () {
         SetVector();
@@ -15,6 +16,7 @@ public class SawBlad : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         MoveBlade();
+        Rotate();
 	}
 
     private void MoveBlade()
@@ -40,5 +42,10 @@ public class SawBlad : MonoBehaviour {
                 break;
         }
 
+    }
+
+    public void Rotate()
+    {
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }

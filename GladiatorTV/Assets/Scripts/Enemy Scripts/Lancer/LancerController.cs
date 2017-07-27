@@ -57,7 +57,6 @@ public class LancerController : BaseEnemy
             anim.SetInteger("Direction", direction);
             Flip();
         }
-        FlipY();
         checkInvincible();
 
 

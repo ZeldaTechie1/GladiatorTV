@@ -17,9 +17,12 @@ public class BearTrap : MonoBehaviour {
 
     public int targetType;
     public GameObject target;
+
+    public Animator anim;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
+        anim = this.gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -56,7 +59,8 @@ public class BearTrap : MonoBehaviour {
     private void release()
     {
         active = false;
-        if(targetType == 0)
+        anim.SetBool("Activated", false);
+        if (targetType == 0)
         {
             target.GetComponent<PlayerController>().Set_Stunned(false);
         }
@@ -77,8 +81,9 @@ public class BearTrap : MonoBehaviour {
             PlayerController player_con = collision.GetComponent<PlayerController>();
             player_con.Deal_Damage(trapDamage);
             active = true;
+            anim.SetBool("Activated", true);
             targetType = 0;
-            player_con.Set_Stunned(true);
+            player_con.Set_Stunned(true);            
         }
 
 
@@ -88,6 +93,7 @@ public class BearTrap : MonoBehaviour {
             BaseEnemy enemy_con = collision.GetComponent<BaseEnemy>();
             enemy_con.Deal_Damage(trapDamage);
             active = true;
+            anim.SetBool("Activated", true);
             targetType = 1;
             enemy_con.Set_Stunned(true);
         }
@@ -101,6 +107,7 @@ public class BearTrap : MonoBehaviour {
             PlayerController player_con = collision.GetComponent<PlayerController>();
             player_con.Deal_Damage(trapDamage);
             active = true;
+            anim.SetBool("Activated", true);
             targetType = 0;
             player_con.Set_Stunned(true);
         }
@@ -110,6 +117,7 @@ public class BearTrap : MonoBehaviour {
             BaseEnemy enemy_con = collision.GetComponent<BaseEnemy>();
             enemy_con.Deal_Damage(trapDamage);
             active = true;
+            anim.SetBool("Activated", true);
             targetType = 1;
             enemy_con.Set_Stunned(true);
         }
