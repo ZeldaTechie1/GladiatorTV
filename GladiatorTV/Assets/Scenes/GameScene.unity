@@ -381,20 +381,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1703680440310034, guid: 72b33b57720535d49983fa151db22f8c, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
-        type: 2}
-      propertyPath: board
-      value: 
-      objectReference: {fileID: 652706617}
     - target: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
         type: 2}
       propertyPath: dooreventsystem
       value: 
       objectReference: {fileID: 652706615}
+    - target: {fileID: 114212408380772032, guid: 72b33b57720535d49983fa151db22f8c,
+        type: 2}
+      propertyPath: board
+      value: 
+      objectReference: {fileID: 652706617}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72b33b57720535d49983fa151db22f8c, type: 2}
   m_IsPrefabParent: 0
