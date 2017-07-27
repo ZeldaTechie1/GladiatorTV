@@ -8,6 +8,8 @@ TagManager:
   - Objective
   - BOARD
   - Wall
+  - Menu
+  - Irc
   layers:
   - Default
   - TransparentFX

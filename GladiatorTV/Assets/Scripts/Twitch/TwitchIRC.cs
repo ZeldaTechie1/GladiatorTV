@@ -21,6 +21,9 @@ public class TwitchIRC : MonoBehaviour
     private System.Threading.Thread inProc, outProc;
     [SerializeField]
     private TwitchChatController controller;
+
+    [SerializeField]
+    Mediator mediator;
     private void StartIRC()
     {
         if(AllCredentialsObtained())
@@ -178,7 +181,7 @@ public class TwitchIRC : MonoBehaviour
         }
         
     }
-    bool AllCredentialsObtained()
+    public bool AllCredentialsObtained()
     {
         if(!PlayerPrefs.HasKey("Username"))
         {
@@ -189,6 +192,10 @@ public class TwitchIRC : MonoBehaviour
         {
             Debug.LogError("Token has not been provided, PUT IT IN SON!");
             return false;
+        }
+        if(mediator!=null)
+        {
+            mediator.setCredentials();
         }
         return true;
     }
