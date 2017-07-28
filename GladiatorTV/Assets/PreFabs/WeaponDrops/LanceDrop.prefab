@@ -79,10 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: lance
-  fireRate: 1.5
-  range: 20
+  fireRate: 1
+  range: 35
   quality: 1
-  damage: 20
+  damage: 30
 --- !u!212 &212811126910650324
 SpriteRenderer:
   m_ObjectHideFlags: 1

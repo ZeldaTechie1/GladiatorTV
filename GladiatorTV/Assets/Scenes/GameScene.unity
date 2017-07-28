@@ -286,6 +286,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618,
         type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: numberOfRooms
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
   m_IsPrefabParent: 0
@@ -427,11 +432,6 @@ Prefab:
       propertyPath: flavorText
       value: 
       objectReference: {fileID: 1796656556}
-    - target: {fileID: 114956955459427066, guid: 04536daec85839c48a9b9309cb6580d1,
-        type: 2}
-      propertyPath: pickupRadius
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04536daec85839c48a9b9309cb6580d1, type: 2}
   m_IsPrefabParent: 0

@@ -79,10 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: scythe
-  fireRate: 2.5
-  range: 30
+  fireRate: 2
+  range: 50
   quality: 0
-  damage: 40
+  damage: 65
 --- !u!212 &212078782614805284
 SpriteRenderer:
   m_ObjectHideFlags: 1
