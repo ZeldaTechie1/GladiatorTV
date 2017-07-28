@@ -12,6 +12,7 @@ TagManager:
   - Irc
   - Weapon
   - Money
+  - Presents
   layers:
   - Default
   - TransparentFX
