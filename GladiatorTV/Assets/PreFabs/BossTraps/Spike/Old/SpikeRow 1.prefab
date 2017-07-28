@@ -621,6 +621,8 @@ MonoBehaviour:
   triggered: 0
   activated: 0
   counter: 0
+  SpikePanel: {fileID: 0}
+  panels: 9
 --- !u!114 &114473880321928708
 MonoBehaviour:
   m_ObjectHideFlags: 1

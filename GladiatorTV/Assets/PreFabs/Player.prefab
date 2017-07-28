@@ -194,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035753196373634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35000, y: 35000, z: 0}
+  m_LocalPosition: {x: -0.75013673, y: -0.6971859, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4722038548800916}
@@ -483,9 +483,9 @@ MonoBehaviour:
   baseSpeed: 100
   dead: 0
   invincibleTime: 1
-  attackDamage: 5
-  range: 3
-  attackSpeed: 1.5
+  attackDamage: 10
+  range: 15
+  attackSpeed: 1
   attacking: 0
   attackDuration: 1
   attackCounter: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
   spawned: 0
   SpriteRend: {fileID: 0}
   pickups: []
-  pickupRadius: 10
+  pickupRadius: 100
   weaponEquipped: hand
   score: {fileID: 0}
   flavorText: {fileID: 0}

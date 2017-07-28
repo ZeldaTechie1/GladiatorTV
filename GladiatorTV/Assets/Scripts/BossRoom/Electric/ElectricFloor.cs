@@ -33,10 +33,10 @@ public class ElectricFloor : MonoBehaviour {
             for(int j = 0; j < 9; j++)
             {
                 GameObject Object = Instantiate(electric, new Vector3(this.transform.localPosition.x + positionx, this.transform.localPosition.y + positiony, 0), Quaternion.identity);
-                positionx += 16;
+                positionx += 64;
             }
             positionx = 0;
-            positiony -= 16;
+            positiony -= 64;
         }
     }
 

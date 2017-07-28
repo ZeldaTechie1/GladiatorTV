@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
         Go_To_Spawn(BoardScript.Board[BoardScript.roomLocation[0].x][BoardScript.roomLocation[0].y].roomCenter.transform.position);
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame

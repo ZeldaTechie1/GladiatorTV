@@ -117,17 +117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b91190d67e9a747913440ad25feba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  MediumHealth: 150
-  HardHealth: 200
+  health: 40
+  MediumHealth: 60
+  HardHealth: 80
   direction: 0
   baseSpeed: 2
   anim: {fileID: 0}
   player: {fileID: 0}
   player_con: {fileID: 0}
-  AttackDamage: 15
-  MediumAttackDamage: 20
-  HardAttackDamage: 30
+  AttackDamage: 10
+  MediumAttackDamage: 15
+  HardAttackDamage: 25
   TouchDamage: 5
   MediumTouchDamage: 8
   HardTouchDamage: 10
@@ -147,9 +147,9 @@ MonoBehaviour:
   Rigid: {fileID: 0}
   pushBackAmount: 5
   pointsAmount: 2
-  chargeSpeed: 100
-  MediumchargeSpeed: 200
-  HardchargeSpeed: 300
+  chargeSpeed: 200
+  MediumchargeSpeed: 300
+  HardchargeSpeed: 400
   chargeCounter: 0
   waitTime: 2
   MediumWaitTime: 1.5
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300004, guid: bb986e8cd8939794781618b753e39e22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

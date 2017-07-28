@@ -14,8 +14,11 @@ public class SpikeRow : MonoBehaviour {
 
     public float counter;
 
+    public GameObject SpikePanel;
+    public int panels = 9;
     // Use this for initialization
     void Start () {
+        GeneratePanels();
         SetValues();
 	}
 	
@@ -44,6 +47,18 @@ public class SpikeRow : MonoBehaviour {
             child.GetComponent<BossSpike>().activeTime = activeTime;
             child.GetComponent<BossSpike>().delayTime = delayTime;
             child.GetComponent<BossSpike>().trapDamage = trapDamage;
+        }
+    }
+
+    public void GeneratePanels()
+    {
+        float positionx = 0;
+        float positiony = 0;
+        for (int i = 0; i < 9; i++)
+        {
+            GameObject thisObject = Instantiate(SpikePanel, new Vector3(this.transform.localPosition.x + positionx, this.transform.localPosition.y + positiony, 0), Quaternion.identity);
+            thisObject.transform.parent = this.transform;
+            positionx += 64;
         }
     }
 }
