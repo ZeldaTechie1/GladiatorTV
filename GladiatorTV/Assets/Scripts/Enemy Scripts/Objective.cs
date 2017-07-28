@@ -43,7 +43,6 @@ public class Objective : MonoBehaviour
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
-
         gameBoard = GameObject.FindWithTag("BOARD");
         dooreventsystem = gameBoard.GetComponent(typeof(DoorEventSystem)) as DoorEventSystem;
     }
