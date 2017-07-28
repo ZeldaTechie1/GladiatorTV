@@ -78,14 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f90f91c8fd62746a344b8db2d76775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 20
   MediumHealth: 0
   HardHealth: 0
   player: {fileID: 0}
   player_con: {fileID: 0}
   thisDifficutly: 0
   currentDifficulty: -1
-  eventsystem: {fileID: 0}
+  dooreventsystem: {fileID: 0}
   ItemDrop: {fileID: 1468878099967214, guid: d056ba942f8d61047801b7b462959564, type: 2}
 --- !u!212 &212578641297767608
 SpriteRenderer:

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114238527703956828}
   - component: {fileID: 114513021870618382}
   - component: {fileID: 114998600627001752}
+  - component: {fileID: 114085411009850214}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: BOARD
@@ -42,6 +43,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114085411009850214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901718358568562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fde03dc349141b4694d931b091b0dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
 --- !u!114 &114238527703956828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,10 +78,10 @@ MonoBehaviour:
   - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
   - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
   Objectives:
-  - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
-  - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
-  - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
-  - {fileID: 1255924594225098, guid: cdb364ed545be2c43b5be13610e583fd, type: 2}
+  - {fileID: 1111014985186750, guid: 6da6ee83ade802c4aa848d84657c8e14, type: 2}
+  - {fileID: 1895081397133008, guid: 4c95325a13c0ce44c850f0d8e825e3a9, type: 2}
+  - {fileID: 1895024564924402, guid: 9b51477e8d1707e44a6cb3bfeef8fc71, type: 2}
+  - {fileID: 1863833883503040, guid: d4c5595dde87c63459ae66c35f6ceb86, type: 2}
   Enemies:
   - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
   - {fileID: 1664528447067962, guid: d17a977c952f5bf439f38d129433b49d, type: 2}
@@ -114,3 +127,6 @@ MonoBehaviour:
   CurrentRoomsPos: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   roomcam: {fileID: 0}
+  timeIsUp: 0
+  timer: {fileID: 114085411009850214}
+  flavorTextSystem: {fileID: 0}

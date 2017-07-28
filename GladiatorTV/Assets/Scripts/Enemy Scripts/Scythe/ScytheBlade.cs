@@ -51,7 +51,7 @@ public class ScytheBlade : MonoBehaviour
             player_con.Deal_Damage(bladeDamage);
         }
 
-        if (collision.gameObject.name == "Scythe")
+        if (collision.gameObject.name == transform.parent.parent.name)
         {
             if (Weapon.Get_Pull())
             {
