@@ -602,11 +602,14 @@ public class GameBoard : MonoBehaviour
                     {
                         currentObstacle = Objectives[Obstacles[j][k].id];
                         Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+
+                        Debug.Log("YO");
                     }
                     else if (Obstacles[j][k].member == Member.Trap)
                     {
                         currentObstacle = Traps[Obstacles[j][k].id];
                         Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
+                        Debug.Log("HI");
                     }
 
                 }

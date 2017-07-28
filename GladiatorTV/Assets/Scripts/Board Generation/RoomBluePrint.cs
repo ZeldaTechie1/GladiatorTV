@@ -70,13 +70,13 @@ public class RoomBluePrint {
             case Type.Survive:// the player must kill enemies  spawning from indistructable objectives that spawn in the center of the room until time is up;
 
                 numberoftraps = 6;
-                numberofobjectives = 4;
-                numberofEnemies = 4;
+                numberofobjectives = 6;
+                numberofEnemies = 6;
 
-                roomLocations.Add(new Location(2, 2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
-                roomLocations.Add(new Location(2, roomFloorMaxY-1, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
-                roomLocations.Add(new Location(roomFloorMaxX-1,2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
-                roomLocations.Add(new Location(roomFloorMaxX-2, roomFloorMaxY-2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
+               // roomLocations.Add(new Location(2, 2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
+               // roomLocations.Add(new Location(2, roomFloorMaxY-1, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
+               // roomLocations.Add(new Location(roomFloorMaxX-1,2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
+              //  roomLocations.Add(new Location(roomFloorMaxX-2, roomFloorMaxY-2, objectiveChoices - 1, Member.Objective));// Enemy Spawner Location
 
 
                 i = 0;
@@ -89,6 +89,8 @@ public class RoomBluePrint {
                         i++;
                     }
                 }
+
+                i = 0;
 
                 while (i <= numberofEnemies)
                 {
@@ -134,6 +136,7 @@ public class RoomBluePrint {
 
                 }
 
+                i = 0;
                 while (i <= numberofEnemies)
                 {
                     locationholder = RandomEnemyLocation();
@@ -146,12 +149,10 @@ public class RoomBluePrint {
 
                 break;
 
-            case Type.Kill:// NEEDS TO SPAWN A MINI BOSS at Objective Location;
+            case Type.Genociede://Kill All The Enemies in the Room;
 
-                numberoftraps = 5;
-                numberofEnemies=1;
-
-                locationholder = new Location((roomHeight / 2), (roomWidth / 2), enemyChoices - 2, Member.Enemy);
+                numberoftraps = 6;
+                numberofEnemies = 10;
 
                 i = 0;
                 while (i <= numberoftraps)
@@ -165,12 +166,50 @@ public class RoomBluePrint {
 
                 }
 
+                i = 0;
+
+                while (i <= numberofEnemies)
+                {
+                    locationholder = RandomEnemyLocation();
+                    if (LocationAvalible(locationholder))
+                    {
+                        roomLocations.Add(locationholder);
+                        i++;
+                    }
+                }
+
                 break;
+
+
+
+
+            /*
+        case Type.Kill:// NEEDS TO SPAWN A MINI BOSS at Objective Location;
+
+            numberoftraps = 5;
+            numberofEnemies=1;
+
+            locationholder = new Location((roomHeight / 2), (roomWidth / 2), enemyChoices - 2, Member.Enemy);
+
+            i = 0;
+            while (i <= numberoftraps)
+            {
+                locationholder = RandomTrapLocation();
+                if (LocationAvalible(locationholder))
+                {
+                    roomLocations.Add(locationholder);
+                    i++;
+                }
+
+            }
+
+            break;
+            */
 
             case Type.ClearRoom:// fills the room with destructable objectives which the player will have to destroy to progress.
 
                 
-                numberofobjectives =10;
+                numberofobjectives =15;
 
                 int p = 0;
 
@@ -267,7 +306,7 @@ public class RoomBluePrint {
     {
         int EnemX = Random.Range(1, roomFloorMaxX - 1);
         int EnemY = Random.Range(1, roomFloorMaxY - 1);
-        int EnemID = Random.Range(0, enemyChoices-2);
+        int EnemID = Random.Range(0, enemyChoices-1);
 
         return new Location(EnemX, EnemY, EnemID, Member.Enemy);
     }

@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110323841232272, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1118384200869674, guid: ae5e8a15864d2da46921ff42e295ec84, type: 2}
       propertyPath: m_IsActive
@@ -190,6 +190,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Traps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4515642452096424, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.28
@@ -246,6 +256,42 @@ Prefab:
     - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
         type: 2}
       propertyPath: Enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1580675697971524, guid: ddf69d288cffd804f9a893ca87473e82,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Traps.Array.data[0]
+      value: 
+      objectReference: {fileID: 1406950687957926, guid: 655450be7607d1641af0085fc254d6ab,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Traps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1922098445185816, guid: aae1125a108898545a5e50c375508513,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Traps.Array.data[2]
+      value: 
+      objectReference: {fileID: 1406950687957926, guid: 655450be7607d1641af0085fc254d6ab,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Traps.Array.data[3]
+      value: 
+      objectReference: {fileID: 1539716471973398, guid: 54dfad29a1bbe0a48bb4ac47f3700906,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Enemies.Array.data[3]
       value: 
       objectReference: {fileID: 1030494127180876, guid: c58294d69c45b6744ae1c0b72f81b618,
         type: 2}
@@ -317,7 +363,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &652706615 stripped
 MonoBehaviour:
