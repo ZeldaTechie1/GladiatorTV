@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030494127180876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.9, y: 59.5, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalPosition: {x: 34905.59, y: 35120.867, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.6607628, y: -0.43354797}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 73, y: 43}
+  m_Size: {x: 48.09115, y: 40.398438}
   m_EdgeRadius: 0
 --- !u!95 &95709568351630342
 Animator:
@@ -133,15 +133,20 @@ MonoBehaviour:
   HardTouchDamage: 10
   thisDifficutly: 0
   currentDifficulty: -1
-  EasyDrop1: {fileID: 1101065030213320, guid: 4cfb30e340a2fee47b9f8c83f591ec16, type: 2}
-  EasyDrop2: {fileID: 1101065030213320, guid: da9a35b7a4aca744591fbdc3c82731f0, type: 2}
-  MediumDrop1: {fileID: 1663548950358202, guid: a5b6f2d8a27a28a48a2d0470bd0a0fb1,
+  SpriteRend: {fileID: 0}
+  dooreventsystem: {fileID: 0}
+  EasyDrop1: {fileID: 1393397632974314, guid: f6957bb97e68ef64984c473b10376dab, type: 2}
+  EasyDrop2: {fileID: 1393397632974314, guid: f6957bb97e68ef64984c473b10376dab, type: 2}
+  MediumDrop1: {fileID: 1681265216077830, guid: f8d2c64e81217834ebe424569bf5be53,
     type: 2}
-  MediumDrop2: {fileID: 1663548950358202, guid: efee10326bdec144195350d2f21b4ee7,
+  MediumDrop2: {fileID: 1681265216077830, guid: f8d2c64e81217834ebe424569bf5be53,
     type: 2}
-  HardDrop1: {fileID: 1140572190779024, guid: 6010c00c5c0b4ab4ea90bb354fff57c5, type: 2}
-  HardDrop2: {fileID: 1140572190779024, guid: 23591b4b37ba767459eef816e6e6b099, type: 2}
+  HardDrop1: {fileID: 1761954638386594, guid: 7f158da936cec0a43a2986fdb799dd8e, type: 2}
+  HardDrop2: {fileID: 1761954638386594, guid: 7f158da936cec0a43a2986fdb799dd8e, type: 2}
   particles: {fileID: 1742584339539402, guid: 843f0564f6d1bbc41b26e3936ce880c7, type: 2}
+  Rigid: {fileID: 0}
+  pushBackAmount: 5
+  pointsAmount: 2
   chargeSpeed: 100
   MediumchargeSpeed: 200
   HardchargeSpeed: 300
@@ -191,4 +196,3 @@ SpriteRenderer:
   m_Size: {x: 6.77, y: 6.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
