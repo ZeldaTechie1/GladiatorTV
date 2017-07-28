@@ -19,6 +19,7 @@ public class ScytheController : BaseEnemy
     public float pullSpeed;
     public float MediumPullSpeed;
     public float HardPullSpeed;
+    public Animator anim;
     // Use this for initialization
     void Start()
     {
@@ -26,6 +27,7 @@ public class ScytheController : BaseEnemy
         Set_Attacking(false);
         WeaponController = Weapon.GetComponent<ScytheWeapon>();
         Weapon.SetActive(false);
+        anim = this.gameObject.GetComponent<Animator>();
         //Set_Attack_Time(1.5f);
     }
 
@@ -36,6 +38,7 @@ public class ScytheController : BaseEnemy
 
         if (Check_if_Dying())
         {
+            anim.SetBool("false", true);
             Die();
         }
 
@@ -53,6 +56,7 @@ public class ScytheController : BaseEnemy
             Set_Direction();
             if (!Get_Stunned())
             {
+                anim.SetBool("moving", true);
                 Move_To_Location(player.transform.position);
             }
             Weapon.SetActive(false);
@@ -60,6 +64,7 @@ public class ScytheController : BaseEnemy
 
         if (Get_Attacking() && !startedSwing)
         {
+            anim.SetBool("moving", false);
             startedSwing = true;
             Weapon.SetActive(true);
             WeaponController.SetRotation(direction);
@@ -76,6 +81,7 @@ public class ScytheController : BaseEnemy
                 Set_Direction();
             }
         }
+        Flip2();
     }
 
     private void Increment_Counters()
@@ -122,6 +128,32 @@ public class ScytheController : BaseEnemy
                 rotationSpeed = HardRotationSpeed;
                 pullSpeed = HardPullSpeed;
                 break;
+        }
+    }
+
+    public void Flip2()
+    {
+        if (direction == 1)
+        {
+            if (SpriteRend.flipX)
+            {
+
+            }
+            else
+            {
+                SpriteRend.flipX = true;
+            }
+        }
+        if (direction == 3)
+        {
+            if (SpriteRend.flipX)
+            {
+                SpriteRend.flipX = false;
+            }
+            else
+            {
+
+            }
         }
     }
 }
