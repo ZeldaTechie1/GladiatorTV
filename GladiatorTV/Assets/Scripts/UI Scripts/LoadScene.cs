@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour {
+public class LoadScene : MonoBehaviour
+{
 
     bool credentialsEntered;
     [SerializeField]
@@ -17,7 +18,7 @@ public class LoadScene : MonoBehaviour {
     public void LoadByIndex(int sceneIndex)
     {
         approveCredentials();
-        if(credentialsEntered)
+        if (credentialsEntered)
         {
             SceneManager.LoadScene(sceneIndex);
         }
@@ -34,7 +35,7 @@ public class LoadScene : MonoBehaviour {
 
     public void approveCredentials()
     {
-        if(mediator!=null)
+        if (mediator != null)
             credentialsEntered = mediator.GetCredentialsSet();
     }
 }
