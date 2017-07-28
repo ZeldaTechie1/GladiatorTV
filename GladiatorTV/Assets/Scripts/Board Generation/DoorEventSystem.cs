@@ -68,10 +68,8 @@ public class DoorEventSystem : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if(!doorsOpen&&!CurrentRoom.ObjectiveComplete)
-        {
             ObjectiveCheck();
-        }
+
         
 
         if(CurrentRoomType==Type.Survive && !CurrentRoom.TimeIsUp)
@@ -184,8 +182,7 @@ public class DoorEventSystem : MonoBehaviour {
     }
 
     public void OpenDoors()
-    {
-        Debug.Log("Doors: "+Doors.Count); 
+    { 
 
         for (int i = 0; i < Doors.Count; i++)
         {

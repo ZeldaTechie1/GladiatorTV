@@ -170,7 +170,7 @@ public class RoomBluePrint {
             case Type.ClearRoom:// fills the room with destructable objectives which the player will have to destroy to progress.
 
                 
-                numberofobjectives =0;
+                numberofobjectives =10;
 
                 int p = 0;
 
@@ -181,10 +181,9 @@ public class RoomBluePrint {
                         locationholder = new Location(j, k, Random.Range(0,objectiveChoices-1),Member.Objective);
                         if (LocationAvalible(locationholder))
                         {
-                            if (p < numberofobjectives)
+                            if (p <= numberofobjectives)
                             {
                                 roomLocations.Add(locationholder);
-                                numberofobjectives++;
                                 p++;
                             }
                             else
