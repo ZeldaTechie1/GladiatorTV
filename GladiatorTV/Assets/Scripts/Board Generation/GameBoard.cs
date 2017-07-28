@@ -607,13 +607,6 @@ public class GameBoard : MonoBehaviour
                         Instantiate(currentObstacle, newPosition, Quaternion.identity).transform.SetParent(Parent.transform);
                     }
 
-                    else if (Obstacles[j][k].member == Member.Enemy)
-                    {
-                        currentObstacle = Enemies[Obstacles[j][k].id];
-                        EnemyManage.SpawnEnemy(currentRoom.Difficulty, newPosition);
-                        
-
-                    }
                 }
 
             }
