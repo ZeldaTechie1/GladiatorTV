@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             {
                 case "Weapon":ApplyWeapon(objectInRadius);break;
                 case "Money": MoneyPickedUp(objectInRadius);break;
-                case "Objective":MoneyPickedUp(objectInRadius,objectInRadius.GetComponent<ObjectivePickup>().getFlavorText());break;
+                case "Presents":MoneyPickedUp(objectInRadius,objectInRadius.GetComponent<ObjectivePickup>().getFlavorText());break;
             }
         }
     }
