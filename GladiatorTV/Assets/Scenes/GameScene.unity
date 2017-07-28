@@ -108,11 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &134908977 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1761964303068120, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2111274562}
 --- !u!1001 &279017484
 Prefab:
   m_ObjectHideFlags: 0
@@ -958,55 +953,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224842537383157474, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -320.3158
-      objectReference: {fileID: 0}
-    - target: {fileID: 224775358878874140, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -760.9474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852050749993350, guid: fa95a67d3d4db8545aaf65bcbd7b503a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224842537383157474, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224842537383157474, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224842537383157474, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 480
-      objectReference: {fileID: 0}
-    - target: {fileID: 224775358878874140, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224775358878874140, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224775358878874140, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 480
-      objectReference: {fileID: 0}
-    - target: {fileID: 114058447126815992, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
-        type: 2}
-      propertyPath: thiscanvas
-      value: 
-      objectReference: {fileID: 134908977}
     - target: {fileID: 114986626237680708, guid: fa95a67d3d4db8545aaf65bcbd7b503a,
         type: 2}
       propertyPath: eventSystem
