@@ -47,7 +47,7 @@ public class BaseEnemy:MonoBehaviour
     private bool dying = false;
     private float deathCounter = 0;
     private float deathTime = 1;
-    private SpriteRenderer SpriteRend;
+    public SpriteRenderer SpriteRend;
     public DoorEventSystem dooreventsystem;
     GameObject gameBoard;
 
@@ -255,8 +255,8 @@ public class BaseEnemy:MonoBehaviour
 
     public void Move_To_Location(Vector3 Target)
     {
-        //transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
-        Rigid.MovePosition(transform.position + Target * Time.deltaTime * speed);
+        transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
+        //Rigid.MovePosition(transform.position + Target * Time.deltaTime * speed);
     }
 
     public void Set_Invincible_Time(float val)
