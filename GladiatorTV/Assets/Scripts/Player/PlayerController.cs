@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     WeaponSpawner.weaponQuality weaponQuality = WeaponSpawner.weaponQuality.Crappy;
     [SerializeField]
     ScoreSystem score;
+    [SerializeField]
+    FlavorText flavorText;
 
     // Use this for initialization
     void Start()
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
             {
                 case "Weapon":ApplyWeapon(objectInRadius);break;
                 case "Money": MoneyPickedUp(objectInRadius);break;
+                case "Objective":MoneyPickedUp(objectInRadius,"YOU WIN A LIFETIME SUPPLY OF CINNAMON RAVIOLI!!!!!");break;
             }
         }
     }
@@ -182,6 +185,12 @@ public class PlayerController : MonoBehaviour
             score.scoreEvent.Invoke(money.GetMoney());
             Destroy(money.gameObject);
         }
+    }
+
+    void MoneyPickedUp(GameObject moneyPickUp, string flavor)
+    {
+        MoneyPickedUp(moneyPickUp);
+        StartCoroutine(flavorText.showFlavorText(flavor));
     }
 
     private void FixedUpdate()

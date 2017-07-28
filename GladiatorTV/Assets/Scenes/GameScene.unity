@@ -368,6 +368,11 @@ Prefab:
       propertyPath: score
       value: 
       objectReference: {fileID: 389402949}
+    - target: {fileID: 114956955459427066, guid: 04536daec85839c48a9b9309cb6580d1,
+        type: 2}
+      propertyPath: flavorText
+      value: 
+      objectReference: {fileID: 1796656556}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04536daec85839c48a9b9309cb6580d1, type: 2}
   m_IsPrefabParent: 0
@@ -467,6 +472,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1664432689271608, guid: da55214d1b7a4184b99c74c35b78a348, type: 2}
+      propertyPath: m_TagString
+      value: Objective
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da55214d1b7a4184b99c74c35b78a348, type: 2}
   m_IsPrefabParent: 0
@@ -513,6 +522,10 @@ Prefab:
     - target: {fileID: 4261397837122536, guid: b978cd8ce19d85044b8aadaceb81e34f, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190964758694316, guid: b978cd8ce19d85044b8aadaceb81e34f, type: 2}
+      propertyPath: m_TagString
+      value: Objective
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b978cd8ce19d85044b8aadaceb81e34f, type: 2}
@@ -568,6 +581,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1688251184609864, guid: 908e243927835174c970db209c238464, type: 2}
+      propertyPath: m_TagString
+      value: Objective
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 908e243927835174c970db209c238464, type: 2}
   m_IsPrefabParent: 0
@@ -601,10 +618,10 @@ RectTransform:
   m_Father: {fileID: 416510804}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: -4.460022, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941288190
 MonoBehaviour:
@@ -635,7 +652,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Flavor Text
