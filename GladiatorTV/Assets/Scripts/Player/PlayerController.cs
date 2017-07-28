@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
     //the pickup system stuff
     [SerializeField]
     string[] pickups;
-    int pickupRadius = 200;
-    string weaponEquipped = "hand";
+    public float pickupRadius = 100;
+    public string weaponEquipped = "hand";
     WeaponSpawner.weaponQuality weaponQuality = WeaponSpawner.weaponQuality.Crappy;
     [SerializeField]
     ScoreSystem score;

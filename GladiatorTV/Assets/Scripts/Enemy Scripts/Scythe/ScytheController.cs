@@ -19,7 +19,6 @@ public class ScytheController : BaseEnemy
     public float pullSpeed;
     public float MediumPullSpeed;
     public float HardPullSpeed;
-    public Animator anim;
     // Use this for initialization
     void Start()
     {
