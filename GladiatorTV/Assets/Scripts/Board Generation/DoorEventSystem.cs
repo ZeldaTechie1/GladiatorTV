@@ -27,6 +27,10 @@ public class DoorEventSystem : MonoBehaviour {
     public RoomCamera roomcam;
     bool doorsOpen = false;
 
+    public bool timeIsUp=false;
+
+    public TimerController timer;
+    
     [SerializeField]
     FlavorText flavorTextSystem;
 
@@ -34,7 +38,9 @@ public class DoorEventSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+
         Doors = new List<GameObject>();
+
 
 
         camera = GameObject.FindWithTag("MainCamera");
@@ -70,10 +76,13 @@ public class DoorEventSystem : MonoBehaviour {
 
         if(CurrentRoomType==Type.Survive && !CurrentRoom.TimeIsUp)
         {
-            TimeRemaining = -Time.deltaTime;
+            timer.TimerEnded.AddListener(TIMEREND);
         }
 		
 	}
+
+
+
 
     public void ChangeRoom(Room room)
       {
@@ -82,6 +91,7 @@ public class DoorEventSystem : MonoBehaviour {
         {
             return;
         }
+
         CurrentRoom = room;
 
         CurrentRoomType = CurrentRoom.GetRoomType();
@@ -91,6 +101,12 @@ public class DoorEventSystem : MonoBehaviour {
         currentTraps = CurrentRoomBluePrint.numberoftraps;
 
         TimeRemaining = CurrentRoom.SurviveTime;
+
+        if(CurrentRoomType == Type.Survive && !CurrentRoom.TimeIsUp)
+        {
+            timer.CreateTimer(10);
+        }
+
 
         ObjectiveCheck();
 
@@ -116,11 +132,7 @@ public class DoorEventSystem : MonoBehaviour {
                     break;
 
                 case Type.Survive:
-                    if(CheckTime())
-                    {
-                        CurrentRoom.ObjectiveComplete = true;
-                        OpenDoors();
-                    }
+
                     break;
 
                 case Type.Destroy:
@@ -167,19 +179,6 @@ public class DoorEventSystem : MonoBehaviour {
             }
         }
         
-
-    }
-
-    public bool CheckTime()
-    {
-        if(TimeRemaining==0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
 
     }
 
@@ -291,6 +290,22 @@ public class DoorEventSystem : MonoBehaviour {
                 Debug.Log("Error: Not valid Direction. Default Direction set to North");
                 return Direction.North;
         }
+    }
+
+    public void ObjectiveDestroyed()
+    {
+        currentObjectives--;
+    }
+    public void EnemiesDestroyed()
+    {
+        currentObjectives--;
+    }
+
+    public void TIMEREND()
+    {
+        CurrentRoom.ObjectiveComplete = true;
+        timeIsUp = false;
+        OpenDoors();
     }
 
 

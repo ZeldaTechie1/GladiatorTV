@@ -31,6 +31,7 @@ public class Objective : MonoBehaviour
     private float deathCounter = 0;
     private float deathTime = 1;
     private SpriteRenderer SpriteRend;
+    public DoorEventSystem eventsystem;
 
     private bool stunned = false;
 
@@ -152,6 +153,7 @@ public class Objective : MonoBehaviour
             dying = true;
         }
     }
+
     public bool Check_if_Dying()
     {
         return dying;
@@ -186,6 +188,7 @@ public class Objective : MonoBehaviour
 
     public void Die()
     {
+        eventsystem.ObjectiveDestroyed();
         SpawnWeapon(ItemDrop);
         Destroy(this.gameObject);
     }
