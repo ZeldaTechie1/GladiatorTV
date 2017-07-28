@@ -594,6 +594,8 @@ public class GameBoard : MonoBehaviour
             {
                 newPosition.y = origin.y + (k * (tileSize));
 
+                currentRoom.origin = origin;
+
                 if (Obstacles[j][k].member != Member.NULL)
                 {
                     if (Obstacles[j][k].member == Member.Objective)
@@ -614,6 +616,46 @@ public class GameBoard : MonoBehaviour
 
     }
 
+    public void RoomEnemySpawn(Room currentRoom)
+    {
+        Vector3 origin = currentRoom.origin;
+
+        int objectiveIDBase = Traps.Length;// The base value of the objective IDs. Since the Locations Generated hold an ID this is required to locate the objectives in ther Objective Array in Game Board.
+
+        currentRoom.ObstacleSetup(Traps.Length, Objectives.Length, Enemies.Length);
+
+        Location[][] Obstacles = currentRoom.GetObstacles();
+        GameObject Parent = new GameObject("Obstacles");
+
+        Parent.transform.SetParent(currentRoom.GetParent().transform);
+
+        Vector3 newPosition = new Vector3(0, 0, 0);
+
+        GameObject currentObstacle;
+
+        for (int j = 0; j < roomWidth; j++)
+        {
+            newPosition.x = origin.x + (j * (tileSize));
+            // k represents the Y value of the transform positon
+            for (int k = 0; k < roomHeight; k++)
+            {
+                newPosition.y = origin.y + (k * (tileSize));
+
+                if (Obstacles[j][k].member != Member.NULL)
+                {
+                    if (Obstacles[j][k].member == Member.Enemy)
+                    {
+                        currentObstacle = Enemies[Obstacles[j][k].id];
+                        EnemyManage.SpawnEnemy(currentRoom.Difficulty, newPosition);
+
+
+                    }
+                }
+
+            }
+        }
+
+    }
 
 
 

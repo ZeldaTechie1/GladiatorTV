@@ -113,6 +113,7 @@ public class DoorEventSystem : MonoBehaviour {
         if(!CurrentRoom.ObjectiveComplete)
         {
             CloseDoors();
+            BOARD.RoomEnemySpawn(CurrentRoom);
         }
         CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
 

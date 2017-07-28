@@ -66,6 +66,7 @@ public class Room
     public Direction ENTER = Direction.Null;
     public Direction DEADEND = Direction.Null;
 
+    public Vector3 origin;
     public string flavaTown;
 
     // Overloaded Method for making a room with only an exit 

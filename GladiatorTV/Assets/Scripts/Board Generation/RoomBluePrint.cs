@@ -172,6 +172,8 @@ public class RoomBluePrint {
                 
                 numberofobjectives =0;
 
+                int p = 0;
+
                 for (int j =1; j<roomFloorMaxX;j++)
                 {
                     for (int k = 1; k < roomFloorMaxY; k++)
@@ -179,8 +181,16 @@ public class RoomBluePrint {
                         locationholder = new Location(j, k, Random.Range(0,objectiveChoices-1),Member.Objective);
                         if (LocationAvalible(locationholder))
                         {
-                            roomLocations.Add(locationholder);
-                            numberofobjectives++;
+                            if (p < numberofobjectives)
+                            {
+                                roomLocations.Add(locationholder);
+                                numberofobjectives++;
+                                p++;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
