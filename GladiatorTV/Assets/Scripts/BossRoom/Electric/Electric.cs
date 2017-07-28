@@ -10,10 +10,12 @@ public class Electric : MonoBehaviour {
 
     public float counter;
     SpriteRenderer thisRend;
+    Animator anim;
     // Use this for initialization
     void Start () {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         thisRend = this.gameObject.GetComponent<SpriteRenderer>();
+        anim = this.gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -25,11 +27,11 @@ public class Electric : MonoBehaviour {
         }
         if (active)
         {
-            thisRend.color = Color.green;
+            anim.SetBool("Active", active);
         }
         else
         {
-            thisRend.color = Color.white;
+            anim.SetBool("Active", active);
         }
     }
 

@@ -15,9 +15,13 @@ public class SpikeFloor : MonoBehaviour {
     public float counter;
     public int row = 0;
 
+    public GameObject RowObject;
+    public int rows = 9;
+
     private void Awake()
     {
         InvokeRepeating("incrementCounter", 0f, .25f);
+        GenerateRows();
         SetValues();
     }
 
@@ -76,6 +80,17 @@ public class SpikeFloor : MonoBehaviour {
         if(triggered)
         {
             counter += .25f;
+        }
+    }
+
+    public void GenerateRows()
+    {
+        float positiony = 0;
+        for (int j = 0; j < 9; j++)
+        {
+            GameObject thisObject = Instantiate(RowObject, new Vector3(this.transform.localPosition.x, this.transform.localPosition.y + positiony, 0), Quaternion.identity);
+            thisObject.transform.parent = this.transform;
+            positiony -= 64;
         }
     }
 }

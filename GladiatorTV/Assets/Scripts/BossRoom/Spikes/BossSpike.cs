@@ -14,11 +14,13 @@ public class BossSpike : MonoBehaviour
 
     public float counter;
     SpriteRenderer thisRend;
+    Animator anim;
     // Use this for initialization
     void Start()
     {
         InvokeRepeating("Increment_Counters", 0f, .25f);
         thisRend = this.gameObject.GetComponent<SpriteRenderer>();
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,16 +29,20 @@ public class BossSpike : MonoBehaviour
         Check_Time();
         if(triggered)
         {
-            thisRend.color = Color.blue;
+            anim.SetBool("triggered", true);
+            anim.SetBool("active", false);
         }
         else if(activated)
         {
-            thisRend.color = Color.red;
+            anim.SetBool("triggered", false);
+            anim.SetBool("active", true);
         }
         else
         {
-            thisRend.color = Color.white;
+            anim.SetBool("triggered", false);
+            anim.SetBool("active", false);
         }
+
     }
 
     private void Increment_Counters()

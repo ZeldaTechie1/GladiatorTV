@@ -48,4 +48,20 @@ public class SawBlad : MonoBehaviour {
     {
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
