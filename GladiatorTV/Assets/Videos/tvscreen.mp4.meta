@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: de3614b02d0ed7c4aa2ddb3766f2a70d
-timeCreated: 1501210053
-=======
 guid: 5070507f6d22e034b9a189d7c6132565
-timeCreated: 1501209321
->>>>>>> a0c9020cd7bd2a62e4a88e07315609fe30194ea8
-licenseType: Free
 VideoClipImporter:
   serializedVersion: 2
   useLegacyImporter: 0
