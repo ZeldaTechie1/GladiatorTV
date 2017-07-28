@@ -68,6 +68,7 @@ public class BaseEnemy:MonoBehaviour
     public float pushBackAmount = 5f;
     public int pointsAmount = 2;
     ScoreSystem scoreSystem;
+
     private void Awake()
     {
         player = GameObject.Find("Player");
