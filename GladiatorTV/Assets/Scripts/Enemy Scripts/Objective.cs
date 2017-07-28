@@ -46,6 +46,7 @@ public class Objective : MonoBehaviour
         gameBoard = GameObject.FindWithTag("BOARD");
         dooreventsystem = gameBoard.GetComponent(typeof(DoorEventSystem)) as DoorEventSystem;
     }
+
     // Update is called once per frame
     private void Update()
     {
