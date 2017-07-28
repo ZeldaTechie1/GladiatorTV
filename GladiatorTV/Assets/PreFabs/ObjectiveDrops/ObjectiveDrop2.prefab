@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212052573871780092}
   - component: {fileID: 61436240169779176}
   - component: {fileID: 114688799758188272}
+  - component: {fileID: 114828730288190590}
   m_Layer: 0
   m_Name: ObjectiveDrop2
   m_TagString: Objective
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bf82f11793dd84595facf026c5bfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114828730288190590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664432689271608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004f8aa4848d30449a6d34d8237901ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flavorText: CONGRATULATIONS! YOU GET TO LIVE TODAY!
 --- !u!212 &212052573871780092
 SpriteRenderer:
   m_ObjectHideFlags: 1

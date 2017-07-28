@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212779078656556882}
   - component: {fileID: 61689208124651622}
   - component: {fileID: 114406796980889076}
+  - component: {fileID: 114823691653464568}
   m_Layer: 0
   m_Name: ObjectiveDrop1
   m_TagString: Objective
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bf82f11793dd84595facf026c5bfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114823691653464568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688251184609864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004f8aa4848d30449a6d34d8237901ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flavorText: YOU GET A LIFETIME SUPPLY OF CINNAMON RAVIOLI!!!!
 --- !u!212 &212779078656556882
 SpriteRenderer:
   m_ObjectHideFlags: 1
