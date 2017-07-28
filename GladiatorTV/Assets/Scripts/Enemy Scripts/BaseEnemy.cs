@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy:MonoBehaviour
 {
 
     //basic variables
@@ -48,6 +48,9 @@ public class BaseEnemy : MonoBehaviour
     private float deathCounter = 0;
     private float deathTime = 1;
     private SpriteRenderer SpriteRend;
+    public DoorEventSystem dooreventsystem;
+    GameObject gameBoard;
+
 
     private bool stunned = false;
 
@@ -73,6 +76,9 @@ public class BaseEnemy : MonoBehaviour
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
         Rigid = this.gameObject.GetComponent<Rigidbody2D>();
         scoreSystem = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScoreSystem>();
+
+        gameBoard = GameObject.FindWithTag("BOARD");
+        dooreventsystem = gameBoard.GetComponent(typeof(DoorEventSystem)) as DoorEventSystem;
     }
     // Update is called once per frame
 
@@ -363,6 +369,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void Die()
     {
+
+        dooreventsystem.EnemiesDestroyed();
         SelectWeapon(currentDifficulty);
         scoreSystem.scoreEvent.Invoke(pointsAmount);
         GameObject Object = Instantiate(particles, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);

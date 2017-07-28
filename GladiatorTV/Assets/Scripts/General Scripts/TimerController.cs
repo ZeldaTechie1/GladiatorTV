@@ -10,7 +10,7 @@ public class TimerController : MonoBehaviour {
     Text timer;
     float time;
     public class TimerEvent : UnityEngine.Events.UnityEvent { };
-    TimerEvent TimerEnded = new TimerEvent();
+    public TimerEvent TimerEnded = new TimerEvent();
 
     // Use this for initialization
     void Start () {
