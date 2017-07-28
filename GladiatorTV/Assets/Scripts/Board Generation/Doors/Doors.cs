@@ -31,16 +31,24 @@ public class Doors : MonoBehaviour {
     }
 
 
-    public void TryOpenDoor()
+    public bool TryOpenDoor()
     {
-       
+        if(!doorOpen)// if the door is unlocked the door opened 
+        {
             OpenDoor();
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 
-    public void TryCloseDoor()
+    public bool TryCloseDoor()
     {
         CloseDoor();
-
+        return true;
     }
 
     public void SetRoom(Room room)

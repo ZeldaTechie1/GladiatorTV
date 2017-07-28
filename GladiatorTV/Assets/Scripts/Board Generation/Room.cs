@@ -9,7 +9,7 @@ public enum Direction
 
 public enum Type// The Rooms Type. This Signifies What The objective of the room will be.
 {
-    FirstRoom, Survive, Destroy, Kill, Genociede ,ClearRoom, FinalRoom,
+    FirstRoom, Survive, Destroy, Kill, ClearRoom, FinalRoom,
 }
 public enum Member// Member of the a room Either an Enemy, Objective , Trap OR NULL which is used if This field does not need to be tracked
 {
@@ -330,13 +330,13 @@ public class Room
             switch (typechoice)
             {
                 case 1:
-                    type = Type.Destroy;
+                    type = Type.Survive;
                     break;
                 case 2:
                     type = Type.Destroy;
                     break;
                 case 3:
-                    type =Type.Genociede;
+                    type = Type.Kill;
                     break;
                 case 4:
                     type = Type.ClearRoom;
@@ -438,20 +438,16 @@ public class Room
         switch (typechoice)
         {
             case 1:
-                type = Type.Destroy;
+                type = Type.Survive;
                 break;
             case 2:
                 type = Type.Destroy;
                 break;
             case 3:
-                type = Type.Genociede;
+                type = Type.Kill;
                 break;
             case 4:
                 type = Type.ClearRoom;
-                break;
-            default:
-                type = Type.Destroy;
-               
                 break;
         }
 
@@ -725,53 +721,11 @@ public class Room
         Type thisRoomType = GetRoomType();
         switch (thisRoomType)
         {
-            case Type.Kill:
-
-                if (Random.Range(0, 2) == 0)
-                { flavaTown = "TRY NOT TO FINISH FIRST ;)"; }
-                else
-                { flavaTown = "STAY ALIVE WHILE WE GO TO COMMERCIAL !"; }
-                break;
-
-            case Type.Survive:
-                if (Random.Range(0, 2) == 0)
-                { flavaTown = "TRY NOT TO FINISH FIRST ;)"; }
-                else
-                { flavaTown = "STAY ALIVE WHILE WE GO TO COMMERCIAL !"; }
-                break;
-
-            case Type.Genociede:
-                if (Random.Range(0, 2) == 0)
-                { flavaTown = "EVERY RUN IS A GENOCIDE RUN HERE BABY!"; }
-                else
-                { flavaTown = "PUTTING THE LAUGHTER IN MANSLAUGHTER"; }
-                break;
-
-            case Type.Destroy:
-
-                if (Random.Range(0, 2) == 0)
-                { flavaTown = "SMASH TO PASS... IF YOU KNOW WHAT I MEAN ;)"; }
-                else
-                { flavaTown ="YOU BREAK IT YOU BOUGHT IT !"; }
-                break;
-
-            case Type.ClearRoom:
-
-                if (Random.Range(0, 2) == 0)
-                { flavaTown = "YOU JUST GOT COMMUNITY SERVICE FOR BEING A VERY BAD BOY!\n OR GIRL, WHATEVER!"; }
-                else
-                { flavaTown = "ITS TIME TO TAKE OUT THE TRASH, LOOKS LIKE YOU FIT RIGHT IN..."; }
-
-
-                break;
-            case Type.FinalRoom:
-
-                if (Random.Range(0, 2) == 0)
-                { flavaTown =  "I'D BEAT MYSELF BUT THEY'D TAKE ME OFF THE AIR!"; }
-                else
-                { flavaTown = "KILLING YOU WILL BE GREAT FOR RATTINGS!"; }
-
-                break;
+            case Type.Kill:flavaTown = "OH MY GOD, WHAT IS THAT!\nIT'S UGLIER THAN YOUR MOM, AND THAT'S SAYING SOMETHING!"; break;
+            case Type.Survive:flavaTown = "TRY NOT TO FINISH FIRST! ;)";break;
+            case Type.Destroy:flavaTown = "FEELING WRECKLESS?";break;
+            case Type.ClearRoom:flavaTown = "YOU JUST GOT COMMUNITY SERVICE FOR BEING A VERY BAD BOY!\n OR GIRL, WHATEVER!";break;
+            case Type.FinalRoom:flavaTown = "I'D BEAT MYSELF BUT THEY'D TAKE ME OFF THE AIR!";break;
         }
 
     }

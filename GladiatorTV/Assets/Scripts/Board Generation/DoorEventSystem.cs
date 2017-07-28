@@ -43,7 +43,6 @@ public class DoorEventSystem : MonoBehaviour {
 
 
 
-
         camera = GameObject.FindWithTag("MainCamera");
         //roomcam = camera.gameObject.GetComponent<RoomCamera>();
         RoomLocations = BOARD.roomLocation;
@@ -71,7 +70,12 @@ public class DoorEventSystem : MonoBehaviour {
 	void Update () {
             ObjectiveCheck();
 
+        
+
+        if(CurrentRoomType==Type.Survive && !CurrentRoom.TimeIsUp)
+        {
             timer.TimerEnded.AddListener(TIMEREND);
+        }
 		
 	}
 
@@ -108,8 +112,6 @@ public class DoorEventSystem : MonoBehaviour {
         {
             CloseDoors();
             BOARD.RoomEnemySpawn(CurrentRoom);
-
-            Debug.Log("hello");
         }
         CurrentRoomsPos = CurrentRoom.roomCenter.transform.position;
 
@@ -119,15 +121,8 @@ public class DoorEventSystem : MonoBehaviour {
     }
 
     public void ObjectiveCheck()
-    {
-      
-
-        if (CurrentRoomType==Type.FirstRoom)
+    { if (CurrentRoom.ObjectiveComplete)
         {
-            CurrentRoom.ObjectiveComplete = true;
-            OpenDoors();
-        }
-
             switch (CurrentRoomType)
             {
                 case Type.FirstRoom:
@@ -136,16 +131,11 @@ public class DoorEventSystem : MonoBehaviour {
                     break;
 
                 case Type.Survive:
-                    if(timeIsUp)
-                    {
-                        OpenDoors();
-                    }
-                    
 
                     break;
 
                 case Type.Destroy:
-                    if(currentObjectives<=0)
+                    if(currentObjectives==0)
                     {
                         CurrentRoom.ObjectiveComplete = true;
                         OpenDoors();
@@ -153,9 +143,9 @@ public class DoorEventSystem : MonoBehaviour {
 
                     break;
 
-                case Type.Genociede:
+                case Type.Kill:
 
-                    if (currentEnemies <= 0)
+                    if (currentEnemies == 0)
                     {
                         CurrentRoom.ObjectiveComplete = true;
                         OpenDoors();
@@ -164,8 +154,7 @@ public class DoorEventSystem : MonoBehaviour {
                     break;
 
                 case Type.ClearRoom:
-
-                    if (currentObjectives <= 0)
+                    if (currentObjectives == 0)
                     {
                         CurrentRoom.ObjectiveComplete = true;
                         OpenDoors();
@@ -175,7 +164,7 @@ public class DoorEventSystem : MonoBehaviour {
 
                 case Type.FinalRoom:
 
-                    if (currentEnemies <= 0)
+                    if (currentEnemies == 0)
                     {
                         CurrentRoom.ObjectiveComplete = true;
                         ENDGAME();
@@ -186,7 +175,7 @@ public class DoorEventSystem : MonoBehaviour {
                 default:
 
                     break;
-            
+            }
         }
         
 
@@ -197,8 +186,15 @@ public class DoorEventSystem : MonoBehaviour {
 
         for (int i = 0; i < Doors.Count; i++)
         {
-            Doors[i].gameObject.GetComponent<Doors>().TryOpenDoor();
-            Debug.Log("++++");
+            if (!Doors[i].GetComponent<Doors>().TryOpenDoor())
+            {
+               
+            }
+            else
+            {
+
+            }
+
         }
         
     }
@@ -207,9 +203,14 @@ public class DoorEventSystem : MonoBehaviour {
     {
         for (int i = 0; i < Doors.Count; i++)
         {
-                Doors[i].gameObject.GetComponent<Doors>().TryCloseDoor();
-                Debug.Log("!!!!! ");
-            
+            if (!Doors[i].gameObject.GetComponent<Doors>().TryCloseDoor())
+            {
+                
+            }
+            else
+            {
+                
+            }
         }
 
     }
@@ -292,12 +293,6 @@ public class DoorEventSystem : MonoBehaviour {
     public void ObjectiveDestroyed()
     {
         currentObjectives--;
-
-        if(currentObjectives<=0)
-        {
-            Debug.Log("I SHOULD BE WORKING" + currentObjectives);
-        }
-
     }
     public void EnemiesDestroyed()
     {
@@ -306,9 +301,8 @@ public class DoorEventSystem : MonoBehaviour {
 
     public void TIMEREND()
     {
-       
         CurrentRoom.ObjectiveComplete = true;
-        timeIsUp = true;
+        timeIsUp = false;
         OpenDoors();
     }
 
