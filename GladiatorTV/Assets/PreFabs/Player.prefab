@@ -164,8 +164,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035753196373634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 33.7, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: -0.75013673, y: -0.6971859, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4722038548800916}
   m_Father: {fileID: 0}
@@ -449,6 +449,8 @@ MonoBehaviour:
   BoardScript: {fileID: 0}
   spawned: 0
   SpriteRend: {fileID: 0}
+  pickups: []
+  score: {fileID: 0}
 --- !u!212 &212748473717144192
 SpriteRenderer:
   m_ObjectHideFlags: 1
