@@ -190,6 +190,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Objectives.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4515642452096424, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.28
@@ -237,6 +242,30 @@ Prefab:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1362886722}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Objectives.Array.data[0]
+      value: 
+      objectReference: {fileID: 1465330552143172, guid: 614c159b516a3bb42a407100cf8d8e1a,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Objectives.Array.data[1]
+      value: 
+      objectReference: {fileID: 1465330552143172, guid: 614c159b516a3bb42a407100cf8d8e1a,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Objectives.Array.data[2]
+      value: 
+      objectReference: {fileID: 1465330552143172, guid: 614c159b516a3bb42a407100cf8d8e1a,
+        type: 2}
+    - target: {fileID: 114238527703956828, guid: d9151e4bb4a352b4cb9c58f174eeae33,
+        type: 2}
+      propertyPath: Objectives.Array.data[3]
+      value: 
+      objectReference: {fileID: 1465330552143172, guid: 614c159b516a3bb42a407100cf8d8e1a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9151e4bb4a352b4cb9c58f174eeae33, type: 2}
   m_IsPrefabParent: 0

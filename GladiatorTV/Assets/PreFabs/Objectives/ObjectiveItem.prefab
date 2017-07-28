@@ -86,7 +86,7 @@ MonoBehaviour:
   thisDifficutly: 0
   currentDifficulty: -1
   eventsystem: {fileID: 0}
-  ItemDrop: {fileID: 0}
+  ItemDrop: {fileID: 1468878099967214, guid: d056ba942f8d61047801b7b462959564, type: 2}
 --- !u!212 &212578641297767608
 SpriteRenderer:
   m_ObjectHideFlags: 1

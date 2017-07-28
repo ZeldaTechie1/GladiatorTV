@@ -31,7 +31,8 @@ public class Objective : MonoBehaviour
     private float deathCounter = 0;
     private float deathTime = 1;
     private SpriteRenderer SpriteRend;
-    public DoorEventSystem eventsystem;
+    public DoorEventSystem dooreventsystem;
+    GameObject gameBoard;
 
     private bool stunned = false;
 
@@ -42,6 +43,8 @@ public class Objective : MonoBehaviour
         player = GameObject.Find("Player");
         player_con = player.GetComponent<PlayerController>();
         SpriteRend = this.gameObject.GetComponent<SpriteRenderer>();
+        gameBoard = GameObject.FindWithTag("BOARD");
+        dooreventsystem = gameBoard.GetComponent(typeof(DoorEventSystem)) as DoorEventSystem;
     }
     // Update is called once per frame
     private void Update()
@@ -188,7 +191,7 @@ public class Objective : MonoBehaviour
 
     public void Die()
     {
-        eventsystem.ObjectiveDestroyed();
+        dooreventsystem.ObjectiveDestroyed();
         SpawnWeapon(ItemDrop);
         Destroy(this.gameObject);
     }
